@@ -1,0 +1,42 @@
+/* 申请流程列表 */
+.apply-flow-list {
+    margin: 3em 0.5em 0 0.5em;
+    padding-top: 0.5em;
+}
+
+/* 流程分组 */
+.apply-flow-group {
+    margin-bottom: 0.5em;
+}
+
+/* 标题 */
+.flow-group-title {
+    font-size: 1.2em;
+    display: block;
+    height: 2em;
+    line-height: 2.5em;
+    border-bottom: solid 0.1em #e0e0e0;
+    margin-bottom: 0.2em;
+    padding-left: 0.5em;
+    /*background-color: #ececec;*/
+}
+
+/* 可申请的流程 */
+.apply-flow {
+    display: inline-block;
+    width: 10em;
+    margin: 0.2em 0.5em;
+    min-height: 2em;
+    line-height: 2em;
+    border-bottom: dashed 0.1em #CCCCCC;
+    padding: 0.1em 0.6em;
+    border-radius: 0.2em;
+}
+
+.apply-flow:before{
+    font-family: layui-icon!important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    content: "\e623";
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <style type="text/css">
+        .time-area  {
+            display: flex;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="time-area scale-area">
+        <span style="position: absolute; left: 150px;">0</span>
+        <span style="position: absolute; left: calc((60px * 8 + 30px) / 3 + 150px);">8:30</span>
+        <span style="position: absolute; left: calc((60px * 18) / 3 + 150px);">18</span>
+        <span style="position: absolute; left: calc((60px * 24) / 3 + 150px);">24</span>
+    </div>
+    <div class="time-area work-area">
+        <span style="padding-left: 80px">工作</span>
+        <span style="position: absolute; background-color: whitesmoke; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+
+        <span style="position: absolute; background-color: #5FB878; left: calc((60px * 8 + 30px) / 3 + 150px); height: 20px; width: calc((60px * 9 + 30px) / 3);"></span>
+    </div>
+    <div class="time-area leave-area">
+        <span style="padding-left: 80px">请假</span>
+        <span style="position: absolute; background-color: whitesmoke; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+
+        <span style="position: absolute; background-color: #1E9FFF; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+    </div>
+    <div class="time-area overtime-area">
+        <span style="padding-left: 80px">加班</span>
+        <span style="position: absolute; background-color: whitesmoke; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+
+        <span style="position: absolute; background-color: #1E9FFF; left: calc(150px + (60px * 18) / 3); height: 20px; width: calc((60px * 2) / 3);"></span>
+    </div>
+    <div class="time-area outside-area">
+        <span style="padding-left: 80px">外勤</span>
+        <span style="position: absolute; background-color: whitesmoke; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+
+        <span style="position: absolute; background-color: #FFB800; left: calc(150px + (60px * 9) / 3); height: 20px; width: calc((60px * 6) / 3);"></span>
+    </div>
+    <div class="time-area business-travel-area">
+        <span style="padding-left: 80px">出差</span>
+        <span style="position: absolute; background-color: whitesmoke; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+
+        <span style="position: absolute; background-color: #FFB800; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+    </div>
+    <div class="time-area late-area">
+        <span style="padding-left: 80px">迟到</span>
+        <span style="position: absolute; background-color: whitesmoke; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+
+        <span style="position: absolute; background-color: #FF5722; left: calc(150px + (60px * 8 + 30px) / 3); height: 20px; width: calc(30px / 3);"></span>
+    </div>
+    <div class="time-area absenteeism-area">
+        <span style="padding-left: 80px">旷工</span>
+        <span style="position: absolute; background-color: whitesmoke; left: 150px; height: 20px; width: calc((60px * 24) / 3);"></span>
+
+        <span style="position: absolute; background-color: #FF5722; left: calc((60px * 8 + 30px) / 3 + 150px); height: 20px; width: calc((60px * 9 + 30px) / 3);"></span>
+    </div>
+</body>
+</html>

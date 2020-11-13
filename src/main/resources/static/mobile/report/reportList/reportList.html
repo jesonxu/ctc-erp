@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>流程列表</title>
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="device" content="width=device-width">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!-- 文件加载有先后顺序-->
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../common/css/mobileCommon.css">
+    <link rel="stylesheet" href="../common/css/dropdown.css">
+
+    <script type='text/javascript' src="/common/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/constant.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/banDefault.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/util.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/flowLib.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/tool/Float.js (v=${t})}"></script>
+</head>
+<body>
+
+<div class="report-list-header">
+	<input type="hidden" id="userName" th:value="${userName}" />
+	<input type="hidden" id="userId" th:value="${userId}" />
+    <!-- <div class="header-in-row header-search">
+        <input type="text" id="search_content" name="search_content" class="layui-input search-box" placeholder="搜索流程"/>
+        <span class="search-tool" id="search_btn">
+            <i class="layui-icon layui-icon-search"></i>
+        </span>
+    </div> -->
+    <div class="header-content">
+	   	<div class="show-report-filter">
+	   		<input type="text" class="layui-input" id="selectDateSlot" readonly="readonly"/>
+	   	</div>
+	   	<div id="deptFilter"></div>
+	    <div class="header-in-row header-tool">
+	    	<i id="reportType" class="layui-icon" style="background-color: rgb(1, 150, 136); color: white;">日</i>
+	        <dl class="layui-anim layui-anim-upbit select-report-type-item select-report-type-item-unselect">
+			   		<dd value="0" class="">日报</dd>
+			   		<dd value="1" class="">周报</dd>
+			   		<dd value="2" class="">月报</dd>
+			   		<dd value="3" class="">季报</dd>
+			   		<dd value="4" class="">半年报</dd>
+			   		<dd value="5" class="">年报</dd>
+			 </dl>
+	   	</div>
+   	</div>
+</div>
+
+<div id="report-list-content" class="report-list-content">
+    <ul class="report-list" id="reportListUl">
+    </ul>
+</div>
+<div>
+    <div class="float-add-report-btn layui-anim layui-anim-scaleSpring" data-float-btn="true">
+        <i class="layui-icon  layui-icon-add-1"></i>
+    </div>
+
+    <ul id="add-menu-list" class="add-menu-list">
+        <!--
+        <dd class="layui-anim layui-anim-scaleSpring"><span class="menu-name">公司</span><span class="menu-item-icon layui-icon layui-icon-tree"></span></dd>
+       -->
+    </ul>
+</div>
+</body>
+<!-- 页面 专属 文件 最后加载 -->
+<link rel="stylesheet" th:href="@{/common/font/font-one.css (v=${t})}">
+<link rel="stylesheet" th:href="@{/mobile/report/reportList/css/reportList.css (v=${t})}">
+<script type="text/javascript" th:src="@{/xm-select/xm-select.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/mobile/common/date.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/mobile/flow/flowList/flowList.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/mobile/report/reportList/reportList.js (v=${t})}"></script>
+</html>

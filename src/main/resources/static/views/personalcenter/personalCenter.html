@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:with="t=${#dates.createNow().time}">
+<head>
+<meta charset="utf-8">
+<title>个人中心</title>
+<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css"
+	media="all">
+<link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+<link rel="stylesheet" href="/common/css/common.css" media="all">
+<link rel="stylesheet" href="/common/font/font-one.css" media="all">
+<link rel="stylesheet"
+	th:href="@{/views/personalcenter/css/personalCenter.css(v=${t})}"
+	media="all">
+</head>
+<body>
+	<div class="layui-row personal-center-container">
+		<!-- 左边菜单 -->
+		<div class="layui-col-md2" id="leftMenus">
+			<div class="pc-menu-group">
+				<div class="pc-menu-group-title">我的</div>
+				<div class="pc-menu-group-detail">
+					<div page-url="/personalCenter/toPersonalInfoPage.action"
+						onclick="jumpMenuContentPage(this)"
+						class="pc-menu-group-detail-item pc-menu-group-detail-item-actived">
+						<i
+							class="layui-icon icon-one icon-personal-info pc-menu-group-detail-item-icon"></i><span
+							class="pc-menu-group-detail-item-title">个人信息</span>
+					</div>
+					<div page-url="/personalCenter/toMyMessagePage.action" onclick="jumpMenuContentPage(this)"
+						 class="pc-menu-group-detail-item">
+						<i class="layui-icon layui-icon-notice pc-menu-group-detail-item-icon"></i>
+						<span class="pc-menu-group-detail-item-title">我的消息<span id="unread" class="layui-badge">0</span></span>
+					</div>
+				</div>
+			</div>
+			<div class="pc-menu-group">
+				<div class="pc-menu-group-title">工作</div>
+				<div class="pc-menu-group-detail">
+					<div class="pc-menu-group-detail-item"
+						page-url="/personalCenter/toApplyFlowPage"
+						onclick="jumpMenuContentPage(this)">
+						<i
+							class="layui-icon icon-one icon-apply-flow pc-menu-group-detail-item-icon"></i><span
+							class="pc-menu-group-detail-item-title">申请流程</span>
+					</div>
+					<div class="pc-menu-group-detail-item"
+						page-url="/personalCenter/toFlowAuditPage"
+						onclick="jumpMenuContentPage(this)">
+						<i
+							class="layui-icon icon-one icon-examine-flow pc-menu-group-detail-item-icon"></i><span
+							class="pc-menu-group-detail-item-title">流程审核</span>
+					</div>
+					<div class="pc-menu-group-detail-item"
+						onclick="jumpUserReportPage()">
+						<i
+							class="layui-icon icon-one icon-user-report pc-menu-group-detail-item-icon"></i><span
+							class="pc-menu-group-detail-item-title">工作汇报</span>
+					</div>
+				</div>
+			</div>
+			<div class="pc-menu-group">
+				<div class="pc-menu-group-title">帮助</div>
+				<div class="pc-menu-group-detail">
+					<div class="pc-menu-group-detail-item" onclick="jumpUseDocPage()">
+						<i
+							class="layui-icon icon-one icon-use-document pc-menu-group-detail-item-icon"></i><span
+							class="pc-menu-group-detail-item-title">使用手册</span>
+					</div>
+					<div class="pc-menu-group-detail-item" onclick="jumpFAQPage()">
+						<i
+							class="layui-icon icon-one icon-faqs pc-menu-group-detail-item-icon"></i><span
+							class="pc-menu-group-detail-item-title">FAQ</span>
+					</div>
+					<div class="pc-menu-group-detail-item" onclick="logout()">
+						<i
+							class="layui-icon icon-one icon-exit pc-menu-group-detail-item-icon"></i><span
+							class="pc-menu-group-detail-item-title">退出登录</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layui-col-md13">
+			<div id="contentMain">
+				<iframe src="/personalCenter/toPersonalInfoPage.action"></iframe>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/common/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="/common/js/commonJs.js"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="text/javascript"
+	th:src="@{/views/personalcenter/js/personalCenter.js(v=${t})}"></script>
+</html>

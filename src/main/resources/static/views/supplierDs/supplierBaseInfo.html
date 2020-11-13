@@ -1,0 +1,75 @@
+<style type="text/css">
+    #privewMore{
+        color: green;
+        cursor: pointer;
+    }
+</style>
+<div class="layui-row">
+    <label>公司名称:</label>
+    <span th:text="${supplierInfo.companyName}">-</span>
+</div>
+<div class="layui-row">
+    <label>统一社会信用代码:</label>
+    <span th:text="${supplierInfo.registrationNumber}"></span>
+</div>
+<div class="layui-row">
+    <label>注册资本(万元):</label>
+    <span th:text="${supplierInfo.registeredCapital}">-</span>
+</div>
+<div class="layui-row">
+    <label>公司创立日期:</label>
+    <span th:text="${supplierInfo.creationDate}">-</span>
+</div>
+<div class="layui-row">
+    <label>公司资质:</label>
+    <span th:text="${supplierInfo.companyQualification}">-</span>
+</div>
+<div class="layui-row">
+    <label>法律风险:</label>
+    <span th:text="${supplierInfo.legalRisk}">-</span>
+</div>
+<div class="layui-row">
+    <label>正常交货周期:</label>
+    <span th:text="${supplierInfo.deliveryCycle}">-</span>
+</div>
+<div class="layui-row">
+    <label>合作形式:</label>
+    <span th:text="${supplierInfo.cooperationType}">-</span>
+</div>
+<div class="layui-row">
+    <label>结算方式:</label>
+    <span th:text="${supplierInfo.settlementType}">-</span>
+</div>
+<div class="layui-row">
+    <label>销售方式:</label>
+    <span th:text="${supplierInfo.saleType}">-</span>
+</div>
+<div class="layui-row">
+    <label>公司地址:</label>
+    <span th:text="${supplierInfo.postalAddress}">-</span>
+</div>
+<div class="layui-row">
+    <label>公司电话:</label>
+    <span th:text="${supplierInfo.telephoneNumber}">-</span>
+</div>
+<div class="layui-row">
+    <label>业务联系人:</label>
+    <span th:text="${supplierInfo.contactName}">-</span>
+</div>
+<div class="layui-row">
+    <label>联系手机:</label>
+    <span th:text="${supplierInfo.contactPhone}">-</span>
+</div>
+<div class="layui-row">
+    <label>公司性质:</label>
+    <span th:text="${supplierInfo.corporateNature}">-</span>
+</div>
+<div class="layui-row">
+    <label>商务经理:</label>
+    <span th:text="${supplierInfo.creatUser}">-</span>
+</div>
+<div class="layui-row">
+    <input type="hidden" id="supplierId" th:value="${supplierInfo.supplierId}"/>
+    <span id="privewMore" style="color:red;">查看更多>></span>
+</div>
+<script  type="application/javascript" th:src="@{/views/supplierDs/js/supplierBaseInfo.js (v=${t})}"></script>

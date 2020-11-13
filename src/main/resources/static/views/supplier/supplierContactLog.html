@@ -1,0 +1,22 @@
+<div class="supplier_contact_log" th:if="${not #lists.isEmpty(contactLogs)}" th:each="contactLog :${contactLogs}">
+    <div class="layui-row">
+        <label>联系时间：</label>
+        <span th:text="${contactLog.recordTime}"></span>
+    </div>
+    <div class="layui-row">
+        <label>联系人：</label>
+        <span th:text="${contactLog.contacts}"></span>
+    </div>
+    <div class="layui-row">
+        <label>联系形式：</label>
+        <span th:text="${contactLog.contactsForm}"></span>
+    </div>
+    <div class="layui-row">
+        <label>工作内容：</label>
+        <span th:text="${contactLog.content}"></span>
+    </div>
+    <div class="layui-row">
+        <label>工作成果：</label>
+        <span th:text="${contactLog.result}"></span>
+    </div>
+</div>

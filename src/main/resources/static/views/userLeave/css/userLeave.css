@@ -1,0 +1,18 @@
+
+#empty {
+    font-size: 18px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+}
+
+.leave-rule {
+    color: red;
+    position: absolute;
+    right: 55px;
+    font-size: 18px;
+    cursor: pointer;
+    width: fit-content;
+    text-decoration: underline;
+}

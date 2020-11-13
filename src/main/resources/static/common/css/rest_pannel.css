@@ -1,0 +1,89 @@
+/** 修改原有功能缺陷 **/
+.span_title_edit {
+    float: right;
+    color: #8a8a8a;
+}
+
+.span_title_edit:hover {
+    color: #000000;
+}
+
+.span_title {
+    font-weight: bold;
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px 0 35px;
+    color: #333;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.span_title > i {
+    color: gray;
+}
+
+.span_title > i:hover {
+    color: #0C0C0C;
+}
+.span_title .span_title_edit {
+    display: none;
+}
+.span_title:hover .span_title_edit {
+    display: inline-block;
+}
+
+.second_span_title {
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 2px;
+    font-weight: normal;
+}
+
+.second_span_title :hover {
+    color: #0C0C0C;
+}
+
+.active {
+    background-color: #bfbfbf;
+    color: #000000;
+}
+
+.active:hover {
+    color: white;
+}
+
+.active > i {
+    color: #000000;
+}
+
+.active > i:hover {
+    color: white;
+}
+
+.active > span {
+    color: #000000;
+}
+
+.active > span:hover {
+    color: white;
+}
+
+.product_query.actived {
+    background-color: rgb(232, 230, 230) !important;
+}
+
+.product_query:hover {
+    color: rgb(51, 51, 51);
+    background-color: rgb(232, 230, 230) !important;
+}
+
+#productBody .product_query {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.product_edit {
+    color: rgb(0, 0, 0) !important;
+}

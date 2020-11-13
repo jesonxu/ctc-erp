@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="/common/css/common.css" media="all">
+<link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+<link rel="stylesheet" href="/views/stockProductDs/css/stockProduct.css">
+<style type="text/css">
+    input:read-only{
+        border-width: 0 0 1px 0 !important;
+    }
+</style>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div id="param-search" class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="stockproductname">商品名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="stockproductname" id="stockproductname" PLACEHOLDER="请输入产商品名称" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="stocksupplierid">供应商：</label>
+                    <div class="layui-input-inline">
+                        <select name="supplierid" id="stocksupplierid" lay-filter="stocksupplierid" lay-search=""></select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="depotCode">采购批次号：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="depotCode" id="depotCode" PLACEHOLDER="请输入采购批次号" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="stockVerifyStatus">审核状态：</label>
+                    <div class="layui-input-inline">
+                        <select name="stockVerifyStatus" id="stockVerifyStatus" lay-filter="verifyStatus">
+                            <option value="">请选择审核状态</option>
+                            <option value="1">审核通过</option>
+                            <option value="0">待审核</option>
+                            <!--<option value="2">审核不通过</option>-->
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="stockCreateName">采购人：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="stockCreateName" id="stockCreateName" PLACEHOLDER="请输入采购人" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="startTime">开始时间：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="startTime" data-type="0" id="startTime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="endTime">结束时间：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="endTime" data-type="0" id="endTime" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-top:15px;margin-left:38px;">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn" id="btn-search-stock">查询</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" id="btn-reset-stock">重置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表格 -->
+        <div class="layui-card-body" id="layui-table-sepical">
+            <table id="stockProductList" lay-filter="stockProductList"></table>
+
+            <script type="text/html" id="table-opts-stock">
+                <div class="layui-btn-container">
+                    <button th:if="${#bools.isTrue(pagePermission['dsDepotAdd'])}" class="layui-btn layui-btn-sm" lay-event="addStock">
+                        <i class="layui-icon layui-icon-add-circle-fine"></i>
+                        添加
+                    </button>
+                </div>
+            </script>
+
+            <script type="text/html" id="table-row-opts-stock">
+                <div class="layui-btn-container">
+                    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="previewStock">
+                        查看
+                    </a>
+                    {{# if(d.verifyStatus != 1){ }}
+                        <a th:if="${#bools.isTrue(pagePermission['dsDepotVerify'])}" class="layui-btn layui-btn-xs" lay-event="auditStock">
+                            审核
+                        </a>
+                        <a th:if="${#bools.isTrue(pagePermission['dsDepotUpdate'])}" class="layui-btn layui-btn-warm layui-btn-xs" lay-event="updateStock">
+                            编辑
+                        </a>
+                        <a  th:if="${#bools.isTrue(pagePermission['dsDepotDelete'])}" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="deleteRowStock">
+                            删除
+                        </a>
+                    {{# } }}
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="/common/js/toolbar_lib.js"></script>
+<script src="/common/js/formSelects-v4.js"></script>
+<script th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script th:src="@{/views/stockProductDs/js/stockProductDs.js (v=${t})}"></script>

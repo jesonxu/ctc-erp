@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>移动端添加客户</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.mobile.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" th:href="@{/mobile/common/css/pageHeader.css (v=${t})}" media="all"/>
+
+    <script type='text/javascript' src="/common/js/jquery-1.8.0.min.js"></script>
+    <script type='text/javascript' src="/common/js/base64.js"></script>
+    <script type="text/javascript" src="../../layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/banDefault.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/util.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/tool/pageBack.js}"></script>
+</head>
+<body>
+<!-- 固定在最上面 顶部栏 -->
+<div class="page-title">
+    <span class="layui-icon layui-icon-left page-title-back"></span>
+    <span class="page-title-name">添加客户</span>
+    <span class="layui-icon layui-icon-camera scan-company-business-card" id="scanCompanyCard"></span>
+</div>
+
+<div id="add-company-info" class="layui-form add-company-info">
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label" required="true">客户名称：</label>
+        <div class="layui-input-block">
+            <input id="companyName" class="layui-input" placeholder="请输入客户名称"/>
+            <input id="businessCardPath" type="hidden"/>
+        </div>
+        <div class="layui-input-block">
+            <button id="check-customer" class="layui-btn layui-btn-danger mobile-full-btn">
+                <i class="layui-icon layui-icon-search"></i>
+                点击检测客户
+            </button>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label" required="true">客户类别：</label>
+        <div class="layui-input-block">
+            <select id="customerType"></select>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label" required="true">客户联系人：</label>
+        <div class="layui-input-block">
+            <input id="contactName" class="layui-input" placeholder="请输入客户联系人">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">联系人部门：</label>
+        <div class="layui-input-block">
+            <input id="contactDept" class="layui-input" placeholder="请输入联系人部门">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">联系人职位：</label>
+        <div class="layui-input-block">
+            <input id="contactPosition" class="layui-input" placeholder="请输入联系人职位">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label" required="true">联系人手机：</label>
+        <div class="layui-input-block">
+            <input id="contactPhone" class="layui-input" placeholder="请输入联系人手机">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">联系人座机：</label>
+        <div class="layui-input-block">
+            <input id="contactTelephone" class="layui-input" placeholder="请输入联系人座机">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">法人：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" id="legalPerson" placeholder="请输入法人">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">注册号：</label>
+        <div class="layui-input-block">
+            <input id="registrationNumber" class="layui-input" placeholder="请输入注册号">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">注册地址：</label>
+        <div class="layui-input-block">
+            <input id="registrationAddress" class="layui-input" placeholder="请输入注册地址">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">通讯地址：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" id="postalAddress" placeholder="请输入通讯地址">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">电话号码：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" id="telePhoneNumber" placeholder="请输入电话号码">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">电子邮件：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" id="email" placeholder="请输入电子邮件">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">公司网页：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" id="website" placeholder="请输入公司网页">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">公司创立日期：</label>
+        <div class="layui-input-block">
+            <input id="creationDate" class="layui-input" placeholder="请选择公司创立日期">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">注册资本(万元)：</label>
+        <div class="layui-input-block">
+            <input class="layui-input" id="registeredCapital" placeholder="请输入注册资本(万元)">
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">公司性质：</label>
+        <div class="layui-input-block">
+            <select id="corporateNature" name="corporateNature">
+                <option value="民营">民营</option>
+                <option value="合资">合资</option>
+                <option value="国营">国营</option>
+                <option value="外资">外资</option>
+                <option value="其他">其他</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label" for="taxation">税务号：</label>
+        <div class="layui-input-block">
+            <input type="text" id="taxation" class="layui-input" placeholder="请填写税务号"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">客户归属地：</label>
+        <div class="layui-input-block">
+            <select id="customerRegion" lay-filter="customerRegion"></select>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label"> 合同日期 ：</label>
+        <div class="layui-input-block">
+            <input type="text" id="contractDate" readonly placeholder="合同流程归档自动更新" class="layui-input"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">使用日期：</label>
+        <div class="layui-input-block">
+            <input type="text" id="useDate" class="layui-input" placeholder="请选择使用日期"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label" required="true">我方银行账户：</label>
+        <div class="layui-input-block">
+            <select id="bankAccountId">
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">公司情况介绍：</label>
+        <div class="layui-input-block">
+            <textarea id="companyIntroduction" class="layui-textarea" placeholder="公司情况介绍" maxlength="1000"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item mobile-form-row">
+        <label class="layui-form-label">业务应用模式：</label>
+        <div class="layui-input-block">
+            <textarea id="businessMode" class="layui-textarea" placeholder="业务应用模式" maxlength="200"></textarea>
+        </div>
+    </div>
+
+    <!--开票信息-->
+    <div class="invoice-info">
+        <div class="invoice-title">客户开票信息：</div>
+        <div class="invoice-item" data-invoice-item-id="first">
+            <div class="invoice-item-title">开票信息1</div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">公司名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="companyname" class="layui-input" placeholder="请填写公司名称"/>
+                </div>
+            </div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">税务号：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="taxnumber" class="layui-input" placeholder="请填写税务号"/>
+                </div>
+            </div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">公司地址：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="companyaddress" class="layui-input" placeholder="请填写公司地址"/>
+                </div>
+            </div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">联系电话：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="phone" class="layui-input" placeholder="请填写联系电话"/>
+                </div>
+            </div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">开户银行：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="accountbank" class="layui-input" placeholder="请填写开户银行"/>
+                </div>
+            </div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">银行账号：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="bankaccount" class="layui-input" placeholder="请填写银行账号"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- 操作按钮(新增) -->
+        <div class="layui-form-item mobile-form-row operate0">
+            <button class="layui-btn layui-btn-primary mobile-full-btn" id="addInvoiceItem">
+                <i class="layui-icon layui-icon-add-circle"></i>
+                点击新增开票项
+            </button>
+        </div>
+    </div>
+
+
+    <!-- 银行信息 -->
+    <div class="bank-info">
+        <div class="bank-title">客户银行信息</div>
+        <div class="bank-item" data-bank-item-id="first">
+            <div class="bank-item-title">
+                银行信息1
+            </div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="accountname" class="layui-input" placeholder="请填写名称"/>
+                </div>
+            </div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">开户银行：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="accountbank" class="layui-input" placeholder="请填写开户银行"/>
+                </div>
+            </div>
+            <div class="layui-form-item mobile-form-row">
+                <label class="layui-form-label">银行账号：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="bankaccount" class="layui-input" placeholder="请填写银行账号"/>
+                </div>
+            </div>
+        </div>
+        <div class="layui-form-item mobile-form-row operate">
+            <button class="layui-btn layui-btn-primary mobile-full-btn" id="addBankItem">
+                <i class="layui-icon layui-icon-add-circle"></i>
+                点击新增银行项
+            </button>
+        </div>
+    </div>
+    <div class="layui-form-item mobile-form-row">
+        <button id="submit" type="button" class="layui-btn  mobile-full-btn">
+            <i class="layui-icon layui-icon-ok"></i>
+            提交
+        </button>
+    </div>
+</div>
+
+<!----------------------------------------------以下是HTML模板信息------------------------------------------------------>
+
+<!-- 发票信息 发票项 -->
+<div id="invoice-item-template" style="display: none">
+    <div class="invoice-item">
+        <div class="invoice-item-title">
+            <span data-invoice-title="text">开票信息1</span>
+            <span data-operation="delete-item" class="layui-icon layui-icon-delete item-title-delete"></span>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">公司名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="companyname" class="layui-input" placeholder="请填写公司名称"/>
+            </div>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">税务号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="taxnumber" class="layui-input" placeholder="请填写税务号"/>
+            </div>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">公司地址：</label>
+            <div class="layui-input-block">
+                <input type="text" name="companyaddress" class="layui-input" placeholder="请填写公司地址"/>
+            </div>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">联系电话：</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" class="layui-input" placeholder="请填写联系电话"/>
+            </div>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">开户银行：</label>
+            <div class="layui-input-block">
+                <input type="text" name="accountbank" class="layui-input" placeholder="请填写开户银行"/>
+            </div>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">银行账号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="bankaccount" class="layui-input" placeholder="请填写银行账号"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 银行信息模板 -->
+<div id="bank-item-template" style="display: none">
+    <div class="bank-item">
+        <div class="bank-item-title">
+            <span data-bank-title="text">银行信息1</span>
+            <span data-bank-operation="delete-item" class="layui-icon layui-icon-delete item-title-delete"></span>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">名称：</label>
+            <div class="layui-input-block">
+                <input type="text" name="accountname" class="layui-input" placeholder="请填写名称"/>
+            </div>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">开户银行：</label>
+            <div class="layui-input-block">
+                <input type="text" name="accountbank" class="layui-input" placeholder="请填写开户银行"/>
+            </div>
+        </div>
+        <div class="layui-form-item mobile-form-row">
+            <label class="layui-form-label">银行账号：</label>
+            <div class="layui-input-block">
+                <input type="text" name="bankaccount" class="layui-input" placeholder="请填写银行账号"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<link rel="stylesheet" th:href="@{/mobile/customer/css/addCustomer.css (v=${t})}" media="all"/>
+<script type="text/javascript" th:src="@{/mobile/customer/js/addCustomer.js (v=${t})}"></script>
+</html>

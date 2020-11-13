@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>统计表</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+        <style>
+            .date-type-btn{
+                width: 40px;
+                height: 23px;
+                margin-top: -1px;
+                margin-left: 2px !important;
+            }
+            body .table-title{
+                font-size: 18px;
+                background-color: rgb(204, 228, 252);
+                text-align: center;
+                height: 34px;
+            }
+            body .layui-table-tool {
+                /*有用，让日期类型按钮栏高度更小*/
+                min-height: 30px;
+                padding: 0 10px;
+            }
+        </style>
+        <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    </head>
+
+    <body>
+        <div class="layui-card">
+            <div class="layui-card-body" style="padding: 0">
+            <input type="hidden" th:value="${year}" id="year"/>
+                <input type="hidden" th:value="${params}" id="params"/>
+                <div id="tableTitle" class="layui-layer-title table-title" th:text="${title}">统计表</div>
+                <div style="padding-bottom: 5px;">
+                    <script type="text/html" id="toolbarDemo">
+                        <button class="layui-btn layui-btn-xs layui-btn-primary date-type-btn" lay-event="showByWeek">周</button>
+                        <button class="layui-btn layui-btn-xs layui-btn-primary date-type-btn" lay-event="showByMonth">月</button>
+                        <button class="layui-btn layui-btn-xs layui-btn-primary date-type-btn" lay-event="showBySeason">季</button>
+                        <button class="layui-btn layui-btn-xs layui-btn-primary date-type-btn" lay-event="showByYear">年</button>
+                    </script>
+                    <table th:id="statistics- + ${year}" th:attr="lay-filter=statistics- + ${year}" lay-size="sm"></table>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/views/sheet/js/saleNewStatisticsSheet.js (v=${t})}"></script>
+    </body>
+</html>

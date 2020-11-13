@@ -1,0 +1,52 @@
+<div id="statistics_body" class="layui-card-body" style="padding: 0;margin-top: 2px" th:if="${not #lists.isEmpty(years)}">
+    <div class="layui-collapse" lay-accordion="">
+        <div class="layui-colla-item" th:each="year ,yearStat: ${years}">
+            <div class="layui-colla-title"
+            data-my-opts-type ="statistics_year"
+            data-my-size = "title-size-0"
+            th:attr="data-my-id=${year}" th:text="${year} + '年'"></div>
+            <div class="layui-colla-content">
+            	<div th:unless="${onlyShowBasic}">
+	                <!-- 客戶统计 -->
+	                <div th:if="${pagePermission['customerStatistics']}">
+	                    <span class="year-title statistics-year-title" title="统计表" style="cursor: pointer">统计表</span>
+	                </div>
+	                <!-- 现金流统计 -->
+	                <div  th:if="${pagePermission['customerCashFlow']}">
+	                    <span class="year-title cashflow-year-title" title="现金流表" style="cursor: pointer">现金流表</span>
+	                </div>
+
+	                <!-- 权益提成表 -->
+	                <!--<div th:if="${pagePermission['saleRoyalty']}">
+	                    <span class="year-title royalty-year-title" title="提成表" style="cursor: pointer">权益提成表</span>
+	                </div>-->
+
+	                <!-- 收款管理 -->
+	                <div th:if="${pagePermission['customerIncomeManage']}">
+	                    <span class="year-title income-manage-year-title" title="收款管理" style="cursor: pointer">收款管理</span>
+	                </div>
+	                
+	                <!-- 利润提成表 -->
+	                <div th:if="${pagePermission['customerGrossProfit']}">
+	                    <span class="year-title gross-profit-title" title="权益毛利表" style="cursor: pointer">权益毛利表</span>
+	                </div>
+	                
+	                <!-- 利润提成表 -->
+	                <div th:if="${pagePermission['customerProfitRoyalty']}">
+	                    <span class="year-title profit-royalty-title" title="利润提成表" style="cursor: pointer">利润提成表</span>
+	                </div>
+	                
+	                <!-- 月度账单 -->
+	                <div th:if="${pagePermission['customerMonthBills']}">
+	                    <span class="year-title month-bills-title" title="月度账单表" style="cursor: pointer">月度账单表</span>
+	                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="statistics_body" class="layui-card-body" th:if="${#lists.isEmpty(years)}">
+    <div>
+        暂无数据
+    </div>
+</div>

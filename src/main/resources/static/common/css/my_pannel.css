@@ -1,0 +1,220 @@
+.layui-colla-content {
+    /*padding: 2px 0px 5px 1px;*/
+    padding: 0px 0px 0px 0px;
+    margin-right: 0px;
+    border-style: solid;
+    border-color: #f2f2f2;
+    border-width: 1px 0px 0px 0px;
+}
+
+.layui-collapse {
+    border: 0px;
+}
+.layui-colla-title {
+    background-color: white;
+}
+.layui-card-header {
+    padding: 0;
+}
+.layui-colla-item {
+    /*padding: 0px 0px 0px 1px;*/
+    padding: 0px 0px 0px 0px;
+}
+
+/* 编辑样式 */
+.span_title_edit {
+    float: right;
+    color: #8a8a8a;
+    padding-right: 5px;
+}
+
+.span_title_edit:hover {
+    color: #000000;
+}
+
+.my_span_title {
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px 0 35px;
+    color: #000000;
+    background-color: #ffffff;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.my_span_title > i {
+    color: #000000;
+}
+
+/* 改变字体显示宽度*/
+div[data-my-title-tool*="true"] > span[class*="my_text_title"] {
+    width: calc(100% - 30px);
+    display: inline-block;
+}
+
+/*小图标的大小*/
+div[data-my-right-tool*="true"] > span[class*="span_title_edit"] {
+    width: 15px;
+}
+
+/** 正常的时候*/
+i[class*="my_i_left_tool"]:hover {
+    color: #000000;
+    font-weight: bold;
+}
+
+/** 激活情况下鼠标悬停 */
+.my_active > i[class*="my_i_left_tool"]:hover {
+    color: #000000;
+    font-weight: bold;
+}
+
+/**右边的小工具展示[激活]**/
+.my_active > span[class*="span_title_edit"]:hover {
+    color: #000000;
+    font-weight: bold;
+}
+/*[正常]*/
+.my_span_title > span[class *="span_title_edit"]:hover {
+    color: #000000;
+    font-weight: bold;
+}
+
+/* 默认图标不展示 */
+.my_span_title > span[class*="layui-icon"] {
+    display: none;
+}
+
+/* 图标在移入的时候展示 */
+.my_span_title:hover > span[class*="layui-icon"] {
+    display: inline-block;
+    color: #000000;
+}
+
+/* 鼠标移入的时候展示 */
+.my_span_title:hover {
+    color: #000000;
+    background-color: #cce4fc;
+}
+
+/* 激活样式（展开） */
+.my_active {
+    background-color: #cce4fc;
+    color: #000000;
+}
+
+.my_active > i {
+    color: #000000;
+}
+
+.my_active > span {
+    color: #000000;
+}
+
+/* 激活悬停 */
+.my_active:hover {
+    color: #000000;
+    background-color: #e6e6e6;
+}
+.my_active:hover>span{
+    color: #000000;
+}
+.my_active:hover>i{
+    color: #000000;
+}
+
+
+
+
+.my_text_title .layui-badge {
+    -webkit-transform: scale(0.75) !important;
+    font-size: 9px !important;
+    position: relative !important;
+    color: white;
+    padding: 0 3px;
+}
+
+.my_span_title .layui-badge {
+    -webkit-transform: scale(0.75) !important;
+    font-size: 12px !important;
+    top: -2px !important;
+    right: -2px !important;
+    position: relative !important;
+    color: white;
+    padding: 0 5px;
+}
+
+.table_item_title{
+    height: 25px;
+    padding-top: 5px;
+    padding-left: 5px;
+    cursor: pointer;
+    color: #333333;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #e8e6e6;
+}
+
+.table_item_title:hover{
+    background-color: #cce4fc;
+    color: #000000;
+}
+
+div[class*='table_item_title'][data-show-info=true]{
+    background-color: #cce4fc;
+    color: #000000;
+}
+
+
+.layui-table-tool-temp {
+    padding-right: 5px;
+}
+
+.layui-table-view .layui-form-checkbox {
+    top: -1px;
+    height: 23px;
+    line-height: 23px;
+}
+.layui-table-view .layui-form-checkbox i {
+    height: 23px;
+}
+
+/*
+div[data-my-dept=true]:hover{
+    background-color: #3399ff !important;
+    color: #FFFFFF !important;
+}
+*/
+
+/*
+div[data-my-dept=false]{
+    background-color: #d08c04;
+}*/
+
+
+
+/* 标题大小样式 */
+.title-size-0 {
+    height: 34px;
+    line-height: 34px;
+    font-size: 15px;
+}
+
+.title-size-1 {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+
+.title-size-2 {
+    height: 26px;
+    line-height: 26px;
+    font-size: 13px;
+}
+
+.title-size-3 {
+    height: 22px;
+    line-height: 22px;
+    font-size: 12px;
+}

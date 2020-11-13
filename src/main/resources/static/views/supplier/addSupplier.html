@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+        <style type="text/css">
+            .layui-form-label {
+                width: 120px;
+            }
+            .div {
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body style="background-color: white">
+        <div class="layui-tab-content site-demo site-demo-body">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" for="companyName"><span style="color: red;">*</span>公司名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="companyName" name="companyName" class="layui-input" placeholder="请填写公司名称" maxlength="255"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" for="legalPerson">法人：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="legalPerson" name="legalPerson" class="layui-input" placeholder="请填写法人" maxlength="255"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>业务联系人：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="contactName" name="contactName" class="layui-input" maxlength="255" placeholder="请填写业务联系人"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>联系手机：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="contactPhone" name="contactPhone" class="layui-input" maxlength="20" placeholder="请填写联系手机"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">注册号：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="registrationNumber" name="registrationNumber" placeholder="请填写注册号" maxlength="255" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">注册地址：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="registrationAddress" name="registrationAddress" class="layui-input" maxlength="255" placeholder="请填写注册地址">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">通讯地址：</label>
+                        <div class="layui-input-inline">
+                            <input type="tel" id="postalAddress" name="postalAddress" class="layui-input" maxlength="255" placeholder="请填写通讯地址"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">电话号码：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="telephoneNumber" name="telephoneNumber" maxlength="30" placeholder="请填写电话号码">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">电子邮件：</label>
+                        <div class="layui-input-inline">
+                            <input type="tel" id="email" name="email" class="layui-input" maxlength="255" placeholder="请填写电子邮件"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">公司网页：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" id="website" name="website" maxlength="255" placeholder="请填写公司网页">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">公司创立日期：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="creationDate" autocomplete="off" name="creationDate" class="layui-input"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">注册资本(万元)：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="registeredCapital" name="registeredCapital" maxlength="32"  class="layui-input"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">公司性质：</label>
+                        <div class="layui-input-inline">
+                            <select id="corporateNature" name="corporateNature">
+                                <option value="民营">民营</option>
+                                <option value="合资">合资</option>
+                                <option value="国营">国营</option>
+                                <option value="外资">外资</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">税务号：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="taxation" id="taxation"  class="layui-input" maxlength="32"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">供应商类别：</label>
+                        <div class="layui-input-inline">
+                            <select id="supplierType" name="supplierType"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item gradient0">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"
+                        style="width: 100%; text-align: left;">开票信息：</label>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>公司名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="companyname" name="companyname"
+                            class="layui-input" placeholder="请填写公司名称" maxlength="255"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style='color: red;'>*</span>税务号：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="taxnumber" name="taxnumber"
+                            class="layui-input" placeholder="请填写税务号" maxlength="255" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>公司地址：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="companyaddress" name="companyaddress"
+                            class="layui-input" placeholder="请填写公司地址" maxlength="255" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>联系电话：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="phone" name="phone" class="layui-input" maxlength="30"
+                            placeholder="请填写联系电话" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>开户银行：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="accountbank" name="accountbank" maxlength="255"
+                            class="layui-input" placeholder="请填写开户银行" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>银行账号：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="bankaccount" name="bankaccount" maxlength="255"
+                            class="layui-input" placeholder="请填写银行账号" />
+                        </div>
+                    </div>
+                    <div class="layui-inline operate0">
+                        <label class="layui-form-label"><span class="add_btn"
+                            id="add_invoice" onclick="addInvoice(0)"> <i
+                                class="layui-icon layui-icon-add-circle" title="添加开票信息"></i></span></label>
+                    </div>
+                </div>
+
+                <div class="layui-form-item gradient">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"
+                        style="width: 100%; text-align: left;">银行信息：</label>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="accountname" name="accountname" class="layui-input" placeholder="请填写名称" maxlength="255" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>开户银行：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="accountbank" name="accountbank" class="layui-input" placeholder="请填写开户银行" maxlength="255" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>银行账号：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="bankaccount" name="bankaccount" maxlength="255"
+                            class="layui-input" placeholder="请填写银行账号" />
+                        </div>
+                    </div>
+                    <div class="layui-inline"><label class="layui-form-label"></label><div class="layui-input-inline"></div></div>
+                    <div class="layui-inline operate">
+                        <label class="layui-form-label"><span class="add_btn"
+                            id="add_bank" onClick="addBank()"> <i class="layui-icon layui-icon-add-circle" title="添加银行信息"></i></span></label>
+                    </div>
+                </div>
+
+            </form>
+            <div class="layui-form-item" style="text-align: center">
+                <button type="button" id="supplier_submit" class="layui-btn layui-btn-sm">
+                    提交
+                </button>
+                <button type="button" id="supplier_cancel" class="layui-btn layui-btn-danger layui-btn-sm">
+                    取消
+                </button>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="/common/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+    <script type="text/javascript" src="/layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/views/supplier/js/addSupplier.js (v=${t})}"></script>
+</html>

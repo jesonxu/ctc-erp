@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:with="t=${#dates.createNow().time}">
+
+<head>
+<meta charset="UTF-8">
+<title>月度账单表</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<style>
+.year {
+	text-align: right;
+	border: none;
+}
+
+.layui-table-tool {
+	position: relative;
+	min-height: 35px;
+	line-height: 25px;
+	padding: 0px 0px;
+	border-width: 0 0 1px;
+	background-color: #CCE4FC !important;
+}
+
+.title-show {
+	color: #0C0C0C;
+	display: inline-block;
+	font-size: 14px;
+}
+
+.time-change {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.table-title {
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+}
+
+.layui-table-tool-self {
+	position: absolute;
+	right: 17px;
+	top: 5px;
+}
+.layui-table-header {
+	display: none;
+}
+.layui-table-tool {
+	width: 200% !important;
+}
+
+.layui-table {
+	width: 100% !important;
+}
+</style>
+</head>
+
+<body>
+	<div class="layui-card">
+		<div class="layui-card-body" style="padding: 0">
+			<input type="hidden" th:value="${year}" id="year" /> <input
+				type="hidden" th:value="${params}" id="params" />
+			<script type="text/html" id="toolbarDemo">
+            	<div class="layui-btn-container table-title">
+                	<div id="yearSelect" class="title-show time-change"></div>
+                	<div class="title-show" style="width: 10px"></div>
+                	<div id="tableTitle" class="title-show" th:text="${title}">
+                   		月度账单表
+                	</div>
+            	</div>
+        	</script>
+        	<div class="page-tool-clone" style="display: none;">
+	        	<button class="layui-btn layui-btn-xs layui-btn-primary date-type-btn button-pre">上一条</button> 
+		        <button class="layui-btn layui-btn-xs layui-btn-primary date-type-btn button-next">下一条</button> 
+		        <button class="layui-btn layui-btn-xs layui-btn-primary date-type-btn button-all">全部</button> 
+		        <button class="layui-btn layui-btn-xs layui-btn-primary date-type-btn button-page" style="display: none;">分页</button>
+	        </div>
+	        <div style="width: 100%;">
+				<div style="padding-bottom: 5px;width: 50%;height: 100%;">
+					<table th:id="realRoyalty- + ${year}"
+						th:attr="lay-filter=royalty- + ${year}" lay-size="sm"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/common/js/base_lib.js"></script>
+	<script type="text/javascript"
+		th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+	<script type="text/javascript"
+		th:src="@{/views/salesheet/js/monthBillsSheet.js (v=${t})}"></script>
+</body>
+</html>

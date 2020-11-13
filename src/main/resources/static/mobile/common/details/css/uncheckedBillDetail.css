@@ -1,0 +1,69 @@
+html, body {
+    background-color: #ffffff;
+}
+
+.empty-data {
+    text-align: center;
+    min-height: 3em;
+    line-height: 3em;
+}
+
+.bill-info-item {
+    margin-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: dashed 0.1em #cccccc;
+}
+
+.bill-item-detail {
+    /*margin-left: 2em;*/
+    display: block;
+}
+
+.bill-item-detail div {
+    display: block;
+}
+
+.bill-item-detail label {
+    display: inline-block;
+}
+
+.bill-item-detail span {
+    display: inline-block;
+    margin-right: 0.2em;
+    padding: 0 !important;
+}
+
+.bill-item-check i {
+    top: 30%;
+}
+
+.item-title {
+    color: #000000;
+}
+
+.layui-form-checkbox {
+    width: 100%;
+}
+
+.layui-form-checkbox > span {
+    width: 100%;
+    display: block;
+}
+
+/* 页面最下面的提交按钮 */
+.page-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+}
+
+.page-bottom > button {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+}
+
+.layui-card {
+    margin-bottom: 3em;
+}

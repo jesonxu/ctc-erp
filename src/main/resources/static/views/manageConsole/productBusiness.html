@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>云通讯产品业绩结构分析表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" media="all">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <style>
+        .year {
+            text-align: right;
+            border: none;
+        }
+        .layui-table-tool {
+            position: relative;
+            min-height: 35px;
+            line-height: 25px;
+            padding: 0px 0px;
+            border-width: 0 0 1px;
+            background-color: #CCE4FC;
+        }
+        .title-show {
+            color: #0C0C0C;
+            display: inline-block;
+            font-size: 14px;
+        }
+        .time-change{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .table-title {
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+        }
+        .layui-table-tool-self {
+            position: absolute;
+            right: 17px;
+            top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container table-title">
+                <div id="year" class="title-show time-change"></div>
+                <div class="title-show" style="width: 10px"></div>
+                <div class="title-show">
+                    云通讯产品业绩结构分析表
+                </div>
+            </div>
+        </script>
+        <div>
+            <table th:id="productBussinessSheet" th:attr="lay-filter='productBussinessSheet'" lay-size="sm"></table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/manageConsole/js/productBusiness.js (v=${t})}"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+html, body {
+    background-color: #ffffff;
+}
+
+.empty-data {
+    text-align: center;
+    min-height: 3em;
+    line-height: 3em;
+}
+
+.receipt-title {
+    display: block;
+    height: 1.5em;
+    line-height: 1.5em;
+}
+
+.receipt-detail {
+    display: block;
+}
+
+.write-off-receipt-content {
+    margin: 0 0.5em 3.3em 0.5em;
+}
+
+.receipt-info-item i {
+    top: 30%
+}
+
+.receipt-info-item {
+    padding: 0.5em 0;
+    border-bottom: dashed 0.1em #e6e6e6;
+    margin-bottom: 0.5em;
+}
+
+.receipt-line {
+    display: block;
+}
+
+.receipt-line .receipt-title {
+    width: 5em;
+    text-align: right;
+}
+
+.receipt-line > span {
+    display: inline-block;
+    padding: 0 !important;
+}
+
+.layui-form-checkbox {
+    width: 100%;
+}
+
+.layui-form-checkbox > span {
+    width: 100%;
+}
+
+/* 页面最下面的提交按钮 */
+.page-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+}
+
+.page-bottom > button {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+}

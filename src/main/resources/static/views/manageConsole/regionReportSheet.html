@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:with="t=${#dates.createNow().time}">
+<head>
+<meta charset="UTF-8">
+<title>各大区域经营状况表</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+<style type="text/css">
+	.year {
+          text-align: right;
+          border: none;
+      }
+      .layui-table-tool {
+          position: relative;
+          min-height: 35px;
+          line-height: 25px;
+          padding: 0px 0px;
+          border-width: 0 0 1px;
+          background-color: #CCE4FC;
+      }
+      .title-show {
+          color: #0C0C0C;
+          display: inline-block;
+          font-size: 14px;
+      }
+      .time-change{
+          cursor: pointer;
+      }
+      .table-title {
+          text-align: center;
+          height: 35px;
+          line-height: 35px;
+      }
+      .layui-table-tool-self {
+          position: absolute;
+          right: 17px;
+          top: 5px;
+      }
+</style>
+</head>
+<body>
+	<div class="layui-card">
+		<div class="layui-card-body">
+			<script type="text/html" id="toolbarDemo">
+            	<div class="layui-btn-container table-title">
+                	<div class="title-show" style="width: 10px"></div>
+               		<div class="title-show">
+						各大区域经营状况表
+                	</div>
+           		 </div>
+        	</script>
+			<div style="padding-bottom: 5px;">
+				<table class="layui-hide" id="qua_standard_table"
+					lay-filter="qua_standard_table"></table>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+	<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+	<script type="text/javascript"
+		th:src="@{/views/manageConsole/js/regionReportSheet.js (v=${t})}"></script>
+</body>
+</html>

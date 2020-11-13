@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+	<meta charset="UTF-8">
+	<title>新增客户信息</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+	<style type="text/css">
+		.layui-form-label {
+			width: 120px;
+		}
+
+		.customer-invoice-not-must {
+			display: none;
+		}
+
+		.customer-invoice-must {
+		}
+
+		.contractTableDiv {
+			padding-left: 130px;
+		}
+
+		.contractTableDiv .layui-table-cell {
+			height: inherit;
+		}
+		input.layui-input.layui-unselect.layui-disabled {
+			color: black !important;
+		}
+	</style>
+</head>
+
+<body style="background-color: white">
+	<div class="layui-tab-content site-demo site-demo-body">
+		<form class="layui-form" action="">
+			<input type="hidden" id="customerId" name="customerId" th:value="${customer.customerId}" />
+			<input type="hidden" th:value="${operationType}" id="operationType">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" for="companyName"> <span style="color: red;">*</span>
+						<span>公司名称：</span>
+					</label>
+					<div class="layui-input-inline">
+						<input type="text" id="companyName" name="companyName" th:value="${customer.companyName}"
+							class="layui-input" placeholder="请填写公司名称" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">客户类别：</label>
+					<div class="layui-input-inline">
+						<input type="hidden" th:value="${customer.customerTypeId}" id="customerTypeId">
+						<select id="customerType" name="customerType" lay-filter="customerType"></select>
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label"> <span style="color: red;">*</span>
+						<span>客户联系人：</span>
+					</label>
+					<div class="layui-input-inline">
+						<input type="text" id="contactName" th:value="${customer.contactName}" name="contactName"
+							   maxlength="255" class="layui-input" placeholder="请填写客户联系人" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" for="contactDept">联系人部门：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="contactDept" id="contactDept"
+							class="layui-input" placeholder="请填写联系人部门" maxlength="50" th:value="${customer.contactDept}"/>
+					</div>
+				</div>
+			</div>
+			
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">联系人职位：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="contactPosition" id="contactPosition"
+							class="layui-input" placeholder="请填写联系人职位" maxlength="50" th:value="${customer.contactPosition}"/>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"> <span style="color: red;">*</span>
+						<span>联系人手机：</span>
+					</label>
+					<div class="layui-input-inline">
+						<input type="text" id="contactPhone" th:value="${customer.contactPhone}" name="contactPhone"
+							   maxlength="20" class="layui-input" placeholder="请填写联系手机" />
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">联系人座机：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="contactTelephone" id="contactTelephone"
+							class="layui-input" style="width: 534px;" maxlength="50" placeholder="请填写联系人座机" th:value="${customer.contactTelephone}"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" for="legalPerson"><span>法人：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" id="legalPerson" name="legalPerson" th:value="${customer.legalPerson}"
+							   maxlength="255" class="layui-input" placeholder="请填写法人" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>注册号：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" id="registrationNumber" th:value="${customer.registrationNumber}"
+							maxlength="255" name="registrationNumber" placeholder="请填写注册号" class="layui-input" />
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>注册地址：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" id="registrationAddress" th:value="${customer.registrationAddress}"
+							   maxlength="255" name="registrationAddress" class="layui-input" placeholder="请填写注册地址">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>通讯地址：</span></label>
+					<div class="layui-input-inline">
+						<input type="tel" id="postalAddress" th:value="${customer.postalAddress}" name="postalAddress"
+							maxlength="255" class="layui-input" placeholder="请填写通讯地址" />
+					</div>
+				</div>
+
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>电话号码：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" id="telePhoneNumber"
+							   th:value="${customer.telePhoneNumber}" maxlength="30" name="telePhoneNumber"
+							   placeholder="请填写电话号码">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>电子邮件：</span></label>
+					<div class="layui-input-inline">
+						<input type="tel" id="email" th:value="${customer.email}" name="email" class="layui-input"
+							maxlength="255" placeholder="请填写电子邮件" />
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>公司网页：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" id="website" th:value="${customer.website}"
+							   name="website" maxlength="255" placeholder="请填写公司网页">
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>公司创立日期：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" id="creationDate" th:value="${#dates.format(customer.creationDate, 'yyyy-MM-dd')}"
+							autocomplete="off" name="creationDate" class="layui-input" />
+					</div>
+				</div>
+
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>注册资本(万元)：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" id="registeredCapital"
+							   th:value="${customer.registeredCapital}" maxlength="255"
+							   name="registeredCapital" class="layui-input" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span>公司性质：</span></label>
+					<div class="layui-input-inline">
+						<select id="corporateNature" name="corporateNature">
+							<option th:selected="${customer.corporateNature == '民营'}"
+								value="民营">民营</option>
+							<option th:selected="${customer.corporateNature == '合资'}"
+								value="合资">合资</option>
+							<option th:selected="${customer.corporateNature == '国营'}"
+								value="国营">国营</option>
+							<option th:selected="${customer.corporateNature == '外资'}"
+								value="外资">外资</option>
+							<option th:selected="${customer.corporateNature == '其他'}"
+								value="其他">其他</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" for="taxation"><span>税务号：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" name="taxation" id="taxation"
+							   th:value="${customer.taxation}" maxlength="255"
+							   class="layui-input" />
+					</div>
+				</div>
+				<div class="layui-inline">
+						<label class="layui-form-label"><span>客户归属地：</span></label>
+						<div class="layui-input-inline">
+								<input type="hidden" th:value="${customer.customerRegion}" id="customerRegionId">
+							<select id="customerRegion" name="customerRegion" lay-filter="customerRegion"></select>
+						</div>
+					</div>
+			</div>
+			<div class="layui-form-item">
+				<label id="contract-lable" class="layui-form-label"><span>合同：</span></label>
+				<div class="contractTableDiv">
+					<!-- 展示所有合同文件，其中老数据是放在客户的合同字段，然后放在这个input框，新数据是查的合同表中这个客户的合同记录 -->
+					<input type="hidden" th:value="${customer.contractFiles}" id="contractFilesInfo">
+					<table id="contractFiles" lay-filter="contractFiles"></table>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label id="contractDate-lable" class="layui-form-label"><span>合同日期：</span></label>
+					<div class="layui-input-inline">
+						<input type="text" id="contractDate" readonly
+							th:value="${#dates.format(customer.contractDate, 'yyyy-MM-dd')}"
+							autocomplete="off" name="contractDate" class="layui-input" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">使用日期：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="useDate"
+							th:value="${#dates.format(customer.useDate, 'yyyy-MM-dd')}" autocomplete="off"
+							name="useDate" class="layui-input" />
+					</div>
+				</div>
+			</div>
+			
+			<div class="layui-form-item">
+				<label class="layui-form-label"><span style="color: red;">*</span><span>我方银行账户：</span></label>
+				<div class="layui-input-inline" style="width: 534px;">
+					<select id="bankAccountId" name="bankAccountId">
+                    	<option th:each="bankAccount : ${ownBankAccountInfo}" th:value="${bankAccount.value}" th:text="${bankAccount.key}" th:selected="${bankAccount.value == customer.bankAccountId}"></option>
+					</select>
+				</div>
+			</div>
+			
+			<div class="layui-form-item layui-form-text">
+				<div class="layui-inline">
+					<label id="companyIntroduction-lable" class="layui-form-label"><span>公司情况介绍：</span></label>
+					<div class="layui-input-inline" style="width: 500px">
+							<textarea id="companyIntroduction" name="companyIntroduction" class="layui-textarea" placeholder="公司情况介绍"
+									  maxlength="1000" th:text="${customer.companyIntroduction}"></textarea>
+					</div>
+				</div>
+
+			</div>
+			<div class="layui-form-item layui-form-text">
+				<div class="layui-inline">
+					<label id="businessMode-lable" class="layui-form-label"><span>业务应用模式：</span></label>
+					<div class="layui-input-inline" style="width: 500px">
+							<textarea id="businessMode" name="businessMode" class="layui-textarea" placeholder="业务应用模式"
+									  maxlength="200" th:text="${customer.businessMode}"></textarea>
+					</div>
+				</div>
+			</div>
+			<div th:each="invoice,status : ${invoiceInfos}"
+				class="layui-form-item gradient0">
+				<input th:value="${invoice.invoiceId}" type="hidden"
+					name="invoiceId" />
+				<div class="layui-form-item">
+					<label class="layui-form-label"
+						style="width: 100%; text-align: left;">开票信息：</label>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">公司名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="companyname" name="companyname"
+							class="layui-input" placeholder="请填写公司名称"
+							th:value="${invoice.companyName}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">税务号：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="taxnumber" name="taxnumber"
+							class="layui-input" placeholder="请填写税务号"
+							th:value="${invoice.taxNumber}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">公司地址：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="companyaddress" name="companyaddress"
+							class="layui-input" placeholder="请填写公司地址"
+							th:value="${invoice.companyAddress}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">联系电话：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="phone" name="phone" class="layui-input"
+							maxlength="30" placeholder="请填写联系电话" th:value="${invoice.phone}" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">开户银行：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="accountbank" name="accountbank"
+							class="layui-input" placeholder="请填写开户银行"
+							th:value="${invoice.accountBank}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">银行账号：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="bankaccount" name="bankaccount"
+							class="layui-input" placeholder="请填写银行账号"
+							th:value="${invoice.bankAccount}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline operate0"
+					th:if="${status.index + 1 == status.size}">
+					<label class="layui-form-label"> <span class="add_btn"
+						id="add_invoice" onclick="addInvoice(0)"> <i
+							class="layui-icon layui-icon-add-circle" title="添加开票信息"></i></span>
+						<div
+							th:if="${!#lists.isEmpty(invoiceInfos) && #lists.size(invoiceInfos) > 1}"
+							th:remove="tag">
+							&nbsp;&nbsp;<span class="add_btn" id="reduce_info"
+								onclick="reduceInvoice(0, this)"><i
+								class="layui-icon layui-icon-close-fill" title="删除开票信息"></i></span>
+						</div>
+					</label>
+				</div>
+			</div>
+			<div th:each="bank,status : ${bankInfos}"
+				class="layui-form-item gradient">
+				<input th:value="${bank.bankAccountId}" type="hidden"
+					name="bankAccountId" />
+				<div class="layui-form-item">
+					<label class="layui-form-label"
+						style="width: 100%; text-align: left;">银行信息：</label>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="accountname" name="accountname"
+							class="layui-input" placeholder="请填写名称"
+							th:value="${bank.accountName}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">开户银行：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="accountbank" name="accountbank"
+							class="layui-input" placeholder="请填写开户银行"
+							th:value="${bank.accountBank}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">银行账号：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="bankaccount" name="bankaccount"
+							class="layui-input" placeholder="请填写银行账号"
+							th:value="${bank.bankAccount}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"></label>
+					<div class="layui-input-inline"></div>
+				</div>
+				<div class="layui-inline operate"
+					th:if="${status.index + 1 == status.size}">
+					<label class="layui-form-label"> <span class="add_btn"
+						id="add_bank" onClick="addBank()"> <i
+							class="layui-icon layui-icon-add-circle" title="添加银行信息"></i></span>
+						<div
+							th:if="${!#lists.isEmpty(bankInfos) && #lists.size(bankInfos) > 1}"
+							th:remove="tag">
+							&nbsp;&nbsp;<span class="add_btn" id="reduce_bank"
+								onclick="reducebank(this)"><i
+								class="layui-icon layui-icon-close-fill" title="删除银行信息"></i></span>
+						</div>
+					</label>
+				</div>
+			</div>
+		</form>
+		<div class="layui-form-item" id="isShowSubmit"  style="text-align: center">
+			<button type="button" id="customer_submit"
+				class="layui-btn layui-btn-sm">提交</button>
+			<button type="button" id="customer_cancel"
+				class="layui-btn layui-btn-danger layui-btn-sm">取消</button>
+		</div>
+	</div>
+</body>
+<script src="/common/js/jquery-1.8.0.min.js"></script>
+<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script src="/common/js/md5.min.js"></script>
+<script th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script th:src="@{/views/customer/js/editCustomer.js (v=${t})}"></script>
+</html>

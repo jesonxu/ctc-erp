@@ -1,0 +1,38 @@
+package com.dahantc.erp.vo.##dd##.dao;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+
+import com.dahantc.erp.commom.PageResult;
+import com.dahantc.erp.commom.dao.DaoException;
+import com.dahantc.erp.commom.dao.SearchFilter;
+import com.dahantc.erp.vo.##dd##.entity.##WW##;
+
+public interface I##WW##Dao {
+	##WW## read(Serializable id) throws DaoException;
+
+	boolean save(##WW## entity) throws DaoException;
+
+	boolean delete(Serializable id) throws DaoException;
+
+	boolean update(##WW## enterprise) throws DaoException;
+
+	int getCountByCriteria(SearchFilter filter) throws DaoException;
+
+	PageResult<##WW##> findByPages(int pageSize, int currentPage, SearchFilter filter) throws DaoException;
+	
+	List<##WW##> findByFilter(int size, int start, SearchFilter filter) throws DaoException;
+
+	List<##WW##> queryAllBySearchFilter(SearchFilter filter) throws DaoException;
+	
+	boolean updateByBatch(List<##WW##> objs) throws DaoException;
+
+	boolean saveByBatch(List<##WW##> objs) throws DaoException;
+
+	boolean deleteByBatch(List<##WW##> objs) throws DaoException;
+	
+	List<##WW##> findByhql(final String hql, final Map<String, Object> params, int maxCount) throws DaoException;
+
+	##WW## readOneByProperty(String property, Object value) throws DaoException;
+}

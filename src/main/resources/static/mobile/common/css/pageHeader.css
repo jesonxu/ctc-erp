@@ -1,0 +1,29 @@
+/* 页面最上面的 */
+.page-title {
+    position: fixed;
+    height: 3em;
+    line-height: 3em;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 0 0.5em 0 #c7c7c7;
+    background-color: #FFFFFF;
+    border-bottom: solid 0.1em #CCCCCC;
+    z-index: 999999;
+}
+
+/* 头部 返回 */
+.page-title-back {
+    display: inline-block;
+    margin: 0 0.5em;
+    width: 2em;
+    font-size: 1.2em;
+}
+
+/* 头部名称 */
+.page-title-name {
+    display: inline-block;
+    text-align: center;
+    font-size: 1.2em;
+    width: calc(100% - 6em);
+}

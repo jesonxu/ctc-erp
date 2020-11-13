@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+<head>
+<meta charset="UTF-8">
+<title>运营</title>
+<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css"
+	media="all">
+<link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+<style type="text/css">
+input.unit {
+	padding-right: 40px;
+}
+
+span.unit {
+	position: absolute;
+	top: 8px;
+	right: 18px;
+}
+
+#inline-condition {
+	margin-left: 18px;
+}
+
+.send {
+	width: 102px !important;
+}
+
+.condition {
+	width: 33px !important;
+}
+</style>
+</head>
+<body style="background-color: white;">
+	<input type="hidden" id="productId" th:value="${productId}" />
+	<input type="hidden" id="flowClass" th:value="${flowClass}" />
+	<div class="layui-fluid">
+		<div class="layui-card">
+			<div class="layui-card-body">
+				<table id="invoicelist" lay-filter="invoicelist"></table>
+			</div>
+		</div>
+	</div>
+	<script type="application/javascript" th:src="@{/views/customerOperate/js/queryInvoice.js (v=${t})}"></script>
+</body>
+</html>

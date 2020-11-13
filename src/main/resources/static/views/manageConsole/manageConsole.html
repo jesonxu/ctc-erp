@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+<meta charset="utf-8">
+<title>管理工作台</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<script type="text/javascript" src="/common/js/base_lib.js"></script>
+	<link rel="stylesheet" href="/views/manageConsole/css/manageConsole.css" media="all">
+</head>
+
+<body>
+	<input id="tablePermission" th:value="${tablePermission}" type="hidden">
+	<div class="table-detail-body">
+		<div class="layui-card">
+			<div class="layui-card-body">
+				<ul id="manage_toolbar"></ul>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" th:src="@{/common/js/toolbar_lib.js (v=${t})}"></script>
+	<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+	<script type="text/javascript" th:src="@{/views/manageConsole/js/manageConsole.js (v=${t})}"></script>
+<!--	<script type="text/javascript" src="/views/manageConsole/js/manageConsole.js"></script>-->
+</body>
+
+</html>

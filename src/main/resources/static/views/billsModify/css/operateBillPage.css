@@ -1,0 +1,49 @@
+.layui-fluid {
+    padding: 0 !important;
+}
+
+input:read-only {
+    border: none;
+}
+
+.bill-detail {
+    line-height: 30px;
+    font-size: 15px;
+    color: #666;
+}
+
+.bill-detail-title {
+    display: inline-block;
+    width: 28%;
+    text-align: right;
+}
+
+.bill-detail-content {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    padding-left: 10px;
+    color: #333;
+    overflow:hidden;
+    /*text-overflow:ellipsis;
+    white-space:nowrap;*/
+    vertical-align: middle;
+}
+
+.operations {
+    position: relative;
+    left: 200px;
+}
+
+.operation-item {
+
+}
+
+.operation-item > button{
+    width: 220px;
+    margin: 10px;
+}
+
+.operation-item > span{
+
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>我的消息</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/common/css/common.css" media="all">
+    <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+    <link rel="stylesheet" href="/views/personalcenter/css/myMessage.css" media="all">
+    <style type="text/css">
+        #test_toolbar_unreadMessage {
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-card-body">
+    <div class="layui-row">
+        <div class="layui-tab-item layui-show">
+            <div id="test_toolbar_unreadMessage" class="layui-form">
+                员工：
+                <div class="layui-inline">
+                    <input type="text" id="userName" name="userName" class="layui-input" placeholder="请输入名称（自动补全）"/>
+                    <input type="hidden" id="userId" name="userId"/>
+                </div>
+                &nbsp;&nbsp;消息日期：
+                <div class="layui-inline">
+                    <input type="text" id="startTime" name="startTime" class="layui-input" placeholder="请选择日期" readonly/>
+                </div>
+                &nbsp;&nbsp;消息类型：
+                <div class="layui-inline">
+                    <select class="layui-select" id="messageType" name="messageType" lay-verify="required" lay-search="">
+                    </select>
+                </div>
+                <button class="layui-btn" lay-event="search">
+                    <i class="layui-icon layui-icon-search"></i>查询
+                </button>
+                <button class="layui-btn" lay-event="getCheckData">
+                    <i class="layui-icon layui-icon-ok-circle"></i>当前选中已阅
+                </button>
+                <button class="layui-btn layui-btn-danger" lay-event="anomalous">
+                    <i class="layui-icon layui-icon-face-surprised"></i>异常页面
+                </button>
+            </div>
+            <div id="table-param">
+                <table id="unreadMessage" class="layui-table" lay-data="{id: 'unreadMessage'}"
+                       lay-filter="unreadMessage">
+                </table>
+                <script type="text/html" id="table-read">
+                    {{# if(d.state==1){ }}
+                    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="read">未阅</a>
+                    {{# } }}
+                    {{# if(d.state==0){ }}
+                    <a class="layui-btn layui-btn-xs" style="cursor:default">已阅</a>
+                    {{# } }}
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/common/js/jquery-1.8.0.min.js"></script>
+<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="/common/js/commonJs.js"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="text/javascript" src="/common/js/formSelects-v4.js"></script>
+<script type="text/javascript" th:src="@{/views/personalcenter/js/myMessage.js (v=${t})}"></script>
+<script type="application/javascript">
+    layui.config({
+        base: '/common/js/'
+    }).extend({ // 设定模块别名
+        autocomplete: 'autocomplete'
+    });
+</script>
+</body>
+</html>

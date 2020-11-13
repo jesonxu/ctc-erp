@@ -1,0 +1,23 @@
+html, body {
+	background-color: white !important;
+}
+
+.layui-card-header {
+	line-height: 42px;
+}
+
+.layui-card-header button {
+	margin-left: 20px;
+}
+
+input[type="text"] {
+	width: 350px !important;
+}
+
+.layui-disabled, .layui-disabled:hover {
+	color: black !important;
+}
+
+label {
+	margin-right: 12px;
+}

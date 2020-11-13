@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+        <link rel="stylesheet" href="/views/product/css/product.css" media="all">
+    </head>
+
+    <body style="background-color: white">
+         <div class="layui-tab-content layui-container site-demo site-demo-body" style="max-width: 550px;">
+            <form class="layui-form" action="" id="addProduct">
+                <input id="productId" th:value="${product.productId}" type="hidden">
+                <input id="supplierId" th:value="${product.supplierId}" type="hidden">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>产品名称：</label>
+                    <div class="layui-input-block">
+                        <input id="productName" th:value="${product.productName}" type="text" name="" lay-verify="required" placeholder="请输入产品名称" class="layui-input" maxlength="255">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>产品类型：</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" id="productTypeH" th:value="${product.productType}"/>
+                        <select id="productType" lay-filter="productType" name="" lay-verify="required">
+                        </select>
+                    </div>
+                </div>
+                <div class='layui-form-item voiceUnit' style="display:none">
+					<label class='layui-form-label' for='voiceUnit' >
+					<span style='color: red;'>*</span>计费单位</label>
+					<div class='layui-input-block'>
+						<input type='text' id='voiceUnit' name='voiceUnit' th:value="${product.voiceUnit}"  class='layui-input' placeholder='请填写数额'  maxlength="11"/>
+						<span class='unit'>秒</span>
+					</div>
+				</div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>是否客户直连：</label>
+                    <div class="layui-input-block">
+                        <select id="directConnect" name="" lay-filter="directConnect" lay-verify="required">
+                            <option value="false" th:selected="${#bools.isFalse(product.directConnect)}">否</option>
+                            <option value="true" th:selected="${#bools.isTrue(product.directConnect)}">是</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span class="directConnect" style="color: red;display: none">*</span>产品标识：</label>
+                    <div class="layui-input-block">
+                        <input id="productMark" th:value="${product.productMark}" type="text" name="" lay-verify="" placeholder="请输入产品标识，是直连则填通道名称" class="layui-input" maxlength="255">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">协议类型：</label>
+                    <div class="layui-input-block">
+                        <select id="productParamType" name="productParamType" lay-verify="required" lay-search="" lay-filter="productParamType" >
+                            <option value="">-----请选择协议类型-----</option>
+                        </select>
+                        <input type="hidden" id="productParamTypeH">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">产品参数：</label>
+                    <div class="layui-input-block">
+                        <textarea id="productParam" name="productParam" rows="15" lay-verify="" th:placeholder="请输入产品参数" class="layui-textarea"></textarea>
+                        <input type="hidden" id="productParamVal" name="productParamVal" th:value="${product.productParam}" maxlength="1950">
+                    </div>
+                </div>
+                <div class="layui-form-item reachProvinceProviceLabelUnit">
+                    <label class="layui-form-label"><span style="color: red;">*</span>支持省份：</label>
+                    <div class="layui-input-block">
+                        <input id="reachProvinceCountry" lay-filter="reachProvinceCountry" lay-verify="" type="checkbox" name="reachProvince" lay-skin="primary" value="2147483647" title="全国" th:checked="${#strings.contains(reachProvince, '全国')}" />
+                        <input class="reachProvince" lay-filter="reachProvinceProvice" lay-verify="" type="checkbox" name="reachProvince" lay-skin="primary" th:each="region : ${regions}" th:title="${region.regionName}" th:value="${region.bitwise}" th:checked="${#strings.contains(reachProvince, region.regionName) || #strings.contains(reachProvince, '全国') }" />
+                    </div>
+                </div>
+                <div class="layui-form-item baseProvinceUnit">
+                    <label class="layui-form-label"><span style="color: red;">*</span>落地省份：</label>
+                    <div class="layui-input-block">
+                        <select id="baseProvince" name="" lay-verify="required">
+                            <option value="">-----请选择落地省份-----</option>
+                            <option th:each="region : ${regions}" th:value="${region.id}" th:text="${region.regionName}" th:selected="${region.regionName == baseProvince}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>结算币种：</label>
+                    <div class="layui-input-block">
+                        <select id="currencyType" lay-filter="currencyType" name="" lay-verify="required" lay-search>
+                            <option value="">-----请选择结算币种-----</option>
+                            <option th:each="type : ${T(com.dahantc.erp.enums.CurrencyType).values()}" th:value="${type.code}" th:text="${type.name}" th:selected="${type.code == product.currencyType}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>结算方式：</label>
+                    <div class="layui-input-block">
+                        <select id="settleType" name="" lay-verify="required">
+                            <option value="">-----请选择-----</option>
+                            <option value="0" th:selected="${product.settleType == 0}">预购</option>
+                            <option value="1" th:selected="${product.settleType == 1}">预付</option>
+                            <option value="2" th:selected="${product.settleType == 2}">后付</option>
+                        </select>
+                    </div>
+                </div>
+    			<div class="layui-inline">
+    				<div class="layui-form-item">
+    					<label class="layui-form-label">最低套餐:</label>
+    					<div class="layui-input-inline" style="width: 175px;">
+    						<input id="lowdissipation" th:value="${#numbers.formatDecimal(product.lowdissipation,1,2)}" type="text" name="" lay-verify="" placeholder="金额，最大1000000000" class="layui-input erp-input-number" maxlength="15">
+    					</div>
+    					<div class="layui-form-mid">元</div>
+    					<div class="layui-input-inline" style="width: 175px;">
+    						<input id="unitvalue" th:value="${product.unitvalue}" type="text" name="" lay-verify="" placeholder="条数，最大2147483647" class="layui-input erp-input-number" maxlength="11">
+    					</div>
+    					<div class="layui-form-mid">条</div>
+    				</div>
+    			</div>
+            </form>
+            <div class="layui-form-item" style="text-align: center;padding: 0 0 20px 0;">
+                <button type="button" layui-filter="submit" id="submit" class="layui-btn layui-btn layui-btn-sm" lay-submit>
+                    提交
+                </button>
+                <button type="button" id="cancel" class="layui-btn layui-btn-danger layui-btn-sm">
+                    取消
+                </button>
+            </div>
+            </div>
+    </body>
+    <script src="/common/js/jquery-1.8.0.min.js"></script>
+    <script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+    <script src="/layuiadmin/layui/layui.js"></script>
+    <script th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+    <script th:src="@{/views/product/js/editProduct.js (v=${t})}"></script>
+</html>

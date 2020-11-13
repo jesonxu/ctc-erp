@@ -1,0 +1,424 @@
+.flowMsg .record {
+    text-align: left;
+    padding-bottom: 5px;
+    margin: 0 !important;
+}
+
+.flowMsg .recordTitle {
+    width: 98%;
+    padding-left: 10px;
+    background: whitesmoke;
+    border: #e0e0e0;
+    border-radius: 5px;
+}
+
+.flowMsg .audit-result {
+    float: right;
+    margin-right: 5px;
+}
+
+.flowMsg .recordContent {
+    width: 98%;
+    padding: 0 10px;
+}
+
+.flowMsg .layui-form-label {
+    float: left;
+    display: block;
+    padding: 9px 0;
+    width: 100px;
+    font-weight: 400;
+    /*line-height: 20px;*/
+    text-align: right;
+}
+
+.flowMsg input[disabled="disabled"] {
+    border: 0;
+    padding-left: 0;
+}
+
+.flowMsg input[disabled] {
+    border: 0;
+    padding-left: 0;
+}
+
+.flowMsg span[disabled] {
+    display: none;
+}
+
+.flowMsg textarea[disabled] {
+    border: none;
+    resize: none;
+}
+
+.flowMsg button[disabled] {
+    display: none;
+}
+
+.flowMsg input[class*="layui-disabled"] {
+    border: none;
+    color: #666666 !important;
+}
+
+.flowMsg input[class*="layui-disabled"] + i[class*="layui-edge"] {
+    display: none;
+}
+
+.flowMsg .layui-elem-quote {
+    border: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.flowMsg .base-data-line {
+    display: block;
+    width: auto;
+    margin-left: 0 !important;
+    /*height: 38px;*/
+}
+
+.flowMsg .base-data-line .base-data-title {
+    width: auto;
+}
+
+.flowMsg .base-data-line .base-data-value {
+    width: auto;
+}
+
+/*.my-inline{
+    display: inline-block;
+    padding-bottom: 5px;
+}*/
+
+.flow-audit .layui-input-block {
+    margin-left: 10px !important;
+}
+
+.flowMsg .layui-form-item {
+    margin-bottom: 0
+}
+
+.flowMsg .layui-colla-content {
+    padding: 0px;
+}
+
+.flowMsg .layui-table {
+    margin-top: 0px;
+}
+
+.flowMsg .layui-collapse {
+    border: 0px;
+}
+
+.opts_btn {
+    cursor: pointer;
+}
+
+.opts_btn:hover {
+    font-weight: bold;
+}
+
+.gradient_unit {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+}
+
+.flowMsg .layui-input-inline {
+    margin-left: 0 !important;
+}
+
+.price_gradient {
+    padding-top: 10px;
+}
+
+.compaire_label {
+    margin: 0;
+    text-align: center;
+}
+
+.gradient-set-default {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.base-data-line > .layui-form-label {
+    min-width: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.flowMsg .layui-input-block {
+    margin-left: 100px;
+}
+
+.base-data-line > .layui-input-block {
+    min-height: 20px;
+}
+
+.base-data-line > .layui-input-block > span {
+    padding-top: 2px;
+    display: block;
+}
+
+.remuneration input {
+    width: 110px;
+    display: inline-block;
+    text-align: right;
+    border-width: 0 0 1px 0;
+    padding-left: 0;
+    padding-right: 25px;
+}
+
+i[class*="remuneration_unit"] {
+    padding-top: 8px;
+    margin-left: -15px;
+    color: #9c9c9c;
+}
+
+.pay_detail {
+    display: inline-block;
+    width: 110px;
+}
+
+.delete-paroduct-bill {
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.delete-paroduct-bill:hover {
+    color: #FF0000;
+}
+
+.product_bill, .invoice-out {
+    border-left: #e8e8e8 solid 1px;
+}
+
+.product-bill-line > input[readonly], .invoice-line > input[readonly]{
+    border-width: 0 0 1px 0;
+}
+
+.product-bill-title {
+    text-align: center;
+    margin-top: 5px;
+    color: #000000;
+}
+
+.bill_count_tip {
+    font-size: 18px;
+    text-align: center;
+    color: red;
+}
+
+input[class*='bill-money'] {
+    display: inline-block;
+    width: 100px;
+    border-width: 0 0 1px 0;
+    text-align: center;
+    padding: 0 1px;
+}
+
+.bill-money-unit {
+    margin-left: -20px;
+}
+
+.audit-body {
+    padding-top: 5px;
+    padding-left: 0px;
+    padding-right: 20px;
+}
+
+.audit-title {
+    margin-left: 20px;
+}
+
+/* 账单 */
+input[class*="bill-money"]:disabled {
+    border-style: solid;
+    border-color: #e6e6e6;
+    border-width: 0 0 1px 0;
+}
+
+/* 酬金 */
+div[class*='remuneration']>input:disabled{
+    border-style: solid;
+    border-color: #e6e6e6;
+    border-width: 0 0 1px 0;
+}
+
+/* 收付款 */
+div[class*='product-bill-line']>input:disabled{
+    border-style: solid;
+    border-color: #e6e6e6;
+    border-width: 0 0 1px 0;
+}
+.product-bill-unit{
+    margin-left: -20px;
+}
+.pay_detail{
+    display: inline-block;
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+}
+
+.flowMsg .layui-input, .layui-select, .layui-textarea {
+    line-height: 24px;
+}
+
+.flowMsg .layui-textarea {
+    min-height: 24px;
+}
+
+.price_table_row {
+    background-color: #f0f6ff;
+    border: solid 1px #FFFFFF;
+}
+
+/* 驳回确认弹框的取消按钮样式 */
+body .reject-confirm a.layui-layer-btn0 {
+    background-color: #fff;
+    color: #333;
+}
+
+/* 驳回确认弹框的确定按钮样式 */
+body .reject-confirm a.layui-layer-btn1 {
+    background-color: #FF5722;
+    color: #fff;
+}
+
+.flow-view-table {
+	width: 100%;
+}
+.flow-view-table-td, .flow-view-table-th {
+	text-align: center;
+}
+.flow-view-table-td-money, .flow-view-table-th-money {
+	text-align: right;
+    padding: 0 5px;
+}
+
+/** table表格编辑重影*/
+.order-line .layui-table-cell {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 15px;
+    position: relative;
+    box-sizing: border-box;
+}
+.order-line .layui-table-edit:focus {
+    background-color: #ffffff;
+}
+.bank-info-line{
+	border: solid 1px #ccc;
+}
+
+/** 流程正常结束 */
+.flow-result-normal {
+    color: #5FB878;
+    margin-left: 3px;
+    font-size: 12px;
+}
+
+/** 流程取消结束 */
+.flow-result-cancel {
+    color: #FFB800;
+    margin-left: 3px;
+    font-size: 12px;
+}
+.applyFlow{
+    width: 130px;
+    margin-left: 2px !important;
+    margin-top: 1px !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+
+
+/*取消 */
+.flow-state-cancel{
+    color: #7F7F7F;
+    /*background-color: #a30013;*/
+    border-radius: 5px;
+    padding: 0px 13px;
+    font-size: 10px;
+    margin-left: 5px;
+    border: solid #7F7F7F 1px;
+    height: 18px;
+    line-height: 18px;
+    display: inline-block;
+}
+/*归档 */
+.flow-state-document{
+    color: #70B603;
+    border-radius: 5px;
+    padding: 0px 13px;
+    font-size: 10px;
+    margin-left: 5px;
+    border: solid #70B603 1px;
+    height: 18px;
+    line-height: 18px;
+    display: inline-block;
+}
+
+/*进行中 */
+.flow-state-process{
+    color: #A30014;
+    border-radius: 5px;
+    padding: 0px 13px;
+    font-size: 10px;
+    margin-left: 5px;
+    border: solid #A30014 1px;
+    height: 18px;
+    line-height: 18px;
+    display: inline-block;
+}
+
+/*可点击的客户或者供应商名称颜色*/
+.view-details a{
+    color: #009688;
+    text-decoration: underline !important;
+}
+
+.unchecked-bill-list {
+    border: 1px solid darkslategray;
+}
+
+.flowMsg .unchecked-bill-item {
+    padding-left: 10px;
+    border: 2px solid white;
+}
+
+
+.unchecked-bill-refresh {
+    position: relative;
+    top: 6px;
+    cursor: pointer;
+}
+
+.flowMsg .unchecked-bill-total {
+    padding-left: 10px;
+    border: 2px solid white;
+}
+
+
+.unchecked-bills input:disabled {
+    border: none;
+}
+
+.time-duration-div {
+    padding: 5px 0;
+    display: block;
+}
+
+.time-duration {
+    color: red;
+}

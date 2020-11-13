@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>大汉三通ERP系统</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+	<link rel="stylesheet" href="/layuiadmin/style/login.css" media="all">
+	<link rel="stylesheet" href="/views/login/css/login.css" media="all">
+	<link rel="shortcut icon" href="/favicon.png" type="image/x-icon" media="all" />
+	<script src="/common/js/jquery-1.8.0.min.js"></script>
+	<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+	<script src="/common/js/commonJs.js"></script>
+	<script src="https://rescdn.qqmail.com/node/ww/wwopenmng/js/sso/wwLogin-1.0.0.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script type="text/javascript">
+		//登录页面是否嵌套的判断
+		if (self != window.top) {
+			window.top.location.href = "/erp";
+		}
+	</script>
+</head>
+
+<body class="bgtImg">
+	<div class="layadmin-user-login layadmin-user-display-show" id="LAY-user-login" style="display: none;">
+		<form class="layui-form" method="POST" onsubmit="return false;">
+			<div class="layadmin-user-login-main">
+				<div class="layadmin-user-login-box layadmin-user-login-header">
+<!--					<h2 th:text="${systemName}" style="color: #e6e3e3;"></h2>-->
+					<p class="login-title">大汉ERP系统</p>
+				</div>
+
+				<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+					<ul class="layui-tab-title">
+						<li class="layui-this">扫码登录</li>
+						<li>账号密码登录</li>
+					</ul>
+					<div class="layui-tab-content" style="height: 280px;">
+						<div class="layui-tab-item layui-show">
+							<div id="wxCode"></div>
+						</div>
+						<div class="layui-tab-item">
+							<div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+								<div class="layui-form-item">
+									<label class="layadmin-user-login-icon layui-icon layui-icon-username"
+										for="LAY-user-login-username"></label>
+									<input type="text" name="loginName" id="LAY-user-login-username"
+										lay-verify="required" placeholder="用户名" class="layui-input">
+								</div>
+								<div class="layui-form-item">
+									<label class="layadmin-user-login-icon layui-icon layui-icon-password"
+										for="LAY-user-login-password"></label>
+									<input type="password" name="password" id="password" lay-verify="required"
+										placeholder="密码" class="layui-input">
+									<input type="hidden" id="pwdMd5" name="pwdMd5" />
+								</div>
+								<div class="layui-form-item">
+									<div class="layui-row">
+										<div class="layui-col-xs7">
+											<label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
+												for="LAY-user-login-vercode"></label>
+											<input type="text" name="verifyCode" id="LAY-user-login-vercode"
+												lay-verify="required" maxlength="4" placeholder="图形验证码"
+												class="layui-input">
+										</div>
+										<div class="layui-col-xs5">
+											<div style="margin-left: 10px;">
+												<img class="smaller" id="imgVerify" src="/login/getVerify.action"
+													alt="更换验证码" height="36" width="100%" onclick="getVerify();">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<div class="layui-row">
+										<div class="layui-col-xs7">
+											<label class="layadmin-user-login-icon layui-icon layui-icon-vercode"
+												for="LAY-user-login-phonecode"></label>
+											<input type="text" name="randomCode" id="LAY-user-login-phonecode"
+												maxlength="6" placeholder="手机验证码" class="layui-input">
+										</div>
+										<div class="layui-col-xs5">
+											<div style="margin-left: 10px;">
+												<button class="layui-btn layui-btn-fluid" type="button" lay-submit
+													id="btnGetPhoneCode"
+													lay-filter="LAY-user-login-getphonecode">获取验证码</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="layui-form-item">
+									<button class="layui-btn layui-btn-fluid" lay-submit
+										lay-filter="LAY-user-login-submit">登 入</button>
+								</div>
+								<!--<div class="layui-trans layui-form-item layadmin-user-login-other" style="padding-top: 0px">
+									<a href="/erp?lang=zh_CN" class="layadmin-link">简体中文</a>
+									<a href="/erp?lang=en_US" class="layadmin-user-jump-change layadmin-link">English(US)</a>
+								</div>-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<input type="hidden" id="lang" th:value="${lang}"/>
+	<script src="/layuiadmin/layui/layui.js"></script>
+	<script src="/common/js/md5.min.js"></script>
+	<script>
+		layui.config({
+			base: '/layuiadmin/' //静态资源所在路径
+		}).extend({
+			index: 'lib/index' //主入口模块
+		}).use(
+			['index', 'user'],
+			function () {
+				var $ = layui.$,
+					setter = layui.setter,
+					admin = layui.admin,
+					form = layui.form,
+					router = layui.router(),
+					search = router.search;
+
+				form.render();
+
+				//获取验证码
+				form.on('submit(LAY-user-login-getphonecode)', function (obj) {
+					$("#pwdMd5").val(hex_md5($("#password").val()));
+					var loginName = $("input[name='loginName']").val();
+					var verifyCode = $("input[name='verifyCode']").val();
+					var pwdMd5 = $("#pwdMd5").val()
+					$.ajax({
+						type: "post",
+						url: "/login/getPhoneCode.action",
+						data: {
+							"loginName": loginName,
+							"pwdMd5": pwdMd5,
+							"verifyCode": verifyCode
+						},
+						success: function (data) {
+							if (data.code == 200) {
+								layer.msg(data.msg, {
+									icon: 1,
+									time: 1000
+								});
+							} else {
+								//加载验证码
+								$("input[name='verifyCode']").val('');
+								$('#imgVerify').click();
+								layer.msg(data.msg, {
+									icon: 5
+								});
+							}
+						}
+					});
+					return false;
+				});
+
+				//提交
+				form.on('submit(LAY-user-login-submit)', function (obj) {
+					var randomCode = $("input[name='randomCode']").val().trim();
+					if ("" == randomCode) {
+						layer.msg("请输入手机验证码", {
+							icon: 5,
+							time: 1000
+						});
+						return false;
+					}
+					$("#pwdMd5").val(hex_md5($("#password").val()));
+					var loginName = $("input[name='loginName']").val();
+					var verifyCode = $("input[name='verifyCode']").val();
+					var pwdMd5 = $("#pwdMd5").val()
+					$.ajax({
+						type: "post",
+						url: "/login/loginWithRandomCode.action",
+						data: {
+							"loginName": loginName,
+							"pwdMd5": pwdMd5,
+							"verifyCode": verifyCode,
+							"randomCode": randomCode
+						},
+						success: function (data) {
+							if (data.code == 200) {
+								layer.msg(data.msg, {
+										icon: 1,
+										time: 1000
+									},
+									function () {
+										location.href = '/login/toWelcomePage.action'; //后台主页
+									});
+							} else {
+								//加载验证码
+								$("input[name='verifyCode']").val('');
+								$("input[name='randomCode']").val('');
+								$('#imgVerify').click();
+								layer.msg(data.msg, {
+									icon: 5
+								});
+							}
+						}
+					});
+					return false;
+				});
+
+			});
+		//获取验证码
+		function getVerify() {
+			$("#imgVerify").attr('src', "/login/getVerify.action?temp=" + Math.random());
+		}
+	</script>
+</body>
+
+<script>
+	$.ajax({
+		type: "post",
+		url: "/login/wxparam.action?temp=" + Math.random(),
+		success: function (data) {
+			if (data.code === 200 || data.code === '200') {
+				window.WwLogin({
+					id: "wxCode",
+					appid: data.data.corpid,
+					agentid: data.data.agentid,
+					redirect_uri: encodeURIComponent(data.data.redirect_uri+"?temp=" + Math.random()),
+					state: new Date().getTime(),
+					href: "data:text/css;base64,LmltcG93ZXJCb3ggLnFyY29kZSB7d2lkdGg6IDE5MHB4O30KLmltcG93ZXJCb3ggLnRpdGxlIHtkaXNwbGF5OiBub25lO30KLmltcG93ZXJCb3ggLmluZm8ge3dpZHRoOiAxOTBweDt9Ci5zdGF0dXNfaWNvbiB7ZGlzcGxheTpub25lfQouaW1wb3dlckJveCAuc3RhdHVzIHt0ZXh0LWFsaWduOiBjZW50ZXI7fSAjd3hfZGVmYXVsdF90aXAge2NvbG9yOiAjMDAwMDAwO30g"
+				});
+			}
+		}
+	});
+</script>
+
+</html>

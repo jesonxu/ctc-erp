@@ -1,0 +1,87 @@
+html, body {
+    background-color: #FFFFFF;
+}
+
+.customer-area {
+    padding-top: 0.2em;
+    margin-top: 3em;
+}
+
+.customer-info {
+
+}
+
+.customer-info > li > .item-title {
+    height: 2em;
+    line-height: 2em;
+    background-color: #e9e9e9;
+    margin: 0.2em 0;
+    padding: 0.5em;
+    color: #000000;
+}
+
+.customer-info > li > .item-content {
+    margin: 0.3em 0.5em;
+}
+
+.content-line {
+    margin-bottom: 0.5em;
+}
+
+.content-line-title {
+    display: inline-block;
+    width: 8em;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.content-line-value {
+    display: inline-block;
+    width: calc(100% - 8.3em);
+    vertical-align: middle;
+}
+
+.empty-line {
+    height: 3em;
+    text-align: center;
+}
+
+.item-content > .contact-item:not(:last-child) {
+    border-bottom: dashed 0.1em #cccccc;
+    margin-bottom: 1em;
+}
+
+.item-content > .contact-log-item:not(:last-child) {
+    border-bottom: dashed 0.1em #cccccc;
+    margin-bottom: 1em;
+}
+
+.item-content > .bank-account-item:not(:last-child) {
+    border-bottom: dashed 0.1em #cccccc;
+    margin-bottom: 1em;
+}
+
+.item-content > .invoice-item:not(:last-child) {
+    border-bottom: dashed 0.1em #cccccc;
+    margin-bottom: 1em;
+}
+
+.show-business-card {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.business-card-area {
+    margin: 0.5em 1em 0 1em;
+    text-align: center;
+}
+
+.business-hide {
+    display: none;
+}
+
+.business-card-img {
+    width: 100%;
+    border: solid 0.1em #cccccc;
+}

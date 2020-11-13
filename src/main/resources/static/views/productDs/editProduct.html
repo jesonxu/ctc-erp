@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+        <link rel="stylesheet" href="/views/productDs/css/product.css" media="all">
+    </head>
+
+    <body style="background-color: white">
+         <div class="layui-tab-content layui-container site-demo site-demo-body" style="max-width: 550px;">
+            <form class="layui-form" action="" id="addProduct">
+                <input id="productid" th:value="${product.dsproductid}" type="hidden">
+                <input id="supplierid" th:value="${product.supplierid}" type="hidden">
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>品类：</label>
+                    <div class="layui-input-block">
+                        <input id="producttype" th:value="${product.producttype}" type="text" name="" lay-verify="required" placeholder="请输入品类" class="layui-input" maxlength="128">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>品名：</label>
+                    <div class="layui-input-block">
+                        <span class="layui-form-label" style="color: red; width: auto">（提示：品名可以是单品或套餐）</span>
+                        <input id="productname" th:value="${product.productname}" type="text" name="" lay-verify="required" placeholder="请输入品名" class="layui-input" maxlength="255">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>规格/型号：</label>
+                    <div class="layui-input-block">
+                        <input id="format" th:value="${product.format}" type="text" name="" lay-verify="required" placeholder="请输入产品规格" class="layui-input" maxlength="255">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">产品编码：</label>
+                    <div class="layui-input-block">
+                        <span class="layui-form-label" style="color: red; width: auto">（提示：供应商产品编码/国标码）</span>
+                        <input id="pcode" th:value="${product.pcode}" type="text" name="" lay-verify="required" placeholder="请输入产品编码，不超过32位" class="layui-input" maxlength="32">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>团购价格：</label>
+                    <div class="layui-input-block">
+                        <span class="layui-form-label" style="color: red; width: auto">（提示：价格含税，单位:元，最多两位小数）</span>
+                        <input id="groupprice" th:value="${product.groupprice}" type="text" name="" lay-verify="required" placeholder="请输入团购价格，不超过11位" class="layui-input" maxlength="11">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>团购起订量(件)：</label>
+                    <div class="layui-input-block">
+                        <input id="groupnumber" th:value="${product.groupnumber}" type="text" name="" lay-verify="required" placeholder="请输入团购起订量，不超过10位" class="layui-input" maxlength="10">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">一件代发价：</label>
+                    <div class="layui-input-block">
+                        <span class="layui-form-label" style="color: red; width: auto">（提示：价格含税，单位:元，最多两位小数）</span>
+                        <input id="wholesaleprice" th:value="${product.wholesaleprice}" type="text" name="" lay-verify="" placeholder="请输入一件代发价，不超过11位" class="layui-input" maxlength="11">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>税率(%)：</label>
+                    <div class="layui-input-block">
+                        <input id="rant" th:value="${product.rant}" type="text" name="" lay-verify="required" placeholder="请输入税率，不超过10位" class="layui-input" maxlength="10">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>市场价：</label>
+                    <div class="layui-input-block">
+                        <input id="standardprice" th:value="${product.standardprice}" type="text" name="" lay-verify="required" placeholder="请输入市场价，不超过11位" class="layui-input" maxlength="11">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">供货周期(天)：</label>
+                    <div class="layui-input-block">
+                        <input id="period" th:value="${product.period}" type="text" name="" lay-verify="" placeholder="请输入供货周期，不超过3位" class="layui-input" maxlength="3">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label"><span style="color: red;">*</span>是否可售：</label>
+                    <div class="layui-input-block" id="onsale">
+                        <input type="radio" name="onsale" value="1" title="是" th:checked="${product.onsale==1?true:false}">
+                        <input type="radio" name="onsale" value="0" title="否" th:checked="${product.onsale==0?true:false}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注：</label>
+                    <div class="layui-input-block">
+                        <textarea id="remark" th:text="${product.remark}" type="text" name="" lay-verify="" placeholder="请输入备注信息" class="layui-textarea" maxlength="255"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label id="contract-lable" class="layui-form-label"> <span style="color: red;">*</span>产品图示：</label>
+                    <div class="layui-input-block">
+                        <button type="button" style="width: 190px;" class="layui-btn layui-btn-sm"
+                                id="contractFiles">选择图片上传</button>
+                        <div class="layui-upload-list" style="margin-left: 20px; margin-right: 65px">
+                            <div class="layui-upload-list">
+                                <input id="imgUrl" type="hidden" th:value="${product.picture}">
+                                <img class="layui-upload-img" id="demo1" style="width:100px;">
+                                <p id="demoText"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="layui-form-item" style="text-align: center;padding: 0 0 20px 0;">
+                <button type="button" layui-filter="submit" id="submit" class="layui-btn layui-btn layui-btn-sm" lay-submit>
+                    提交
+                </button>
+                <button type="button" id="cancel" class="layui-btn layui-btn-danger layui-btn-sm">
+                    取消
+                </button>
+            </div>
+         </div>
+    </body>
+    <script src="/common/js/jquery-1.8.0.min.js"></script>
+    <script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+    <script src="/layuiadmin/layui/layui.js"></script>
+    <script th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+    <script th:src="@{/views/productDs/js/editProduct.js (v=${t})}"></script>
+</html>

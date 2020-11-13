@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title th:text="#{user.editUser}">添加</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css"
+	media="all">
+<link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+<link rel="stylesheet" href="/common/css/common.css" media="all">
+<style>
+.layui-form-select dl {
+	max-height: 225px;
+} /* 限定下拉框高度 */
+.panel_title {
+	/*  text-align: center; */
+	padding-top: 15px !important;
+	font-size: 20px !important;
+}
+</style>
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+</head>
+<body style="overflow-x: hidden">
+	<div id="editPassword">
+		<div class="layui-card">
+			<div class="layui-card-body">
+				<form class="layui-form" action="" id="form">
+					<input type="hidden" id="verifyNeedPwd" th:value="${verifyNeedPwd}" />
+					<div>
+						<div class="layui-form-item" style="margin-top: 30px">
+							<label class="layui-form-label">旧密码</label>
+							<div class="layui-input-inline">
+								<input type="text" name="oldPwd" id="oldPwd" class="layui-input"
+									oninput="if(this.value==''){this.type='text'}else(this.type='password')" />
+							</div>
+						</div>
+
+						<div class="layui-form-item">
+
+							<label class="layui-form-label">新密码</label>
+							<div class="layui-input-inline">
+								<input type="text" name="newPwd" id="newPwd" class="layui-input"
+									oninput="if(this.value==''){this.type='text'}else(this.type='password')" />
+							</div>
+						</div>
+
+
+						<div class="layui-form-item">
+							<label class="layui-form-label">确认新密码</label>
+							<div class="layui-input-inline">
+								<input type="text" name="checkPwd" id="checkPwd"
+									class="layui-input"
+									oninput="if(this.value==''){this.type='text'}else(this.type='password')" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" src="/common/js/commonJs.js"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script src="/common/js/md5.min.js"></script>
+</html>

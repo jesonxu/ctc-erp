@@ -1,0 +1,370 @@
+html {
+	min-height: 100%;
+	overflow: hidden;
+}
+
+.layui-fluid {
+	padding: 0 !important;
+}
+
+#userReportContent {
+  	display: flex;
+  	/*  主轴为垂直方向，起点在上沿。 */
+  	flex-direction: column;
+  	/* overflow: hidden; */
+  	overflow: auto;
+}
+
+#userReportContent {
+	height: 100%;
+}
+
+#reportType {
+	margin-left: 20px;
+}
+
+#reportType .layui-form-radio {
+	margin-top: 0 !important;
+}
+
+#deptAndUser .layui-collapse .layui-collapse {
+	padding-left: 10px !important;
+}
+
+#reportType {
+	overflow: hidden;
+}
+
+#userReportContent .LAY-app-message-btns, #userReportMain {
+  overflow: auto;
+  /*用于固定高度的情况*/
+  /* 空间不足时不会缩小 */
+  flex-shrink: 0;
+}
+
+#showReportMain {
+	flex-shrink: 1;
+	padding-top: 15px;
+	overflow: hidden;
+}
+
+#deptAndUser {
+	height: 100%;
+	width: 18%;
+	float: left;
+	overflow: auto;
+}
+
+#deptAndUser [data-my-opts-type="1"] i {
+	display: none !important;
+}
+
+#deptAndUser::-webkit-scrollbar { 
+	width: 0 !important 
+}
+ 
+#deptAndUser { 
+	-ms-overflow-style: none; 
+}
+ 
+#deptAndUser { 
+	overflow: -moz-scrollbars-none; 
+}
+
+#yearAndMonth {
+	height: 100%;
+	width: 81%;
+	float: right;
+	overflow: auto;
+}
+
+#yearAndMonth::-webkit-scrollbar { 
+	width: 0 !important 
+}
+ 
+#yearAndMonth { 
+	-ms-overflow-style: none; 
+}
+ 
+#over-flow-div::scrollbar {
+  visibility: collapse !important;
+}
+
+.over-flow-div::-webkit-scrollbar {
+    width:0px;
+    height:0px;
+}
+
+.over-flow-div {
+   scrollbar-width: none;
+}
+
+.over-flow-div::-webkit-scrollbar-button {
+    background-color:rgba(0,0,0,0);
+}
+
+.over-flow-div::-webkit-scrollbar-track {
+    background-color:rgba(0,0,0,0);
+}
+
+.over-flow-div::-webkit-scrollbar-track-piece {
+    background-color:rgba(0,0,0,0);
+}
+
+.over-flow-div::-webkit-scrollbar-thumb {
+    background-color:rgba(0,0,0,0);
+}
+
+.over-flow-div::-webkit-scrollbar-corner {
+    background-color:rgba(0,0,0,0);
+}
+
+.over-flow-div::-webkit-scrollbar-resizer {
+    background-color:rgba(0,0,0,0);
+}
+
+.over-flow-div::-webkit-scrollbar {
+    width:10px;
+    height:10px;
+}
+
+.over-flow-div .-o-scrollbar{
+    -moz-appearance: none !important;   
+    background: rgba(0,255,0,0) !important;  
+}
+
+.over-flow-div::-o-scrollbar-button    {
+    background-color:rgba(0,0,0,0);
+}
+
+.over-flow-div::-o-scrollbar-track     {
+    background-color:rgba(0,0,0,0);
+}
+.over-flow-div::-o-scrollbar-track-piece {
+    background-color:rgba(0,0,0,0);
+}
+.over-flow-div::-o-scrollbar-thumb{
+    background-color:rgba(0,0,0,0);
+}
+.over-flow-div::-o-scrollbar-corner {
+    background-color:rgba(0,0,0,0);
+}
+.over-flow-div::-o-scrollbar-resizer  {
+    background-color:rgba(0,0,0,0);
+}
+/*IE10,IE11,IE12*/
+.over-flow-div{
+    -ms-scroll-chaining: chained;
+    -ms-overflow-style: none;
+    -ms-content-zooming: zoom;
+    -ms-scroll-rails: none;
+    -ms-content-zoom-limit-min: 100%;
+    -ms-content-zoom-limit-max: 500%;
+    -ms-scroll-snap-type: proximity;
+    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+    -ms-overflow-style: none;
+    overflow: auto;
+}
+ 
+#yearAndMonth { 
+	overflow: -moz-scrollbars-none; 
+}
+
+#showReportMain .clear-both {
+	clear: both;
+}
+
+#deptAndUser [data-my-opts-type="1"] .layui-icon {
+	
+}
+
+#userReportMain {
+	width: 100%;
+}
+
+.layui-upload>div {
+	display: inline-block;
+}
+
+#uploadReportFile {
+	clear: both;
+	margin-bottom: 5px;
+}
+
+#uploadReportFile .layui-table td {
+	padding: 9px 15px 9px 15px !important;
+}
+
+#saveReportDiv, #reportDisplay {
+	display: inline-block;
+}
+
+#saveReportDiv {
+	
+}
+
+#reportDisplay {
+	line-height: 28px;
+}
+
+#cancelReportButton {
+	margin-left: 25px !important;
+}
+
+#showReportMain {
+	border-top: 1px solid rgb(230, 230, 230);
+	padding-top: 5px;
+}
+
+.show-report-item {
+	width: 98%;
+	float: right;
+}
+
+[item-class] {
+	margin: 12px 0;
+}
+
+.layui-colla-content > .show-report-items {
+	padding: 12px 0;
+}
+
+.show-report-items-user .show-report-item {
+	width: 98%;
+}
+
+.show-report-items-dept [item-class="1"] .show-report-item-content, .show-report-item-content {
+	padding: 10px; 
+	background-color: rgb(225, 225, 225);
+	border: #e0e0e0; 
+	border-radius: 7px;
+	clear: both;
+}
+
+.show-report-items-user .show-report-item-content {
+	background-color: rgb(240, 240, 240);
+}
+
+.show-report-item-menu, .show-report-save-comment {
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	color: rgb(22, 155, 213);
+	cursor: pointer;
+	margin: 0 4px;
+}
+
+.show-report-item-menu {
+	float: right;
+}
+
+.show-report-save-comment {
+	height: 30px;
+	line-height: 30px;
+}
+
+.report-comment-title {
+	color: rgb(22, 155, 213);
+}
+
+.show-report-item-user-name {
+	float: left;
+}
+
+.show-report-item-user {
+	clear: both;
+	width: 100%;
+}
+
+.report-comment-delete, .report-comment-reply, .report-comment-read-reply, .report-comment-reply-delete {
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.report-comment-delete, .report-comment-reply, .report-comment-read-reply, .report-comment-reply-delete {
+	cursor: pointer;
+}
+
+.show-report-item-menu:hover, .show-report-save-comment:hover {
+	color: rgb(0, 0, 255);
+}
+
+.show-report-item-more-active {
+	color: rgb(160, 160, 160);
+}
+
+.show-report-item-content-main {
+	margin-left: 70px;
+	margin-top: 5px;
+}
+
+.show-report-item-comment-input{
+	margin-top: 5px;
+	clear: both;
+}
+
+.show-report-item-comment-input input {
+	display: inline-block;
+}
+
+.show-no {
+	display: none !important;
+}
+
+.report-no-data {
+	width: 100%;
+	font-size: 14px;
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.show-report-item-show-comment {
+	margin-top: 5px;
+}
+
+.show-comment-item {
+	margin-bottom: 4px;
+}
+
+input[name="reportComment"] {
+	background-color: rgba(0, 0, 0, 0) !important;
+	height: 30px !important;
+	line-height: 30px !important;
+	border: 0 !important;
+	border-bottom: 1px solid black !important;
+	margin-bottom: 5px;
+	color: black;
+	width: 80%;
+	margin-left: 62px;
+}
+
+.span-comment-grey {
+	color: rgb(180, 180, 180);
+}
+
+[item-class="0"] .show-report-item-content {
+	color: rgb(0, 0, 0);
+}
+
+/*
+input[name="reportComment"]:hover {
+	border-bottom: 1px solid black !important;
+}
+
+input[name="reportComment"]::-webkit-input-placeholder { /* WebKit browsers 适配谷歌 */
+    color: rgb(80, 80, 80);
+}
+input[name="reportComment"]:-moz-placeholder { /* Mozilla Firefox 4 to 18 适配火狐 */
+   	color: rgb(80, 80, 80);
+}
+input[name="reportComment"]::-moz-placeholder { /* Mozilla Firefox 19+ 适配火狐 */
+    color: rgb(80, 80, 80);
+}
+input[name="reportComment"]:-ms-input-placeholder { /* Internet Explorer 10+  适配ie*/
+    color: rgb(80, 80, 80);
+}
+*/

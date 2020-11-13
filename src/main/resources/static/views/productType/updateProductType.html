@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="utf-8">
+    <title>""</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+    <link rel="stylesheet" th:href="@{/views/productType/css/updateProductType.css (v=${t})}" media="all">
+</head>
+
+<body>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <input type="hidden" id="type" th:value="${type}">
+        <form class="layui-form">
+            <div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">产品类型名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="hidden" id="id" th:value="${productType!=null?productType.id:''}">
+                        <input type="text" id="productTypeName" lay-verify="required"
+                               th:placeholder="请输入产品类型名称，例如：短信" autocomplete="off" class="layui-input" maxlength="255"
+                               th:value="${productType!=null?productType.productTypeName:''}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">产品类型标识：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="productTypeKey" lay-verify="required"
+                               th:placeholder="请输入产品类型标识，例如：SMS" autocomplete="off" class="layui-input" maxlength="255"
+                               th:value="${productType!=null?productType.productTypeKey:''}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">产品类型值：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="productTypeValue" lay-verify="required"
+                               th:placeholder="请输入产品类型值，例如：0" autocomplete="off" class="layui-input" maxlength="255"
+                               th:value="${productType!=null?productType.productTypeValue:''}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">成本类型：</label>
+                    <div class="layui-input-inline">
+                        <input type="hidden" id="costPriceTypeH" th:value="${productType!=null?productType.costPriceType:''}">
+                        <select id="costPriceType" lay-verify="required" lay-filter="costPriceType">
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item" id="costPriceDiv" style="display: none">
+                    <label class="layui-form-label">成本单价：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="costPrice" lay-verify="required"
+                               th:placeholder="请输入成本单价" autocomplete="off" class="layui-input" maxlength="255"
+                               th:value="${productType!=null?productType.costPrice:''}">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="remark" lay-verify="required"
+                               th:placeholder="请输入备注" autocomplete="off" class="layui-input" maxlength="255"
+                               th:value="${productType!=null?productType.remark:''}">
+                    </div>
+                </div>
+                <div class="layui-form-item" style="text-align: center;">
+                    <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" id="submit">提交修改</button>
+                    <button type="button" class="layui-btn layui-btn-sm layui-btn-primary" id="cancel">取消</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="application/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="application/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="application/javascript" src="/common/js/formSelects-v4.js"></script>
+<script type="application/javascript" th:src="@{/views/productType/js/updateProductType.js (v=${t})}"></script>
+</body>
+
+</html>

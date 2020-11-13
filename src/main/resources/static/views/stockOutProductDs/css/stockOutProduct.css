@@ -1,0 +1,33 @@
+span.unit {
+	position: absolute;
+	top: 8px;
+	right: 18px;
+}
+#layui-table-sepical .layui-table .layui-btn-container .layui-btn {
+    margin-bottom: 0px;
+}
+.stock-table .layui-table-cell {
+	height: 38px;
+	line-height: 38px;
+	padding: 0 15px;
+}
+td[data-field='depotType'] .layui-table-cell {
+	overflow: visible;
+}
+.stock-table .layui-table-box {
+	overflow: visible;
+}
+.stock-table .layui-table-body {
+	overflow: visible;
+}
+/* 设置下拉框的高度与表格单元相同 */
+td[data-field='depotType'] .layui-form-select {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.preivew-stock-out .layui-disabled {
+	color: #393d49 !important;
+}
+.preivew-stock-out .layui-inline {
+	margin-bottom: 10px;
+}

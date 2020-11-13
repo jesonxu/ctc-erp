@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+</head>
+
+<body style="background-color: white">
+<input id="product_items" th:value="${product_items}" type="hidden">
+<div class="layui-tab-content layui-container site-demo site-demo-body" style="max-width: 550px;">
+    <form class="layui-form" action="" id="addProduct">
+        <input id="productId" th:value="${customerProduct.productId}" type="hidden">
+        <input id="customerId" th:value="${customerProduct.customerId}" type="hidden">
+        <input id="accountRequired" th:value="${accountRequired}" type="hidden">
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'productName')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span th:text="#{product.productName}">项目名称</span>：</label>
+            <div class="layui-input-block">
+                <input id="productName" th:value="${customerProduct.productName}" type="text" name="" lay-verify="required" maxlength="255"
+                       placeholder="请输入产品名称" th:placeholder="#{placeholder.productName}" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'productType')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span th:text="#{product.productType}">产品类型</span>：</label>
+            <div class="layui-input-block">
+                <input type="hidden" id="productTypeH" th:value="${customerProduct.productType}"/>
+                <select id="productType" lay-filter="productType" name="" lay-verify="required">
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item yysTypeDiv" th:if="${#lists.contains(product_items, 'yysType')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span>运营商发送范围</span>：</label>
+            <div class="layui-input-block">
+                <input id="yysTypeAll" lay-filter="yysTypeAll" type="checkbox" name="yysType" lay-skin="primary" value="1000" title="全部" th:checked="${#lists.contains(yysType, '1000')}" />
+                <input class="yysType" lay-filter="yysType" type="checkbox" name="yysType" lay-skin="primary" th:each="yys : ${yysTypes}" th:title="${yys.desc}" th:value="${yys.value}" th:checked="${#lists.contains(yysType, yys.value + '') || #lists.contains(yysType, '1000')}" />
+            </div>
+        </div>
+        <div class='layui-form-item voiceUnit' th:if="${#lists.contains(product_items, 'voiceUnit')}" style="display:none">
+            <label class='layui-form-label' for='voiceUnit' ><span style='color: red;'>*</span><span th:text="#{product.voiceUnit}">计费单位</span>：</label>
+            <div class='layui-input-block'>
+                <input th:value="${customerProduct.voiceUnit}" type='text' id='voiceUnit' name='voiceUnit' class='layui-input' placeholder='请填写数额' th:placeholder="#{placeholder.voiceUnit}" maxlength="255" />
+                <span style="position: absolute;top: 8px;right: 18px;">秒</span>
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'directConnect')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span th:text="#{product.directConnect}">是否直连运营商</span>：</label>
+            <div class="layui-input-block">
+                <select id="directConnect" lay-filter="directConnect" lay-verify="required">
+                    <option value="false" th:selected="${#bools.isFalse(customerProduct.directConnect)}">否</option>
+                    <option value="true" th:selected="${#bools.isTrue(customerProduct.directConnect)}">是</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item directConnect" style="display: none">
+            <label class="layui-form-label"><span style="color: red;">*</span>直连通道：</label>
+            <div class="layui-input-block">
+                <select id="directChannel" name="directChannel" lay-filter="directChannel"></select>
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'account')}">
+            <label class="layui-form-label"><span style="color: red;" id="accountSpan">*</span><span th:text="#{product.account}">账号</span>：</label>
+            <div class="layui-input-block">
+                <span class="layui-form-label" style="color: red; width: auto">（提示：账号之间用“换行”、“中文逗号”、“英文逗号”分隔均可）</span>
+                <textarea id="account" name="account" th:text="${customerProduct.account}" placeholder="请输入账号" th:placeholder="#{placeholder.account}" class="layui-textarea" maxlength="2000"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'billType')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span th:text="#{product.billType}">账单类型</span>：</label>
+            <div class="layui-input-block">
+                <select id="billType" name="" lay-verify="required" th:disabled="${isSale == 'T'}">
+                    <option value="">-----请选择-----</option>
+                    <option value="0" th:selected="${customerProduct.billType == 0}">自动</option>
+                    <option value="1" th:selected="${customerProduct.billType == 1}">手动</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'billTaskDay')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span th:text="#{product.billTaskDay}">账单日</span>：</label>
+            <div class="layui-input-block">
+                <select id="billTaskDay" lay-filter="billTaskDay" name="" lay-verify="required">
+                    <option value="">-----请选择-----</option>
+
+                </select>
+                <input type="hidden" id="billTaskDayH" th:value="${customerProduct.billTaskDay}">
+            </div>
+        </div>
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'billCycle')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span th:text="#{product.billCycle}">计费周期</span>：</label>
+            <div class="layui-input-block">
+                <select id="billCycle" name="" lay-verify="required">
+                    <option value="">-----请选择-----</option>
+                    <option value="0" th:selected="${customerProduct.billCycle == 0}">月</option>
+                    <option value="1" th:selected="${customerProduct.billCycle == 1}">季</option>
+                    <option value="2" th:selected="${customerProduct.billCycle == 2}">半年</option>
+                    <option value="3" th:selected="${customerProduct.billCycle == 3}">年</option>
+                </select>
+            </div>
+        </div>
+
+
+        <!-- 账期 -->
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'billPeriod')}">
+            <label class="layui-form-label">
+                <span style="color: red;">*</span>
+                <span>账期</span>：
+            </label>
+            <div class="layui-input-block">
+                <select id="billPeriod" lay-filter="billPeriod" name="billPeriod" disabled="disabled" lay-verify="required">
+                    <option value="1"  th:selected="${customerProduct.billPeriod == 1}">1个月</option>
+                    <option value="2"  th:selected="${customerProduct.billPeriod == 2}">2个月</option>
+                    <option value="3"  th:selected="${customerProduct.billPeriod == 3}">3个月</option>
+                    <option value="4"  th:selected="${customerProduct.billPeriod == 4}">4个月</option>
+                    <option value="5"  th:selected="${customerProduct.billPeriod == 5}">5个月</option>
+                    <option value="6"  th:selected="${customerProduct.billPeriod == 6}">6个月</option>
+                    <option value="7"  th:selected="${customerProduct.billPeriod == 7}">7个月</option>
+                    <option value="8"  th:selected="${customerProduct.billPeriod == 8}">8个月</option>
+                    <option value="9"  th:selected="${customerProduct.billPeriod == 9}">9个月</option>
+                    <option value="10"  th:selected="${customerProduct.billPeriod == 10}">10个月</option>
+                    <option value="11"  th:selected="${customerProduct.billPeriod == 11}">11个月</option>
+                    <option value="12"  th:selected="${customerProduct.billPeriod == 12}">12个月</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'settleType')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span th:text="#{product.settleType}">结算方式</span>：</label>
+            <div class="layui-input-block">
+                <select id="settleType" name="" lay-verify="required">
+                    <option value="">-----请选择-----</option>
+                    <option value="0" th:selected="${customerProduct.settleType == 0}">预购</option>
+                    <option value="1" th:selected="${customerProduct.settleType == 1}">预付</option>
+                    <option value="2" th:selected="${customerProduct.settleType == 2}">后付</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="layui-form-item" th:if="${canEdit1stBillTime}">
+            <label class="layui-form-label"><span>第一次账单时间</span>：</label>
+            <div class="layui-input-block">
+                <input type="text" id="firstGenerateBillTime" readonly th:value="${firstGenerateBillTime}" autocomplete="off" name="firstGenerateBillTime" class="layui-input"  />
+            </div>
+        </div>
+        
+        <div class="layui-form-item" th:if="${#lists.contains(product_items, 'sendDemo')}">
+            <label class="layui-form-label"><span style="color: red;">*</span><span th:text="#{product.sendDemo}">项目描述</span>：</label>
+            <div class="layui-input-block">
+                <textarea id="sendDemo" name="sendDemo" th:text="${customerProduct.sendDemo}" lay-verify="" placeholder="请输入发送示例" th:placeholder="#{placeholder.sendDemo}" class="layui-textarea" maxlength="1000">
+                </textarea>
+            </div>
+        </div>
+    </form>
+    <div class="layui-form-item" style="text-align: center;padding: 0 0 20px 0;">
+        <button type="button" layui-filter="submit" id="submit" class="layui-btn layui-btn layui-btn-sm" lay-submit>
+            提交
+        </button>
+        <button type="button" id="cancel" class="layui-btn layui-btn-danger layui-btn-sm">
+            取消
+        </button>
+    </div>
+</div>
+</body>
+<script src="/common/js/jquery-1.8.0.min.js"></script>
+    <script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+    <script src="/layuiadmin/layui/layui.js"></script>
+    <script th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+    <script th:src="@{/views/customerProduct/js/editProduct.js (v=${t})}"></script>
+</html>

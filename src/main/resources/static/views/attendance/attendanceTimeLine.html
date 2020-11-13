@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间线</title>
+    <style type="text/css">
+        .time-area  {display: flex;height: 40px;}
+        .title-area {height: 20px;}
+        .title-area span {position: absolute; font-size: 12px; width: 32px; text-align: center;}
+        .scale-area {height: 20px;}
+        .scale-area span {position: absolute; width: 1px; height: 12px; border-left: 1px solid black;}
+        .base-time-line {position: absolute; background-color: whitesmoke; left: 100px; height: 20px; width: calc((60px * 24) / 3);}
+        .work-area .time-line {position: absolute; background-color: #5FB878; height: 20px;}
+        .leave-area .time-line {position: absolute; background-color: #1E9FFF; height: 20px;}
+        .overtime-area .time-line {position: absolute; background-color: #1E9FFF; height: 20px;}
+        .outside-area .time-line {position: absolute; background-color: #FFB800; height: 20px;}
+        .business-travel-area .time-line {position: absolute; background-color: #FFB800; height: 20px;}
+        .late-area .time-line {position: absolute; background-color: #FF5722; height: 20px;}
+        .absenteeism-area .time-line {position: absolute; background-color: #FF5722; height: 20px;}
+    </style>
+</head>
+<body>
+    <div class="layui-card-body">
+        <div class="time-area title-area">
+            <span style="left: 85px;">0</span>
+            <span th:style="'left: calc((60px * ' + ${workTimeInfo.amStartHour} + ' + ' + ${workTimeInfo.amStartMin} + 'px) / 3 + 85px);'" th:text="${workTimeInfo.amStartHour} + ':' + ${workTimeInfo.amStartMin}"></span>
+            <span th:style="'left: calc((60px * ' + ${workTimeInfo.amEndHour} + ' + ' + ${workTimeInfo.amEndMin} + 'px) / 3 + 85px);'" th:text="${workTimeInfo.amEndHour} + ':' + ${workTimeInfo.amEndMin}"></span>
+            <span th:style="'left: calc((60px * ' + ${workTimeInfo.pmStartHour} + ' + ' + ${workTimeInfo.pmStartMin} + 'px) / 3 + 85px);'" th:text="${workTimeInfo.pmStartHour} + ':' + ${workTimeInfo.pmStartMin}"></span>
+            <span th:style="'left: calc((60px * ' + ${workTimeInfo.pmEndHour} + ' + ' + ${workTimeInfo.pmEndMin} + 'px) / 3 + 85px);'" th:text="${workTimeInfo.pmEndHour} + ':' + ${workTimeInfo.pmEndMin}"></span>
+            <span style="left: calc((60px * 19) / 3 + 85px);">19</span>
+            <span style="left: calc((60px * 20) / 3 + 85px);">20</span>
+            <span style="left: calc((60px * 24) / 3 + 85px);">24</span>
+
+        </div>
+        <div class="time-area scale-area">
+            <span style="left: 100px;"></span>
+            <span th:style="'left: calc((60px * ' + ${workTimeInfo.amStartHour} + ' + ' + ${workTimeInfo.amStartMin} + 'px) / 3 + 100px);'"></span>
+            <span th:style="'left: calc((60px * ' + ${workTimeInfo.amEndHour} + ' + ' + ${workTimeInfo.amEndMin} + 'px) / 3 + 100px);'"></span>
+            <span th:style="'left: calc((60px * ' + ${workTimeInfo.pmStartHour} + ' + ' + ${workTimeInfo.pmStartMin} + 'px) / 3 + 100px);'"></span>
+            <span th:style="'left: calc((60px * ' + ${workTimeInfo.pmEndHour} + ' + ' + ${workTimeInfo.pmEndMin} + 'px) / 3 + 100px);'"></span>
+            <span style="left: calc((60px * 19) / 3 + 100px);"></span>
+            <span style="left: calc((60px * 20) / 3 + 100px);"></span>
+            <span style="left: calc((60px * 24) / 3 + 100px);"></span>
+        </div>
+        <div class="time-area work-area">
+            <span style="padding-left: 50px">工作</span>
+            <span class="base-time-line"></span>
+            <div th:if="${!#lists.isEmpty(workInfos)}" th:each="item,stat : ${workInfos}">
+                <span class="time-line" th:title="${item.info}" th:style="'left: calc((60px * ' + ${item.hour} + ' + ' + ${item.minute} + 'px) / 3 + 100px); width: calc(' + ${item.duration} + 'px / 3);'"></span>
+            </div>
+        </div>
+        <div class="time-area leave-area">
+            <span style="padding-left: 50px">请假</span>
+            <span class="base-time-line"></span>
+            <div th:if="${!#lists.isEmpty(leaveInfos)}" th:each="item,stat : ${leaveInfos}">
+                <span class="time-line" th:title="${item.info}" th:style="'left: calc((60px * ' + ${item.hour} + ' + ' + ${item.minute} + 'px) / 3 + 100px); width: calc(' + ${item.duration} + 'px / 3);'"></span>
+            </div>
+        </div>
+        <div class="time-area overtime-area">
+            <span style="padding-left: 50px">加班</span>
+            <span class="base-time-line"></span>
+            <div th:if="${!#lists.isEmpty(overtimeInfos)}" th:each="item,stat : ${overtimeInfos}">
+                <span class="time-line" th:title="${item.info}" th:style="'left: calc((60px * ' + ${item.hour} + ' + ' + ${item.minute} + 'px) / 3 + 100px); width: calc(' + ${item.duration} + 'px / 3);'"></span>
+            </div>
+        </div>
+        <div class="time-area outside-area">
+            <span style="padding-left: 50px">外勤</span>
+            <span class="base-time-line"></span>
+            <div th:if="${!#lists.isEmpty(outsideInfos)}" th:each="item,stat : ${outsideInfos}">
+                <span class="time-line" th:title="${item.info}" th:style="'left: calc((60px * ' + ${item.hour} + ' + ' + ${item.minute} + 'px) / 3 + 100px); width: calc(' + ${item.duration} + 'px / 3);'"></span>
+            </div>
+        </div>
+        <div class="time-area business-travel-area">
+            <span style="padding-left: 50px">出差</span>
+            <span class="base-time-line"></span>
+            <div th:if="${!#lists.isEmpty(businessTravelInfos)}" th:each="item,stat : ${businessTravelInfos}">
+                <span class="time-line" th:title="${item.info}" th:style="'left: calc((60px * ' + ${item.hour} + ' + ' + ${item.minute} + 'px) / 3 + 100px); width: calc(' + ${item.duration} + 'px / 3);'"></span>
+            </div>
+        </div>
+        <div class="time-area late-area">
+            <span style="padding-left: 50px">迟到</span>
+            <span class="base-time-line"></span>
+            <div th:if="${!#lists.isEmpty(lateInfos)}" th:each="item,stat : ${lateInfos}">
+                <span class="time-line" th:title="${item.info}" th:style="'left: calc((60px * ' + ${item.hour} + ' + ' + ${item.minute} + 'px) / 3 + 100px); width: calc(' + ${item.duration} + 'px / 3);'"></span>
+            </div>
+        </div>
+        <div class="time-area absenteeism-area">
+            <span style="padding-left: 50px">旷工</span>
+            <span class="base-time-line"></span>
+            <div th:if="${!#lists.isEmpty(absenteeismInfos)}" th:each="item,stat : ${absenteeismInfos}">
+                <span class="time-line" th:title="${item.info}" th:style="'left: calc((60px * ' + ${item.hour} + ' + ' + ${item.minute} + 'px) / 3 + 100px); width: calc(' + ${item.duration} + 'px / 3);'"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,496 @@
+/* 流程 固定头 */
+.report-list-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0.1em 0.1em 0.1em #e6e6e6;
+    z-index: 99999;
+    display: flex;
+    -webkit-box-direction: normal;
+    height: 3em;
+    line-height: 3em;
+}
+
+.header-content {
+	padding: 0 0 0 0.1em;
+	width: 100%;
+	height: 3em;
+    line-height: 3em;
+}
+
+.header-content > div {
+	display: inline-block;
+}
+
+.show-report-filter {
+	margin: 0 auto;
+}
+
+/* 流程内容 距离上面边距 */
+.report-list-content {
+    margin-top: 4em;
+}
+
+/* 重写 加载更多的样式 */
+.layui-report-more {
+    font-size: 0.9em !important;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 1em;
+}
+
+.layui-report-more cite {
+    background-color: #FFFFFF !important;
+}
+
+.report-list {
+    /*background-color: #dedede;*/
+}
+
+.auto-row {
+	height: 2.57em;
+}
+
+/* 流程列表 */
+.report-list > li {
+    background-color: #FFFFFF;
+    /* margin-bottom: 0.3em; */
+    min-height: 3em;
+    padding-top: 0.9em;
+    padding-bottom: 0.5em;
+    box-shadow: 0 0.1em 0.1em 0.1em #e6e6e6;
+    border-bottom: solid 0.1em #e6e6e6;
+}
+
+/* 选中的时候 颜色 */
+.report-list > li[data-open="open"] {
+    background-color: #e6e6e6;
+}
+
+.report-touch {
+    background-color: #F0F0F0 !important;
+}
+
+/* 轻触到流程的时候展示内容 */
+.report-touch > .report-title {
+    color: #808080 !important;
+}
+
+.header-in-row {
+    display: inline-block;
+    float: left;
+}
+
+.header-search {
+    width: calc(100% - 4.6em);
+}
+
+.search-box {
+    width: 100%;
+    float: right;
+    border-radius: 0.5em;
+}
+
+.search-tool {
+    position: absolute;
+    display: inline-block;
+    left: calc(100% - 7em);
+    width: 2em;
+}
+
+.search-tool i {
+font-size: 2em;
+}
+
+.header-tool {
+	margin-left: 0.5em;
+}
+
+.tool-month {
+font-size: 2.3em;
+display: block;
+}
+
+/* 日期的点击的时候，展示出看不见的背景 方便取消 */
+.data-pick-bg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #FFFFFF;
+    opacity: 0;
+    z-index: 999;
+}
+
+/* 页面按钮点击的时候颜色变化 */
+.report-active {
+    opacity: 0.7;
+}
+
+/********************************* 流程状态框****************************************/
+/*取消 */
+.report-state-cancel {
+    color: #7F7F7F;
+    font-size: 13px;
+    margin: 0 5px;
+    padding: 1px 3px;
+}
+
+/* 未审核 仅针对自己的*/
+.report-state-unaudit {
+    color: #FF0000;
+    font-size: 13px;
+}
+
+/*归档 */
+.report-state-document {
+    color: #70B603;
+    font-size: 13px;
+    margin: 0 5px;
+    padding: 1px 3px;
+}
+
+/*进行中 */
+.report-state-process {
+    font-size: 13px;
+    margin: 0 5px;
+    padding: 1px 3px;
+}
+
+.report-state-process > span {
+    color: #FFA500;
+}
+
+/*************************流程状态完结*********************************************/
+
+
+/* 流程列表 标题 */
+.report-list-title {
+    padding: 0 0.5em 0 0.8em;
+}
+
+.report-list-active {
+    background-color: #f0f0f0;
+}
+
+/* 流程标题名称 */
+.report-title-name {
+    color: #000000;
+    min-height: 1.8em;
+    line-height: 1.8em;
+    font-size: 1.1em;
+}
+
+/* 流程标题 公司名称 */
+.report-title-entity-name {
+    margin-left: 5px;
+}
+
+/* 流程标题 产品名称 */
+.report-title-product-name {
+    margin-left: 5px;
+}
+
+/* 流程标签 */
+.report-title-label {
+    /*font-size: 13px;*/
+}
+
+/* 流程为空 */
+.report-empty {
+    text-align: center;
+    font-size: 20px;
+    color: #d0d0d0;
+    padding-top: 50%;
+    background-color: #f2f2f2 !important;
+}
+
+/*流程标题名称*/
+.report-title-entity-name {
+    margin-left: 10px;
+}
+
+/*----------------------------------------流程详情 基本样式--------------------------------------------------------*/
+/* 流程详情列表 */
+.report-record-list {
+    padding-left: 0.5em;
+}
+
+/* 流程详情 */
+.report-comments {
+	padding: 0.5em 0.6em 0.2em 0.6em;
+    border-top: 0.02em solid white;
+    margin: 0 0.1em 0 0.1em;
+}
+
+/* 流程记录 */
+.report-record {
+    min-height: 2em;
+    padding-top: 0.5em;
+}
+
+/* 设置流程分割线 */
+/*.report-record:not(:last-child) > .report-record-title {
+    border-bottom: dashed #cccccc 1px !important;
+}*/
+
+/* 设置流程分割线 */
+.report-record:last-child {
+    padding-bottom: 1em;
+}
+
+/* 流程记录标题 */
+.report-record-title {
+    height: 2.2em;
+    line-height: 2.2em;
+    color: #000000 !important;
+    background-color: #f1f1f1;
+    padding-left: 0.5em;
+}
+
+/* 流程详情内容 */
+.report-record-content {
+    margin-left: 0.5em !important;
+    word-break: break-word;
+}
+
+/* 流程详情标题 时间 */
+.report-record-title-time {
+
+}
+
+/* 流程详情标题 处理人 */
+.report-record-title-user-name {
+    margin-left: 0.5em;
+}
+
+/* 流程详情标题 角色 */
+.report-record-title-role {
+
+}
+
+/** 流程详情标题 结果 */
+.report-record-title-result {
+    float: right;
+    margin-right: 1.5em;
+}
+
+/* 浮动 添加按钮 */
+.float-add-report-btn {
+    width: 3.5em;
+    height: 3.5em;
+    background-color: #009688;
+    text-align: center;
+    line-height: 3.5em;
+    border-radius: 100%;
+    position: fixed;
+    right: 2em;
+    bottom: 6em;
+    box-shadow: 0 0 0.1em 0 #009688;
+}
+
+.float-add-report-btn > i {
+    font-size: 3em;
+    color: #FFFFFF;
+}
+
+
+/* 预留的 右侧停靠 */
+.right-add-report-btn {
+    right: 0;
+    bottom: 6em;
+    border-radius: 0;
+    width: 1em;
+    display: block;
+    position: fixed;
+    background-color: #009688;
+    height: 4em;
+    line-height: 4em;
+    text-align: left;
+    box-shadow: 0 0 0.2em 0 #009688;
+}
+
+.right-add-report-btn > i {
+    font-size: 3em;
+    color: #FFFFFF;
+}
+
+/* 点击弹出的菜单列表存放位置 */
+.add-menu-list {
+    position: fixed;
+    bottom: 10em;
+    width: 10em;
+    right: 1em;
+    z-index: 999999;
+    /*box-shadow: 0 0 0.1em 0 #808080;*/
+}
+
+.add-menu-list li {
+    height: 2em;
+    line-height: 2em;
+    background-color: #ffffff;
+    padding: 0.5em 0.1em;
+    margin-bottom: 0.2em;
+    color: #000000;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.1em 0 #808080;
+}
+
+/* 名称 5个字内 */
+.add-menu-list .menu-name {
+    text-align: right;
+    margin-right: 0.5em;
+    line-height: 1.2em;
+    height: 1.2em;
+    width: 7em;
+    letter-spacing: 0.5em;
+    display: inline-block;
+}
+
+/* 图标 */
+.add-menu-list .menu-item-icon {
+    background-color: #009688;
+    color: #FFFFFF;
+    border-radius: 100%;
+    font-size: 1.2em;
+    padding: 0.25em;
+    text-align: center;
+    width: 1.2em;
+}
+
+div[item-show='true'] > i:before {
+    content: "\e619" !important;
+    font-weight: bold;
+}
+
+/* 菜单背景 */
+.menu-list-bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    opacity: 0.2;
+    z-index: 100;
+}
+
+.header-tool i {
+	font-size: 2.3em;
+	font-weight: 100;
+}
+
+.report-list-header .header-tool {
+	float: right;
+}
+
+.select-report-type-item {
+	background-color: white;
+	border: 0.1em solid #e6e6e6;
+	width: 3.5em;
+	position: relative;
+	left: -2em;
+}
+
+.select-report-type-item-unselect {
+	display: none;
+	border: 0.1em solid rgba(0, 0, 0, 0);
+}
+
+.select-report-type-item-unselect dd {
+	display: none;
+}
+
+.select-report-type-item dd {
+	padding-left: 0.3em;
+}
+
+.select-report-type-item dd:hover {
+	background-color: rgb(1, 150, 136) !important;
+}
+
+#deptFilter {
+	width: 10.6em;
+}
+
+.header-tool {
+	width: 2em;
+	height: 3em;
+	line-height: 3em;
+}
+
+#reportType {
+	font-size: 1.8em;
+}
+
+.xm-body {
+	height: 40em;
+	overflow: scroll;
+}
+
+#reportListUl li {
+	width: calc(100% - 0.8em);
+	margin: 0 auto;
+	border-radius: 0.4em;
+	background-color: rgb(230, 230, 230);
+	padding: 0 !important;
+	margin-bottom: 1em;
+}
+
+#reportListUl li .report-title {
+	padding: 0 0.6em;
+	line-height: 2.2em;
+	height: 2.2em;
+}
+
+#reportListUl li .report-title span {
+	display: inline-block;
+}
+
+#reportListUl li .report-title .report-title-dept {
+	width: 25%;
+}
+
+#reportListUl li .report-title .report-title-user {
+	width: 25%;
+}
+
+.report-content {
+	border-top: 0.02em solid white;
+	padding: 0.6em 0.6em;
+}
+
+.report-comment-input {
+	margin: 0.5em 0;
+}
+
+.report-comment-input input {
+	border: 0;
+	border-bottom: 0.04em solid black;
+	width: 75%;
+	background-color: rgb(230, 230, 230);
+}
+
+.report-comment-input button {
+	color: rgb(230, 230, 230);
+	padding: 0 0.2em;
+	border: 0;
+	border-radius: 0.15em;
+	margin-left: 2em;
+	background-color: rgb(1, 150, 136);
+	box-shadow: 0 0.1em 0.1em 0.1em #e6e6e6;
+}
+
+body {
+	-webkit-overflow-scrolling: touch;
+	overflow-scrolling: touch;
+}
+
+.report-content-main img {
+	max-width: 24em;
+	max-height: 13.5em;
+	overflow: hidden;
+}

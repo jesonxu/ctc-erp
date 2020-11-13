@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="utf-8">
+    <title>""</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+    <link rel="stylesheet" th:href="@{/views/flow/css/updateFlow.css (v=${t})}" media="all">
+</head>
+<body style="overflow-y: auto;">
+
+<input type="hidden" th:value="${methodtype}" id="methodtype">
+<input type="hidden" id="flowId" th:value="${flow!=null?flow.flowId:''}">
+<input type="hidden" id="flowTypeH" th:value="${flow!=null?flow.flowType:''}">
+<input type="hidden" id="flowClassH" th:value="${flow!=null?flow.flowClass:''}">
+
+<div class="layui-fluid" style="min-height: 500px;">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <form class="layui-form" id="flow-add">
+                <div id="formDiv">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">流程名称：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="flowName" lay-verify="required" name="name"
+                                   th:placeholder="请输入流程名称" autocomplete="off" class="layui-input" maxlength="255"
+                                   th:value="${flow!=null?flow.flowName:''}">
+                        </div>
+                        <label class="layui-form-label">流程类型：</label>
+                        <div class="layui-input-inline">
+                            <select id="flowType" name="flowType" lay-verify="required" lay-filter="flowType">
+                                <option value="">---请选择类型---</option>
+                            </select>
+                        </div>
+                        <label class="layui-form-label">流程类别：</label>
+                        <div class="layui-input-inline">
+                            <select id="flowClass" name="flowClass" lay-verify="required" lay-filter="flowClass">
+                                <option value="">---请选择类别---</option>
+                            </select>
+                        </div>
+                        <label class="layui-form-label">绑定级别：</label>
+                        <div class="layui-input-inline">
+                            <select id="bindType" name="bindType" lay-verify="required" lay-filter="bindType">
+                                <option th:each="bindType, indexInfo : ${bindTypeList}" th:value="${indexInfo.index}" th:text="${bindType}" th:selected="${flow != null and indexInfo.index == flow.bindType}"></option>
+                            </select>
+                        </div>
+                        <label class="layui-form-label">关联到：</label>
+                        <div class="layui-input-inline">
+                            <select id="associateType" name="associateType" lay-verify="required" lay-filter="bindType">
+                                <option th:each="associateType, associateTypeStat : ${associateTypes}" th:value="${associateTypeStat.current.key}" th:text="${associateTypeStat.current.value}" th:selected="${flow != null and associateTypeStat.current.key == flow.associateType}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" style="width: auto">全程可查看此流程的角色：</label>
+                        <div class="layui-input-inline" style="width: 500px">
+                            <select id="viewerRoles" lay-search="" xm-select-direction="down"
+                                    xm-select="viewerRoles" xm-select-type="1"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标签设计：</label>
+                        <span class="layui-form-label" style="color: red;width: auto">（提示：点击每一行的“添加”按钮，将在当前行之下新增一行，下同）</span>
+                        <table id="labelTable" lay-filter="labelTable" class="layui-table"></table>
+                        <script type="text/html" id="tools">
+                            <a class="layui-btn  layui-btn-xs" lay-event="new">添加</a>
+                            {{# if(d.id != null){ }}
+                            <a class="layui-btn  layui-btn-xs" lay-event="modify">修改</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+                            {{# } }}
+                        </script>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">节点设计：</label>
+                        <span class="layui-form-label" style="color: red;width: auto">（提示：第一个节点即为“开始节点”）</span>
+                        <table id="nodeTable" lay-filter="nodeTable" class="layui-table"></table>
+                        <script type="text/html" id="nodeTools">
+                            <a class="layui-btn  layui-btn-xs" lay-event="new">添加</a>
+                            {{# if(d.id != null){ }}
+                            <a class="layui-btn  layui-btn-xs" lay-event="modify">修改</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+                            {{# } }}
+                        </script>
+                    </div>
+                    <div class="layui-form-item" style="text-align: center;">
+                        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" id="submit">提交修改</button>
+                        <button type="button" class="layui-btn layui-btn-sm layui-btn-primary" id="cancel">取消</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- 流程标签弹框 -->
+<div class="layui-form" id="newLabel" style="display: none; padding-top: 20px;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">标签名：</label>
+        <div class="layui-input-inline">
+            <input type="text" id="nameH" class="layui-input"/>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">类型：</label>
+        <div class="layui-input-inline">
+            <select id="typeH" name="typeH" lay-verify="required" lay-filter="typeH">
+                <option value="">---请选择类型---</option>
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">默认值：</label>
+        <div class="layui-input-inline">
+            <input type="text" id="defaultValueH" class="layui-input"/>
+        </div>
+    </div>
+</div>
+
+<!-- 流程修改 弹框内容 -->
+<div class="layui-form" id="nodeAddContent" style="display: none; padding-top: 20px; padding-left: 20px">
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">节点名称：</label>
+            <div class="layui-input-inline">
+                <input type="text" lay-verify="required" name="name" id="flowNodeName" th:placeholder="请输入流程名称"
+                       autocomplete="off" class="layui-input" maxlength="255">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色：</label>
+            <div class="layui-input-inline" style="width: 500px">
+                <select id="selectRoles" lay-search="" xm-select-direction="down" xm-select="selectRoles">
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">处理期限：</label>
+            <div class="layui-input-inline" style="width: 290px">
+                <input type="text" lay-verify="required" name="dueTime" id="dueTime" th:placeholder="请输入数字，0或空表示不限"
+                       autocomplete="off" class="layui-input" maxlength="255">
+            </div>
+            <div class="layui-input-inline" style="width: 200px">
+                <select id="timeUnit" lay-verify="required" lay-filter="timeUnit">
+                    <option value="hour">小时</option>
+                    <option value="day">天</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">展示标签：</label>
+            <div class="layui-input-inline" style="width: 500px">
+                <select lay-search="" xm-select-direction="down" xm-select="viewLabel" class="labelSelect"
+                        id='viewLabel'>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">可编辑标签：</label>
+            <div class="layui-input-inline" style="width: 500px">
+                <select lay-search="" xm-select-direction="down" xm-select="editLabel" class="labelSelect"
+                        id='editLabel'>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">必要标签：</label>
+            <div class="layui-input-inline" style="width: 500px">
+                <select lay-search="" xm-select-direction="down" xm-select="mustLabel" class="labelSelect"
+                        id='mustLabel'>
+                </select>
+            </div>
+        </div>
+
+        <!-- 流程节点 -->
+        <div class="layui-form-item" data-my-flow-threshold="1">
+            <label class="layui-form-label">流程阈值：</label>
+            <div class="layui-input-inline" style="width: 200px">
+                <select name="threshold_select" xm-select-direction="down" xm-select="flow_threshold_id_1"
+                        class="labelSelect">
+                </select>
+            </div>
+
+            <div class="layui-input-inline" style="width: 100px">
+                <select name="opts" style="text-align: center">
+                    <option></option>
+                    <option value="eq">等于</option>
+                    <option value="ne">不等于</option>
+                    <option value="lt">小于</option>
+                    <option value="gt">大于</option>
+                    <option value="le">小于等于</option>
+                    <option value="ge">大于等于</option>
+                </select>
+            </div>
+
+            <div class="layui-input-inline" style="width: 180px">
+                <select type="text" lay-verify="required" name="flow_threshold_value" placeholder="请选择流程的阈值"
+                        autocomplete="off" class="layui-input">
+                    <option></option>
+                </select>
+            </div>
+
+            <div class="layui-input-inline opts_icon add_threshold">
+                <i class="layui-icon layui-icon-add-circle"></i>
+            </div>
+            <!-- 第一个是不显示的 -->
+            <div class="layui-input-inline opts_icon del_threshold">
+                <i class="layui-icon layui-icon-delete"></i>
+            </div>
+        </div>
+
+        <!-- 新的流程阈值标签 -->
+        <div class="layui-form-item">
+            <label class="layui-form-label">自定义阈值：</label>
+            <div class="layui-input-inline">
+                <button class="layui-btn layui-btn-primary" id="upload-defined-item">
+                    <i class="layui-icon layui-icon-upload"></i>
+                    上传阈值判定脚本
+                </button>
+            </div>
+            <!-- 文件展示区域 -->
+            <div class="layui-input-inline" id="upload_file_dom" style="margin-top: 8px;display: none">
+                <span id="show_file_name" class="file_title"></span>
+                <input type="hidden" id="threshold_file_name"/>
+                <input type="hidden" id="threshold_file_path"/>
+                <button onclick="reset_threshold_file()" class="layui-btn layui-btn-xs layui-btn-danger">
+                    <i class="layui-icon layui-icon-delete"></i>
+                </button>
+            </div>
+
+            <div class="down-load-script">
+                <a href="javascript:void(0)"  onclick="down_load_demo('/common/example/bill_money.js')" >点击下载示例</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="application/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="application/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="application/javascript" src="/common/js/formSelects-v4.js"></script>
+<script type="application/javascript" th:src="@{/views/flow/js/updateFlow.js (v=${t})}"></script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+html, body {
+    background-color: #FFFFFF;
+}
+
+.add-supplier-contact {
+    padding-top: 0.2em;
+    margin: 3em 1em 0 1em;
+}
+
+.scan-business-card {
+    font-size: 2em;
+    vertical-align: bottom;
+    display: inline-block;
+    width: 1.3em;
+}
+
+label[ required="true"]:before {
+    content: "*";
+    color: #ff0000;
+}
+
+.customer-btn {
+    text-align: left;
+}
+
+.customer-btn > i {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+}
+
+.customer-btn > span {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 2em);
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*--重新写移动端的表单样式--*/
+.mobile-form-row {
+    margin-bottom: 0.5em;
+}
+
+.mobile-form-row > .layui-form-label {
+    display: block;
+    width: auto;
+    text-align: left;
+}
+
+.mobile-form-row > .layui-input-block {
+    clear: both;
+    margin: 0;
+    width: 100%;
+}
+
+.mobile-full-btn {
+    width: 100%;
+    margin: 0.3em 0;
+}

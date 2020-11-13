@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>添加角色</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<style>
+	.layui-form-checkbox[lay-skin=primary] span {
+		padding-left: 20px !important;
+	}
+	.btn-float-r {
+    float: right;
+    margin-right: 30px;
+}
+</style>
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+</head>
+
+<body>
+	<div class="layui-fluid">
+		<div class="layui-card">
+            <div class="layui-card-body">
+                <div class="layui-form">
+					<div class="layui-form-item" style="margin-top: 10px;">
+						<label class="layui-form-label">角色名称:</label>
+						<div class="layui-input-inline">
+							<input type="text" name="roleName" id="roleName"
+								placeholder="请输入角色名称" autocomplete="off" class="layui-input" maxlength="255" />
+						</div>
+						<label class="layui-form-label">数据权限：</label>
+						<div class="layui-input-inline">
+							<select id="dataPermission" name="dataPermission" lay-verify="required" lay-filter="dataPermission" class="layui-input">
+								<option value="">---请选择数据权限---</option>
+							</select>
+						</div>
+						<label class="layui-form-label deptSelect" style="display: none">自定义部门：</label>
+						<div class="layui-input-inline deptSelect" style="display: none">
+							<input type="text" id="deptId" name="deptId" autocomplete="off" class="layui-input dept-filter" readonly="readonly" placeholder="请选择部门">
+						</div>
+                        <div class="layui-col-lg3 btn-float-r" style="margin-top: 20px;">
+                            <button type="button" class="layui-btn layui-btn-sm layui-btn-normal"
+                                    id="startInstall">确定</button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline" style="padding-top: 20px; vertical-align: top;">
+                            <table id="menuTable" lay-filter="menuTable"></table>
+                        </div>
+                        <div class="layui-inline" style="padding-top: 20px; padding-left: 20px">
+                            <table id="pagePermission" lay-filter="pagePermission"></table><!-- 页面权限 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/common/js/commonJs.js"></script>
+	<script type="text/javascript" src="/views/role/js/addRole.js"></script>
+</body>
+
+</html>

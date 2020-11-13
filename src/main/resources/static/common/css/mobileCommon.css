@@ -1,0 +1,14 @@
+/**
+ * 防止最下面被遮挡看不见
+ */
+body {
+    margin-bottom: 45px !important;
+    background-color: #FFFFFF;
+}
+html{
+    background-color: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+    display: none
+}

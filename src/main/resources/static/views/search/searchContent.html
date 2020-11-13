@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+<head>
+<meta charset="UTF-8">
+<title>搜索</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+<style type="text/css">
+.{
+	height:auto;
+	white-space:normal;
+	word-wrap:break-word;
+	word-beak:break-all;
+}
+.layui-table-tool {
+	position: relative;
+	min-height: 35px;
+	line-height: 25px;
+	padding: 0px 0px;
+	border-width: 0 0 1px;
+	background-color: #CCE4FC;
+}
+
+.title-show {
+	color: #0C0C0C;
+	display: inline-block;
+	font-size: 14px;
+}
+
+.time-change {
+	cursor: pointer;
+}
+
+.table-title {
+	text-align: center;
+	height: 35px;
+	line-height: 35px;
+}
+#dataExport{
+	cursor: pointer;
+}
+.layui-form-select dl {
+    /*max-height: 150px;*/
+}
+</style>
+</head>
+<body>
+	<div class="layui-fluid">
+		<input type="hidden" th:value="${searchType}" id="searchType" /> <input
+			type="hidden" th:value="${searchContent}" id="searchContent" />
+		<div class="layui-card">
+			<div class="layui-tab layui-tab-card" lay-allowclose="true">
+				<ul class="layui-tab-title">
+					<li class="layui-this">搜索中心</li>
+					<button id="return-workbench" type="button"
+						class="layui-btn layui-btn-primary"
+						style="float: right; height: 40px; line-height: 40px">
+						<i class="layui-icon layui-icon-close"></i>
+					</button>
+				</ul>
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show layui-form">
+						<script type="text/html" id="toolbarDemo">
+                        <div class="layui-btn-container table-title">
+                            <div id="year2" class="title-show time-change"title="开始时间">
+							</div>
+							<div th:unless="${searchType == 2 || searchType == 3}" class="title-show time-combine-symbol">&nbsp;~&nbsp;</div>
+ 							<div id="year" class="title-show time-change" title="结束时间">
+							</div>
+                            <div class="title-show" style="width: 10px"></div>
+                            <div class="title-show" id="dataExport">
+                                <i class="layui-icon layui-icon-export" style="font-size: 20px;" title="导出"></i>
+                            </div>
+                        </div>
+                    	</script>
+						<div class="layui-card-body layadmin-backlog">
+							<table id="searchData" lay-filter="searchData"></table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 流程导出弹框，一次只能导出一种流程 -->
+	<div id="selectFlow" style="margin-left: 70px; display: none;">
+		<div class="layui-form-item" style="margin-top: 50px;">
+			<label class="layui-form-label" style="width: 150px;">流程名称：</label>
+			<div class="layui-input-inline layui-form">
+				<select id="erpFlow" name="erpFlow" lay-search="">
+                   	<option th:each="flow : ${flowMap}" th:value="${flow.key}" th:text="${flow.value}"></option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="/common/js/commonJs.js"></script>
+	<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+	<script th:src="@{/views/search/js/searchContent.js (v=${t})}"></script>
+</body>
+</html>

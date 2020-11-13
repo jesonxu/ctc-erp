@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="/common/css/common.css" media="all">
+<link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+<link rel="stylesheet" href="/views/productDs/css/product.css">
+<style type="text/css">
+    input:read-only{
+        border-width: 0 0 1px 0 !important;
+    }
+</style>
+<div class="layui-fluid">
+    <div class="layui-card">
+
+        <div id="param-search" class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="productname">产品名：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="productname" id="productname" PLACEHOLDER="请入产品名" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="supplierid">供应商：</label>
+                    <div class="layui-input-inline">
+                        <select name="supplierid" id="supplierid" lay-filter="supplierid" lay-search=""></select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="rant">税率(%)：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="rant" id="rant" PLACEHOLDER="请输入税率" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="onsale">是否可售：</label>
+                    <div class="layui-input-inline">
+                        <select name="onsale" id="onsale" lay-filter="onsale">
+                            <option value="">请选择是否可售</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">市场价：</label>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="price_min" id="minprice" placeholder="￥最小" autocomplete="off" class="layui-input">
+                    </div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline" style="width: 100px;">
+                        <input type="text" name="price_max" id="maxprice" placeholder="￥最大" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-top:15px;margin-left:38px;">
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <button type="button" class="layui-btn" id="btn-search">查询</button>
+                        <button type="reset" class="layui-btn layui-btn-primary" id="btn-reset">重置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 表格 -->
+        <div class="layui-card-body" id="productBody">
+            <table id="productList" lay-data="{id: 'entityid'}" lay-filter="productList"></table>
+
+            <script type="text/html" id="table-opts">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-sm " lay-event="add">
+                        <i class="layui-icon layui-icon-add-circle-fine"></i>
+                        添加
+                    </button>
+                </div>
+            </script>
+
+            <script type="text/html" id="table-row-opts">
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-xs layui-btn-warm" lay-event="update">
+                        编辑
+                    </button>
+                </div>
+            </script>
+        </div>
+    </div>
+</div>
+
+<script src="/common/js/toolbar_lib.js"></script>
+<script src="/common/js/formSelects-v4.js"></script>
+<script th:src="@{/views/productDs/js/productInfo.js (v=${t})}"></script>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+    <link rel="stylesheet" href="/views/parameter/css/parameter.css">
+</head>
+
+<style type="text/css">
+    .layui-input-block {
+        margin-left: 95px;
+        min-height: 36px;
+    }
+
+
+</style>
+
+<body style="background-color: white;">
+<div class="layui-card">
+    <div class="layui-card-body">
+        <form class="layui-form" action="" id="content-form">
+            <input type="hidden" id="entityid" name="entityid" th:value="${parameter == null?'':parameter.entityid}" />
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="paramType">
+                        <span style="color: #FF0000">*</span>参数类型：
+                    </label>
+                    <div class="layui-input-inline">
+                        <select name="paramType" id="paramType" lay-filter="paramType"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="paramkey">
+                        <span style="color: #FF0000">*</span>参数名：
+                    </label>
+                    <div class="layui-input-inline" id="parameter-type-name">
+                        <input type="text" id="paramkey" name="paramkey" required lay-verify="required"
+                               th:value="${parameter == null?'':parameter.paramkey}"
+                               placeholder="请输入系统参数名称"
+                               autocomplete="off" class="layui-input"/>
+                    </div>
+                </div>
+
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="paramvalue">
+                        <span style="color: #FF0000">*</span>参数值：
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="paramvalue" id="paramvalue" required lay-verify="required"
+                               th:value="${parameter == null?'':parameter.paramvalue}"
+                               placeholder="请输入系统参数值"
+                               autocomplete="off"
+                               class="layui-input"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label" for="depict">
+                    <span style="color: #FF0000">*</span>参数描述：
+                </label>
+                <div class="layui-input-block">
+                    <textarea name="depict" id="depict" style="width: 490px;"
+                              th:text="${parameter == null?'':parameter.depict}"
+                              placeholder="请输填写系统参数说明"
+                              class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label" for="extended">扩展参数：</label>
+                <div class="layui-input-block">
+                    <textarea name="extended" id="extended" style="width: 490px;"
+                              th:text="${parameter == null?'':parameter.extended}"
+                              placeholder="请填写系统扩展参数"
+                              class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="text-align: center">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/common/js/commonJs.js"></script>
+<script src="/common/js/toolbar_lib.js"></script>
+<script src="/common/js/formSelects-v4.js"></script>
+<script th:src="@{/views/parameter/js/parameterEdit.js (v=${t})} "></script>
+
+<script th:inline="javascript">
+    // 记录信息
+    window.parameter = [[${parameter}]]
+</script>
+</body>
+</html>

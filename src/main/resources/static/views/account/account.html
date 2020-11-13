@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+<head>
+<meta charset="UTF-8">
+<title>员工管理</title>
+<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css"
+	media="all">
+<link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+<link rel="stylesheet" href="/common/css/common.css" media="all">
+<link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+</head>
+<body>
+	<div class="layui-fluid">
+		<div class="layui-card">
+			<div id="param-search"
+				class="layui-form layui-card-header layuiadmin-card-header-auto">
+				<div class="layui-form-item">
+					<div class="layui-inline">
+						<label class="layui-form-label">账号</label>
+						<div class="layui-input-inline">
+							<input type="text" name="accountNumber" id="accountNumber"
+								autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">姓名</label>
+						<div class="layui-input-inline">
+							<input type="text" name="realName" id="realName"
+								autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">部门</label>
+						<div class="layui-input-inline">
+							<input type="text" id="deptName" name="deptName"
+								autocomplete="off" class="layui-input" readonly="readonly">
+							<i id='empty'
+								style="font-size: 18px; position: absolute; top: 17px; right: 6px; cursor: pointer;"
+								class="layui-icon layui-icon-close"></i> <input type="hidden"
+								id="deptId" name="deptId">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">角色</label>
+						<div class="layui-input-inline">
+							<select id="role" lay-filter="role"></select>
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label">状态</label>
+						<div class="layui-input-block">
+							<input type="checkbox" lay-skin="primary" id = "userStatus_active" name="userStatus_active" value="1" title="激活" checked> 
+							<input type="checkbox" lay-skin="primary" id = "userStatus_disabled" name="userStatus_disabled" value="0" title="已禁用">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label"></label>
+						<div class="layui-input-inline">
+							<button type="button" class="layui-btn" id="btn-search">查询</button>
+							<button type="reset" class="layui-btn layui-btn-primary"
+								id="btn-reset">重置</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-card-body">
+				<div id="test_toolbar"></div>
+				<div id="table-param">
+					<table id="userList" lay-data="{id: 'userList'}"
+						lay-filter="userList"></table>
+					<script type="text/html" id="table-customer-admin">
+	                    <a class="layui-btn layui-btn-xs" lay-event="update">修改</a>
+	                </script>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="layui-form" id="editAccount"
+		style="display: none; padding-top: 20px">
+		<div class="layui-form-item">
+			<label class="layui-form-label" th:text="登录名：" style="width: 80px;"></label>
+			<div class="layui-input-inline">
+				<p id="loginNameH" style="line-height: 40px;"></p>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label" th:text="姓名：" style="width: 80px;"></label>
+			<div class="layui-input-inline">
+				<p id="realNameH" style="line-height: 40px;"></p>
+			</div>
+		</div>
+
+		<div class="layui-form-item">
+			<label class="layui-form-label" th:text="部门：" style="width: 80px;"></label>
+			<div class="layui-input-inline">
+				<p id="deptNameH" style="line-height: 40px;"></p>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label" th:text="角色："></label>
+			<div class="layui-input-inline">
+				<select id="rolesH" lay-search="" xm-select-direction="down"
+					xm-select="selectRoles" xm-select-type="1"></select>
+			</div>
+		</div>
+		<div class="layui-form-item">
+			<label class="layui-form-label" th:text="岗位类型："></label>
+			<div class="layui-input-inline">
+				<select id="jobTypeH" lay-search="" xm-select-direction="down"
+						xm-select="selectJobType" xm-select-type="1"></select>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/common/js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+	<script type="text/javascript" src="/layuiadmin/layui/layui.js"></script>
+	<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+	<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+	<script type="text/javascript" src="/common/js/formSelects-v4.js"></script>
+	<script type="text/javascript" th:src="@{/views/account/js/account.js (v=${t})}"></script>
+
+</body>
+</html>

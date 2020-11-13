@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>生成账单</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all"/>
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <script type='text/javascript' src="/common/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" src="/mobile/common/constant.js "></script>
+    <script type="text/javascript" src="/mobile/common/banDefault.js "></script>
+    <script type="text/javascript" src="/mobile/common/util.js "></script>
+</head>
+<body>
+
+    <div class="layui-form form-content" id="buildBillPanel">
+
+        <div class="form-line">
+            <label class="form-line-label">客户名称：</label>
+            <div class="form-line-content">
+                <span id="companyName"></span>
+            </div>
+        </div>
+
+        <div class="form-line">
+            <label class="form-line-label" required="true">产品：</label>
+            <div class="form-line-content" id="productChoose">
+
+            </div>
+        </div>
+
+        <div class="form-line">
+            <label class="form-line-label" required="true">账单月份：</label>
+            <div class="form-line-content">
+                <input type="text" id="billMonth" class="layui-input"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面的最下面 -->
+    <div class="page-bottom">
+        <button type="button" class="layui-btn layui-btn-normal" id="submit">生成账单</button>
+        <button type="button" class="layui-btn layui-btn-primary" id="cancel">关闭</button>
+    </div>
+
+
+    <link rel="stylesheet" th:href="@{/mobile/common/details/css/buildBillPage.css (v=${t})}" media="all">
+    <script th:src="@{/mobile/common/details/js/buildBillPage.js (v=${t})}"></script>
+</body>
+</html>

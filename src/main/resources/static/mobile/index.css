@@ -1,0 +1,93 @@
+.mobile-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.layadmin-iframe {
+    height: calc(100% - 3em) !important;
+}
+
+.mobile-menu {
+    float: left;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    box-shadow: 0.1em -0.2em 0.2em #dedede;
+}
+
+.mobile-menu > li {
+    float: left;
+    text-align: center;
+    height: 3em;
+    background: white;
+    line-height: 3em;
+    cursor: pointer;
+}
+
+.mobile-menu > li[class*='active'] {
+    background-color: #009688;
+    color: #FFFFFF;
+}
+
+.mobile-menu > li:last-child {
+    border-width: 0 0 0 0; /* 上 右 下 左*/
+    border-style: solid;
+    border-color: #adadad;
+    width: 30%;
+}
+
+.mobile-menu > li:not(:last-child) {
+    border-width: 0 0.1em 0 0;
+    border-style: solid;
+    border-color: #f5f5f5;
+    width: calc(35% - 0.1em);
+}
+
+/*菜单的子选项*/
+.menu-item-list {
+    display: none;
+    position: fixed !important;
+    background-color: white !important;
+    width: 30% !important;
+    bottom: 3.2em !important;
+    color: #666666 !important;
+    box-shadow: -0.1em -0.1em 0.1em 0 #e6e6e6;
+    max-height: calc(100% - 3.2em);
+    overflow: auto;
+}
+
+/* 弹出菜单 选项 */
+.menu-item-list > dd {
+    border-bottom: solid #e6e6e6 1px;
+}
+
+.menu-item-list > dd[data-role-now] {
+    background-color: #e6e6e6;
+}
+
+/*
+.menu-item-list>dd[data-role-now]:before {
+    content: '';
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    background-color: #ff0000;
+    vertical-align: middle;
+    border-radius: 100%;
+    float: left;
+    margin-top: 18px;
+    margin-left: 2px;
+}
+*/
+/* 菜单弹出框背景 */
+.menu-item-list-bg {
+    height: 100%;
+    width: 100%;
+    background-color: #FFFFFF;
+    position: absolute;
+    opacity: 0.1;
+    z-index: 1;
+}

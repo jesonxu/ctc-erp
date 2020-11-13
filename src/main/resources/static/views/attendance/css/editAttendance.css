@@ -1,0 +1,151 @@
+.layui-fluid {
+    padding: 0 !important;
+}
+
+input:read-only {
+    border: none;
+}
+
+.basic-info {
+}
+
+.attendance-info {
+
+}
+
+.attendance-info-item {
+    display: block;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+}
+
+.attendance-info-item span {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 5px;
+    color: #333;
+    overflow:hidden;
+    /*text-overflow:ellipsis;
+    white-space:nowrap;*/
+    vertical-align: middle;
+}
+
+.bill-detail {
+    line-height: 30px;
+    font-size: 15px;
+    color: #666;
+}
+
+.bill-detail-title {
+    display: inline-block;
+    width: 28%;
+    text-align: right;
+}
+
+.bill-detail-content {
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+    padding-left: 10px;
+    color: #333;
+    overflow:hidden;
+    /*text-overflow:ellipsis;
+    white-space:nowrap;*/
+    vertical-align: middle;
+}
+
+.operations {
+    position: relative;
+    left: 200px;
+}
+
+.operation-item {
+
+}
+
+.operation-item > button{
+    width: 220px;
+    margin: 10px;
+}
+
+.operation-item > span{
+
+}
+
+.status-normal {
+    background-color: #5FB878;
+    margin: 1px;
+    padding: 0 3px;
+    border-radius: 6px;
+    width: fit-content;
+    color: white;
+}
+
+.status-special {
+    background-color: #FFB800;
+    margin: 1px;
+    padding: 0 3px;
+    border-radius: 6px;
+    width: fit-content;
+    color: white;
+}
+
+.status-absence {
+    background-color: #FF5722;
+    margin: 1px;
+    padding: 0 3px;
+    border-radius: 6px;
+    width: fit-content;
+    color: white;
+}
+
+.status-unknown {
+    background-color: #C6C6C6;
+    margin: 1px;
+    padding: 0 3px;
+    border-radius: 6px;
+    width: fit-content;
+    color: white;
+}
+
+.status-icon {
+    padding: 0 2px;
+    border: 1px solid silver;
+    border-radius: 3px;
+    width: fit-content;
+    color: silver;
+    cursor: pointer;
+}
+
+.icon-work {background-color: #5FB878; color: white;}
+.icon-leave {background-color: #1E9FFF; color: white;}
+.icon-overtime {background-color: #1E9FFF; color: white;}
+.icon-outside {background-color: #FFB800; color: white;}
+.icon-business-travel {background-color: #FFB800; color: white;}
+.icon-late {background-color: #FF5722; color: white;}
+.icon-absenteeism {background-color: #FF5722; color: white;}
+
+.operate-area {
+    float: left;
+    display: inline-block;
+    position: relative;
+    top: -60px;
+    width: fit-content;
+}
+
+.operate-area .layui-btn {
+    display: block;
+    margin: 10px !important;
+    float: left;
+    position: relative;
+}
+
+.layui-laydate-footer .laydate-btns-time {
+    padding: 2px 10px;
+    background-color: #1E9FFF;
+    color: white !important;
+    border-radius: 2px;
+}

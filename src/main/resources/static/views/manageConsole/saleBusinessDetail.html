@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>云通讯销售业绩明细表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <style>
+        .year {
+            text-align: right;
+            border: none;
+            background-color: transparent;
+        }
+        .layui-table-tool {
+            position: relative;
+            min-height: 35px;
+            line-height: 25px;
+            padding: 0;
+            border-width: 0 0 1px;
+            background-color: #CCE4FC;
+        }
+        .title-show {
+            color: #0C0C0C;
+            display: inline-block;
+            font-size: 14px;
+        }
+        .time-change{
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .table-title{
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+        }
+        .my-table-tool {
+            float: right;
+        }
+        .layui-table-tool-temp {
+            padding-right: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container table-title">
+                <div id="changeYear" class="title-show time-change"></div>
+                <div class="title-show">年 云通讯销售业绩明细经营状况</div>
+                <div class="layui-inline my-table-tool" title="打印" lay-event="LAYTABLE_PRINT"><i class="layui-icon layui-icon-print"></i></div>
+                <div class="layui-inline my-table-tool" title="导出Excel" lay-event="EXPORT_EXCEL"><i class="layui-icon layui-icon-export"></i></div>
+            </div>
+        </script>
+        <div>
+            <table th:id="saleBusinessDetail" th:attr="lay-filter=saleBusinessDetail" lay-size="sm"></table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/manageConsole/js/saleBusinessDetail.js (v=${t})}"></script>
+</body>
+</html>

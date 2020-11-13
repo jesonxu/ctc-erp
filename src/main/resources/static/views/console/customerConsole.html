@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+    <head>
+        <meta charset="utf-8">
+        <title th:text="${systemName}">ERP</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/login.css" media="all">
+        <link rel="stylesheet" th:href="@{/common/css/index.css (v=${t})}" media="all"/>
+        <link rel="stylesheet" th:href="@{/common/css/console_move.css (v=${t})}" media="all"/>
+        <link rel="stylesheet" th:href="@{/common/css/my_pannel.css (v=${t})}" media="all">
+        <link rel="stylesheet" th:href="@{/views/console/css/customerConsole.css (v=${t})}" media="all">
+
+        <script type='text/javascript' src='/common/js/font_edit.js'></script>
+        <script type='text/javascript' src="/common/js/jquery-1.8.0.min.js"></script>
+        <script type='text/javascript' src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+        <script type='text/javascript' src="/common/js/jquery.nicescroll.min.js"></script>
+        <script type='text/javascript' src="/layuiadmin/layui/layui.js"></script>
+        <script type='text/javascript' th:src="@{/common/js/commonJs.js(v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/common/js/console_move.js(v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/common/js/module_open.js(v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/common/js/table_item.js(v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/common/js/layui-table-span.js(v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/common/js/my_pannel.js(v=${t})}"></script>
+        <script type='text/javascript' th:src="@{/views/console/js/customerConsole.js(v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/views/console/js/customerConsoleCommon.js(v=${t})}"></script>
+    </head>
+
+    <style type="text/css">
+        b {
+            font-weight: normal;
+        }
+
+        .layui-row {
+            background-color: #ffffff;
+        }
+    </style>
+
+    <body class="layui-layout-body">
+        <div id="LAY_app">
+            <div>
+                <div class="layui-row" id="customer-console-module">
+                    <!-- 客户 -->
+                    <div class="layui-col-100-md18 move_outer">
+                        <div class="move_inner cusomer_depart" th:include="/views/customer/customerInfo.html"></div>
+                    </div>
+                    <!-- 产品 -->
+                    <div class="layui-col-100-md16 move_outer">
+                        <div class="move_inner" th:include="/views/customerProduct/productInfo.html"></div>
+                    </div>
+
+                    <!-- 运营 -->
+                    <div id="operate" class="layui-col-100-md26 move_outer">
+                        <div class="move_inner" th:include="/views/customerOperate/operateInfo.html"></div>
+                    </div>
+
+                    <!-- 结算 -->
+                    <div id="settlement" class="layui-col-100-md40 move_outer move_last">
+                        <div class="move_inner" th:include="/views/customerSettlement/customerSettlement.html"></div>
+                    </div>
+
+                    <!-- 统计 -->
+<!--                    <div class="layui-col-100-md16 move_outer move_last">
+                        <div class="move_inner" th:include="/views/saleStatistics/saleStatistics.html"></div>
+                    </div>-->
+                </div>
+            </div>
+            <!-- 辅助元素，一般用于移动设备下遮罩 -->
+            <div class="layadmin-body-shade" layadmin-event="shade"></div>
+        </div>
+    </body>
+</html>

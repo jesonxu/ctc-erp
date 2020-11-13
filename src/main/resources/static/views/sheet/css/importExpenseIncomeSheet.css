@@ -1,0 +1,100 @@
+body input {
+    height: 30px !important;
+}
+
+body span {
+    /*line-height: 30px;*/
+}
+
+body .layui-form-item {
+    line-height: 40px;
+}
+
+.span-title {
+    width: 120px !important;
+    /*padding-left: 20px;*/
+}
+
+.span-value {
+    display: inline-block;
+}
+
+.income-info {
+    float: left;
+    padding-left: 300px
+}
+
+.income-info .layui-form-item {
+    line-height: 20px;
+    margin-bottom: 3px;
+}
+
+.goal-info {
+    float: left;
+    padding-left: 300px;
+}
+
+.goal-info .layui-form-item {
+    line-height: 20px;
+    margin-bottom: 3px;
+}
+
+.income-table {
+
+}
+
+.income-table-sale {
+    padding-top: 80px;
+}
+
+.time-quantum {
+    font-weight: bold;
+    text-decoration: underline red;
+    cursor: pointer;
+}
+
+.actual {
+    /*border: 1px solid red;
+    border-radius: 5px;
+    padding: 3px;*/
+}
+
+.goal {
+    /*border: 1px solid green;
+    border-radius: 5px;
+    padding: 3px;*/
+}
+
+.ratio {
+
+}
+
+.layui-input-time {
+	width: 95px !important;
+}
+
+
+
+.layui-form-item label {
+	width: 60px;
+	padding-top: 9px;
+}
+
+.layui-inline {
+	margin-bottom: 0 !important;
+	height: 100%;
+}
+
+.layui-form-item > .layui-input-inline {
+	padding-top: 4px;
+}
+
+.layui-form-checkbox {
+	padding-right: 10px;
+	margin-top: 0 !important;
+}
+
+.layui-form-item button, .layui-form-item > .layui-input-inline{
+	margin-bottom: 0 !important;
+	vertical-align: middle !important;
+}

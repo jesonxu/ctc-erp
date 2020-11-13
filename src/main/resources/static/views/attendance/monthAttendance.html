@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>员工出勤记录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <link rel="stylesheet" th:href="@{/views/attendance/css/monthAttendance.css (v=${t})}" />
+</head>
+
+<body>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <div class="layui-form">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">月份：</label>
+                    <div class="layui-input-inline layui-input-time">
+                        <input type="text" id="month" placeholder="" autocomplete="off" class="layui-input"/>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">关键词：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="keyword" placeholder="姓名/手机号/登录名" autocomplete="off" class="layui-input"/>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">部门：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="deptName" name="deptName" autocomplete="off" class="layui-input" readonly="readonly" placeholder="点击选择"/>
+                        <i id='empty' title="清空" class="layui-icon layui-icon-close"></i>
+                        <input type="hidden" id="deptId" name="deptId"/>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label">员工状态：</label>
+                    <div class="layui-input-inline">
+                        <input type="checkbox" lay-skin="primary" name="userStatus" value="1" title="激活" checked>
+                        <input type="checkbox" lay-skin="primary" name="userStatus" value="0" title="禁用">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <button id="search" class="layui-btn layui-btn-sm layui-btn-info">
+                        <i class="layui-icon layui-icon-search"></i>查询
+                    </button>
+                    <button id="reset" class="layui-btn layui-btn-sm layui-btn-primary">
+                        <i class="layui-icon layui-icon-refresh"></i>重置
+                    </button>
+                    <button id="export" class="layui-btn layui-btn-sm layui-btn-normal">
+                        <i class="layui-icon layui-icon-export"></i>导出
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table id="month-attendance" lay-filter="month-attendance" lay-size="sm"></table>
+        </div>
+        <script id="table-row-opts" type="text/html">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-primary layui-btn-xs" lay-event="time-line">
+                    时间线
+                </button>
+            </div>
+        </script>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/attendance/js/monthAttendance.js (v=${t})}"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.move_outer {
+    position: inherit;
+    background-color: white;
+    border: #f2f2f2 solid 2px;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    border-left: 0px;
+    border-bottom: 0px;
+    border-top: 0px;
+}
+
+.move_inner {
+    width: calc(100% - 2px);
+    margin-right: 2px;
+    height: calc(100% + 1px);
+    /*text-align: center;*/
+}
+.move_last{
+    border: 0px;
+}
+.move_last>.move_inner{
+    width: calc(100%);
+}
+
+.un_select{
+    -o-user-select: none;
+    -moz-user-select: none; /*火狐 firefox*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10+*/
+    -khtml-user-select :none; /*早期的浏览器*/
+    user-select: none;
+}
+/*模块标题样式 */
+b[class*="module_title"]{
+    cursor: pointer;
+    -o-user-select: none;
+    -moz-user-select: none; /*火狐 firefox*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10+*/
+    -khtml-user-select :none; /*早期的浏览器*/
+    user-select: none;
+
+
+}

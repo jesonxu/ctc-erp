@@ -1,0 +1,40 @@
+html, body {
+    background-color: #ffffff;
+}
+
+.page-bottom {
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    background: #ffffff;
+    padding-bottom: 0.5em;
+    border-top: solid 0.1em #e6e6e6;
+}
+
+.bill-data {
+
+}
+
+.bill-data-title {
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 0.5em;
+    padding-top: 1em;
+}
+
+.bill-data-line {
+    padding: 0 1em;
+}
+
+.bill-data-line > span {
+    padding-bottom: 0.3em;
+    display: block;
+}
+
+.bill-data-line > input:disabled {
+    border: none;
+}

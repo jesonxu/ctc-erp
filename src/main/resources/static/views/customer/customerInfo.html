@@ -1,0 +1,31 @@
+<link rel="stylesheet" th:href="@{/views/customer/css/customerInfo.css (v=${t})}"/><!--过滤图标-->
+<link rel="stylesheet" th:href="@{/layuiadmin/layui/css/modules/layui-icon-extend/iconfont.css (v=${t})}"/><!--转移图标-->
+<div class="layui-card">
+
+    <!-- 模块信息 -->
+    <div class="layui-card-header panel_title">
+        <b class="module_title" data-alias="customer_module_title">客户(0家)</b>
+        <span th:if="${pagePermission['customerFilter']} or ${pagePermission['customerSearch']}" class="add_btn" id="filter-btn">
+            <span class="customer-filter layui-tablePlug-icon layui-tablePlug-icon-filter" title="点击过滤客户"></span>
+        </span>
+        <span class="add_btn" id="transfer_customer" th:if="${pagePermission['customerTransfer']}">
+            <i class="transfer-customer layui-icon-extend layui-icon-extend-transfer" style="display: inline-block;position: static;" title="转移客户"></i>
+        </span>
+        <span class="add_btn" id="add_customer_info" th:if="${pagePermission['customerInfoEdit']}">
+            <i class="layui-icon layui-icon-add-circle" style="display: inline-block;position: static;font-size:18px;" title="添加客户"></i>
+        </span>
+    </div>
+
+    <div class="layui-card-body" style="padding: 2px 2px;">
+
+        <div data-alias="customer_type_items" id="customer_muti_pannel">
+            <!-- 客户分类 -->
+            <div data-alias="customer_type_item" class="layui-collapse" lay-accordion="" lay-filter="customer_type_title">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/views/customer/js/customerInfo.js (v=${t})}"></script>
+<script type="text/javascript" th:inline="javascript">
+    window.perm = [[${pagePermission}]];
+</script>

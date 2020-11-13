@@ -1,0 +1,23 @@
+html, body {
+    background-color: #ffffff;
+}
+
+.empty-data {
+    text-align: center;
+    min-height: 3em;
+    line-height: 3em;
+}
+
+/* 页面最下面的提交按钮 */
+.page-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+}
+
+.page-bottom > button {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+}

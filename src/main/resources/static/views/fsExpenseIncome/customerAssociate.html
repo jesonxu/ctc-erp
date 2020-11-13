@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>收入关联</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <style type="text/css">
+        .footer{
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            background-color: #f8f8f8;
+            width: 100%;
+            height: 45px;
+        }
+        .btn-footer{
+            margin-top: 5px;
+        }
+        .show-table{
+            width: 100% !important;
+            background-color: #ffffff;
+        }
+        .show-table>tr{
+            height: 30px;
+        }
+        .show-table .table-title{
+            width: 100px;
+            text-align: right;
+        }
+        .show-table .table-content{
+            text-align: left;
+            width: 235px;
+        }
+        .input-xs {
+            line-height: 30px !important;
+            height: 30px !important;
+        }
+        .input-div-xs{
+            float: left !important;
+            width: 160px !important;
+            margin-right: 5px !important;
+        }
+        .label-xs{
+            width: 55px !important;
+        }
+        .dept-clear{
+            position: relative;
+            cursor: pointer;
+            margin-top: -28px;
+            margin-left: 140px;
+            display: block;
+        }
+        .table-edit-input{
+            width: 100%;
+            height: 100%;
+            border: none;
+            text-align: right;
+            background-color: transparent;
+        }
+        .table-edit-input:hover{
+            background-color: transparent;
+        }
+        .table-edit-input-tip{
+            border: solid #ff0007 1px;
+            width: 100%;
+            height: 100%;
+            text-align: right;
+            border-radius: 2px;
+            background-color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+<div class="layui-card" style="margin-bottom:30px;">
+    <input type="hidden" name="expenseIncomeId" id="expenseIncomeId" th:value="${expenseIncome.id}">
+    <input type="hidden" name="incomeType" id="incomeType" th:value="${expenseIncome.isIncome}">
+    <input type="hidden" name="total" id="total" th:value="${expenseIncome.remainRelatedCost}">
+    <div class="layui-card-body" style="background-color: #F2F2F2;">
+        <table class="show-table">
+            <tr>
+                <td class="table-title">到款时间：</td>
+                <td class="table-content" th:text="${#dates.format(expenseIncome.operateTime,'yyyy-MM-dd')}"></td>
+                <td class="table-title">到款金额：</td>
+                <td class="table-content" th:text="${expenseIncome.cost}"></td>
+            </tr>
+            <tr>
+                <td class="table-title">银行名称：</td>
+                <td class="table-content" th:text="${expenseIncome.bankName}"></td>
+                <td class="table-title">收入/支出：</td>
+                <td class="table-content" th:text="${expenseIncome.isIncome == 0?'收入':'支出'}"></td>
+            </tr>
+            <tr>
+                <td class="table-title">摘要内容：</td>
+                <td class="table-content" th:text="${expenseIncome.depict}"></td>
+                <td class="table-title">备注：</td>
+                <td class="table-content" th:text="${expenseIncome.remark}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="layui-card-body">
+        <div id="upload_template">
+            <div class="layui-upload">
+                <div class="layui-form" >
+                    <div class="layui-form-item">
+                        <input type="hidden" name="from" id="from" th:value="${from}">
+                        <label class="layui-form-label label-xs">客户</label>
+                        <div class="layui-input-inline input-div-xs">
+                            <input type="text" id="customerName" name="customerName" autocomplete="off" placeholder="请输入" class="layui-input input-xs">
+                        </div>
+                        <div class="layui-input-inline">
+                            <button type="button" id="bill-search" class="layui-btn layui-btn-normal layui-btn-sm">
+                                <i class="layui-icon layui-icon-search"></i>查询
+                            </button>
+                            <button type="button" id="bill-reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                                <i class="layui-icon layui-icon-refresh"></i>重置
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table th:id="customer" th:attr="lay-filter='customer'" lay-size="sm"></table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="layui-row layui-footer footer">
+    <button class="layui-btn btn-footer" id="ok_btn">
+        <i class="layui-icon layui-icon-ok"></i>确定
+    </button>
+    <button class="layui-btn layui-btn-danger btn-footer" id="cancel_btn">
+        <i class="layui-icon layui-icon-close"></i>取消
+    </button>
+</div>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/fsExpenseIncome/js/customerAssociate.js (v=${t})}"></script>
+</body>
+</html>

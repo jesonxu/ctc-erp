@@ -1,0 +1,151 @@
+
+/*------------------------------------------------------------------
+
+[FAQ Page]
+
+	Project:		Bootstrap Landing Template
+	Version:		1.0
+	Last change:	04/26/2012
+	Assigned to:	Dahantc (rh)
+	
+
+-------------------------------------------------------------------*/
+h1{
+	padding: 10px 20px;
+	background-color: #FFFFFF;
+	position: fixed;
+	width: 100%;
+	box-shadow: 1px 1px 1px 0px #CCCCCC;
+}
+
+.down-help {
+	float: right;
+	padding-right: 40px;
+	font-size: 24px;
+	color: red;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.high-light {
+	color: #609;
+}
+
+.faq-search {
+	float: left;
+	width: 300px;
+	padding: 10px;
+	/* font-size: 14px; */
+	position: fixed;
+	margin-left: 20px;
+	background-color: #FFFFFF;
+	left: 0;
+	top: 100px;
+}
+
+.faq-empty {
+	display: none;
+	margin-bottom: 20px;
+	margin-left: 336px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.faq-toc {
+	float: left;
+	width: 300px;
+	padding: 10px;
+	/*font-size: 14px;*/
+	position: fixed;
+	margin-left: 20px;
+	background-color: #FFFFFF;
+	left: 0;
+	top: 160px;
+	bottom: 20px;
+	overflow: auto;
+}
+
+.faq-toc ol {
+	padding: 0;
+	margin: 0;
+}
+
+.faq-toc li {
+	margin-bottom: .75em;
+	list-style: none;
+	border-bottom: dashed #CCCCCC 1px;
+	padding: 0.2em 1em;
+}
+
+.faq-toc a {
+	margin-left: .5em;
+}
+
+.faq-list {
+	right: 0;
+	width: 75%;
+}
+
+.faq-list li {
+	display: table;
+	margin-bottom: 10px;
+	margin-left: 400px;
+	padding: 30px;
+	background-color: white;
+	width: inherit;
+}
+
+.faq-list h2 {
+	font-weight: bold !important;
+}
+
+.faq-list li p {
+	padding-top: 10px;
+	font-size: 16px;
+	line-height: 30px;
+}
+
+.faq-icon {
+	display: table-cell;
+	padding-right: 1.25em;
+	vertical-align: top;
+	width: 50px;
+}
+
+.faq-text {
+	display: table-cell;
+	vertical-align: top;
+	
+}
+
+.faq-number {
+	width: 32px;
+	height: 32px;
+	
+	font-size: 14px;
+	font-weight: 600;
+	text-align: center;
+	line-height: 32px;
+	color: #FFF;
+	
+	background: #F90;
+	
+	border: 3px solid #FFF;
+	
+	box-shadow: 1px 1px 3px rgba(0,0,0,.4);
+	
+	border-radius: 100px;
+	
+	text-shadow: 1px 1px 2px rgba(0,0,0,.4);
+}
+
+.go-top {
+	font-size: 64px;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+}
+
+.faq-container{
+	padding-top: 80px;
+}

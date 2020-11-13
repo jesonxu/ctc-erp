@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>账单操作</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/common/css/common.css" media="all">
+    <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+    <link rel="stylesheet" th:href="@{/views/billsModify/css/operateBillPage.css (v=${t})}">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-row">
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">标题：</div>
+                <div id="billTitle" class="bill-detail-content" title=""></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">账单id：</div>
+                <div id="billId" class="bill-detail-content" th:text="${billId}"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">账单编号：</div>
+                <div id="billNumber" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">账单状态：</div>
+                <div id="billStatus" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">主体类型：</div>
+                <div id="entityTypeName" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">销售/商务：</div>
+                <div id="realName" class="bill-detail-content" title=""></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">公司名称：</div>
+                <div id="companyName" class="bill-detail-content" title=""></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">产品名称：</div>
+                <div id="productName" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">产品类型：</div>
+                <div id="productTypeName" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">账期：</div>
+                <div id="billPeriod" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">付费方式：</div>
+                <div id="settleType" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">出账账号：</div>
+                <div id="loginName" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">账单月份：</div>
+                <div id="billMonth" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">销账时间：</div>
+                <div id="writeOffTime" class="bill-detail-content"></div>
+            </div>
+            <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                <div class="bill-detail-title">备注：</div>
+                <div id="remark" class="bill-detail-content"></div>
+            </div>
+        </div>
+
+        <div class="layui-row">
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">平台成功数：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="platformSuccessCount" data-type="0"  id="platformSuccessCount" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">综合成本：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="cost" data-type="0"  id="cost" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">实际成功数：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="checkedSuccessCount" data-type="0"  id="checkedSuccessCount" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">应收(客户账单金额)：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="receivables" data-type="0"  id="receivables" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">实收：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="actualReceivables" data-type="0"  id="actualReceivables" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">应付(供应商账单金额)：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="payables" data-type="0"  id="payables" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">实付：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="actualPayables" data-type="0"  id="actualPayables" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">已开票金额：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="actualInvoiceAmount" data-type="0"  id="actualInvoiceAmount" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">平均销售单价：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="unitPrice" data-type="0"  id="unitPrice" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <label class="layui-form-label bill-detail-title">账单毛利：</label>
+                <div class="layui-input-inline bill-detail-content">
+                    <input type="text" name="grossProfit" data-type="0"  id="grossProfit" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+        </div>
+        <!-- 操作按钮 -->
+        <div class="operations">
+
+        </div>
+        <!-- 操作记录 -->
+        <table id="operationLog" lay-filter="operationLog" style="display: none">
+            <thead>
+            <tr>
+                <th lay-data="{field:'wtime', width:'25%', align:'center'}">操作时间</th>
+                <th lay-data="{field:'operator', width:'25%', align:'center'}">操作人</th>
+                <th lay-data="{field:'operation', width:'50%', align:'left'}">操作内容和结果</th>
+            </tr>
+            </thead>
+            <tbody>
+        </table>
+    </div>
+</div>
+
+<script src="/common/js/jquery-1.8.0.min.js"></script>
+<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script src="/common/js/toolbar_lib.js"></script>
+<script src="/common/js/formSelects-v4.js"></script>
+<script th:src="@{/views/billsModify/js/operations.js (v=${t})}"></script>
+<script th:src="@{/views/billsModify/js/operateBillPage.js (v=${t})}"></script>
+</body>
+</html>

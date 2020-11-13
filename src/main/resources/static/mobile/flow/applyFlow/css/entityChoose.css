@@ -1,0 +1,70 @@
+html {
+    background-color: #FFFFFF;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.title-entity-search {
+    height: 3em;
+    line-height: 3em;
+    padding: 0.3em 0.5em;
+}
+
+/* 标题展示在一行 */
+.title-inline {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.title-name {
+    width: calc(100% - 7em);
+}
+
+.title-name > input {
+    vertical-align: top;
+}
+
+.title-btn {
+    width: 6em;
+    vertical-align: top;
+}
+
+.title-btn > button {
+    width: 100%;
+    vertical-align: top;
+    height: 100%;
+}
+
+/* 待选择列表 */
+.entity-choose-list {
+    margin: 0 1em;
+}
+
+.entity-choose-list > li {
+    margin: 0.2em 0.5em;
+    padding: 0.3em 0 0.3em 0.5em;
+    border-bottom: dashed 0.1em #CCCCCC;
+    border-radius: 0.2em;
+}
+
+.layui-form-radio {
+    width: 100% !important;
+}
+
+.layui-form-radio > i {
+    width: 1em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.layui-form-radio > div {
+    display: inline-block;
+    width: calc(100% - 3em);
+    vertical-align: middle;
+}
+
+.customer-name {
+    margin-right: 0.5em;
+}

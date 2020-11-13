@@ -1,0 +1,67 @@
+.layadmin-link {
+    color: #0C0C0C !important;
+}
+
+.layui-tab-title li {
+    width: 125px !important;
+}
+
+/* 更改table 颜色 */
+.layui-tab-brief > .layui-tab-title .layui-this {
+    color: #e75c31;
+}
+
+.layui-tab-brief > .layui-tab-more li.layui-this:after, .layui-tab-brief > .layui-tab-title .layui-this:after {
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid #e75c31;
+}
+
+/*.layui-btn-fluid {
+    background-color: #e75c31;
+}*/
+button[lay-filter="LAY-user-login-submit"] {
+    background-color: #e75c31 !important;
+}
+
+input{
+    border-color: #f0b9a5 !important;
+}
+
+.layui-input:hover, .layui-textarea:hover {
+    border-color: #e75c31 !important;
+}
+
+/* 标题 */
+.login-title {
+    color: #000000 !important;
+    font-weight: bold !important;
+}
+
+.layui-tab {
+    margin: 0 !important;
+}
+
+.layadmin-user-login-box {
+    padding: 20px 20px 10px 20px !important;
+}
+
+.impowerBox .status {
+    color: #000000 !important;
+}
+
+.layadmin-user-login-main {
+    box-shadow: 0 0 10px 0 #e6b9ab;
+}
+
+ul {
+    border-color: #e6b9ab !important;
+}
+
+.layui-tab-title li {
+    color: #000000 !important;
+}
+
+.layadmin-user-login {
+    padding: 15% 58% !important;
+}

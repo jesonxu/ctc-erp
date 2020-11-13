@@ -1,0 +1,47 @@
+<div class="layui-collapse" th:if ="${not #maps.isEmpty(contactTimes)}" lay-accordion="" th:attr="lay-filter='contact-log-' + ${supplierId}">
+    <!-- 年 -->
+    <div class="layui-colla-item" th:each="contactTime : ${contactTimes}">
+        <!-- title -->
+        <div class="layui-colla-title"
+             data-my-opts-type ="year"
+             data-my-folder = 'false'
+             data-my-size = "title-size-2"
+             th:attr="data-my-id = ${supplierId}"
+             th:text="${contactTime.key} + ' 年'"></div>
+
+        <!-- 内容 -->
+        <div class="layui-colla-content">
+
+            <!-- 月 -->
+            <div class="layui-collapse"  lay-accordion="">
+                <div class="layui-colla-item" th:if="${not #lists.isEmpty(contactTime.value)}" th:each="month: ${contactTime.value}">
+                    <!-- title -->
+                    <div class="layui-colla-title"
+                         data-my-size = "title-size-2"
+                         data-my-folder = 'false'
+                         data-my-opts-type ="month"
+                         th:attr="data-my-id = ${supplierId} + '||' + ${contactTime.key} + '||' + ${month}"
+                         th:text="${month} + ' 月'"></div>
+                    <!-- 内容 -->
+                    <div class="layui-colla-content"
+                         th:attr="the_last_year = ${lastYear}, the_last_month = ${lastMonth}, contact_log_detail = ${supplierId} + ${contactTime.key} + ${month}"
+                         style="padding-left: 15px">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div th:if ="${#maps.isEmpty(contactTimes)}">
+    <div class="layui-row" >
+        <button type="button"
+                th:attr="supplier_id = ${supplierId}"
+                onclick="btn_add_contact_log(this)"
+                class="layui-btn layui-btn-primary layui-btn-sm contact_log_btn">
+            添加日志
+            <i class="layui-icon layui-icon-add-circle"></i>
+        </button>
+    </div>
+</div>

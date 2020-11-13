@@ -1,0 +1,76 @@
+.layui-card-header {
+    box-shadow: 0 1px 2px #c0c0c0;
+    line-height: 45px;
+    border: none;
+    position: fixed;
+    width: 100%;
+    background-color: #FFFFFF;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+}
+
+.layui-card-header .layui-icon {
+    line-height: unset;
+    position: unset;
+    right: unset;
+    top: unset;
+    margin-top: unset;
+}
+
+.layui-card-body {
+    position: relative;
+    padding: 0 !important;
+    line-height: 24px !important;
+    margin-top: 47px !important;
+}
+
+.title-name {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.title-operate {
+    display: inline-block;
+    float: right;
+    margin-right: 30px;
+}
+
+.account-input {
+    display: inline-block;
+}
+
+.account-info-item {
+    display: inline-block;
+    width: 195px;
+    margin: 5px 10px;
+    border-bottom: dashed #c9c9c9 1px;
+}
+
+.layui-card-header {
+    box-shadow: 0 1px 2px #c0c0c0;
+    border: none;
+}
+
+.account-empty {
+    text-align: center;
+}
+
+.layui-form-checkbox {
+    width: 100%;
+}
+
+.my-file-btn {
+    width: 200px;
+}
+
+#upload-file-list {
+    margin-top: 15px;
+}
+
+#upload-file-list > div {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: solid #c9c9c9 1px;
+}

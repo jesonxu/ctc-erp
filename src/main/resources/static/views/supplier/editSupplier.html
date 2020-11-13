@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css"
+	media="all">
+<link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+<style type="text/css">
+.layui-form-label {
+	width: 120px;
+}
+
+.div {
+	padding: 5px;
+}
+input.layui-input.layui-unselect.layui-disabled {
+	color: black !important;
+}
+</style>
+</head>
+<body style="background-color: white">
+	<div class="layui-tab-content site-demo site-demo-body">
+		<form class="layui-form" action="">
+			<input type="hidden" th:value="${supplierInfo.supplierId}"
+				id="supplierId">
+			<input type="hidden" th:value="${operationType}"
+				   id="operationType">
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label" for="companyName"><span
+						style="color: red;">*</span>公司名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="companyName" name="companyName"
+							th:value="${supplierInfo.companyName}" maxlength="255"
+							class="layui-input" placeholder="请填写公司名称" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label" for="legalPerson">法人：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="legalPerson"
+							th:value="${supplierInfo.legalPerson}" name="legalPerson"
+							class="layui-input" placeholder="请填写法人" maxlength="255" />
+					</div>
+				</div>
+			</div>
+
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>业务联系人：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="contactName"
+							   th:value="${supplierInfo.contactName}" name="contactName"
+							   class="layui-input" placeholder="请填写业务联系人" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>联系手机：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="contactPhone"
+							   th:value="${supplierInfo.contactPhone}" name="contactPhone"
+							   class="layui-input" placeholder="请填写联系手机" maxlength="20" />
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">注册号：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="registrationNumber"
+							name="registrationNumber"
+							th:value="${supplierInfo.registrationNumber}"
+							placeholder="请填写注册号" class="layui-input" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">注册地址：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="registrationAddress"
+							name="registrationAddress"
+							th:value="${supplierInfo.registrationAddress}"
+							class="layui-input" placeholder="请填写注册地址" maxlength="255">
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">通讯地址：</label>
+					<div class="layui-input-inline">
+						<input type="tel" id="postalAddress" name="postalAddress"
+							th:value="${supplierInfo.postalAddress}" class="layui-input"
+							placeholder="请填写通讯地址" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">电话号码：</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" id="telephoneNumber"
+							th:value="${supplierInfo.telephoneNumber}" name="telephoneNumber"
+							placeholder="请填写电话号码" maxlength="30">
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">电子邮件：</label>
+					<div class="layui-input-inline">
+						<input type="tel" id="email" name="email"
+							th:value="${supplierInfo.email}" class="layui-input"
+							placeholder="请填写电子邮件" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">公司网页：</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" id="website"
+							th:value="${supplierInfo.website}" name="website"
+							placeholder="请填写公司网页" maxlength="255">
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">公司创立日期：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="creationDate" autocomplete="off"
+							th:value="${supplierInfo.creationDate}" name="creationDate"
+							class="layui-input" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">注册资本(万元)：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="registeredCapital"
+							th:value="${supplierInfo.registeredCapital}"
+							name="registeredCapital" class="layui-input" maxlength="32" />
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">公司性质：</label>
+					<div class="layui-input-inline">
+						<select id="corporateNature" name="corporateNature"
+							th:value="${supplierInfo.corporateNature}">
+							<option th:selected="${supplierInfo.corporateNature == '民营'}"
+								value="民营">民营</option>
+							<option th:selected="${supplierInfo.corporateNature == '合资'}"
+								value="合资">合资</option>
+							<option th:selected="${supplierInfo.corporateNature == '国营'}"
+								value="国营">国营</option>
+							<option th:selected="${supplierInfo.corporateNature == '外资'}"
+								value="外资">外资</option>
+							<option th:selected="${supplierInfo.corporateNature == '其他'}"
+								value="其他">其他</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label">税务号：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="taxation"
+							th:value="${supplierInfo.taxation}" id="taxation"
+							class="layui-input" maxlength="32" />
+					</div>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-inline">
+					<label class="layui-form-label">供应商类别：</label> <input type="hidden"
+						th:value="${supplierInfo.supplierTypeId}" id="supplierTypeId">
+					<div class="layui-input-inline">
+						<select id="supplierType" name="supplierType"></select>
+					</div>
+				</div>
+			</div>
+
+			<div th:each="invoice,status : ${invoiceInfos}"
+				class="layui-form-item gradient0">
+				<input th:value="${invoice.invoiceId}" type="hidden"
+					name="invoiceId" />
+				<div class="layui-form-item">
+					<label class="layui-form-label"
+						style="width: 100%; text-align: left;">开票信息：</label>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>公司名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="companyname" name="companyname"
+							class="layui-input" placeholder="请填写公司名称"
+							th:value="${invoice.companyName}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style='color: red;'>*</span>税务号：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="taxnumber" name="taxnumber"
+							class="layui-input" placeholder="请填写税务号"
+							th:value="${invoice.taxNumber}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>公司地址：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="companyaddress" name="companyaddress"
+							class="layui-input" placeholder="请填写公司地址"
+							th:value="${invoice.companyAddress}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>联系电话：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="phone" name="phone" class="layui-input"
+							maxlength="30" placeholder="请填写联系电话" th:value="${invoice.phone}" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>开户银行：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="accountbank" name="accountbank"
+							maxlength="255" class="layui-input" placeholder="请填写开户银行"
+							th:value="${invoice.accountBank}" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>银行账号：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="bankaccount" name="bankaccount"
+							class="layui-input" maxlength="255" placeholder="请填写银行账号"
+							th:value="${invoice.bankAccount}" />
+					</div>
+				</div>
+				<div class="layui-inline operate0"
+					th:if="${status.index + 1 == status.size}">
+					<label class="layui-form-label"> <span class="add_btn"
+						id="add_invoice" onclick="addInvoice(0)"> <i
+							class="layui-icon layui-icon-add-circle" title="添加开票信息"></i></span>
+						<div
+							th:if="${!#lists.isEmpty(invoiceInfos) && #lists.size(invoiceInfos) > 1}"
+							th:remove="tag">
+							&nbsp;&nbsp;<span class="add_btn" id="reduce_info" onclick="reduceInvoice(0, this)"><i class="layui-icon layui-icon-close-fill" title="删除开票信息"></i></span>
+						</div>
+					</label>
+				</div>
+			</div>
+
+			<div th:each="bank,status : ${bankInfos}"
+				class="layui-form-item gradient">
+				<input th:value="${bank.bankAccountId}" type="hidden"
+					name="bankAccountId" />
+				<div class="layui-form-item">
+					<label class="layui-form-label"
+						style="width: 100%; text-align: left;">银行信息：</label>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>名称：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="accountname" name="accountname"
+							class="layui-input" placeholder="请填写名称"
+							th:value="${bank.accountName}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>开户银行：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="accountbank" name="accountbank"
+							class="layui-input" placeholder="请填写开户银行"
+							th:value="${bank.accountBank}" maxlength="255" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"><span style="color: red;">*</span>银行账号：</label>
+					<div class="layui-input-inline">
+						<input type="text" id="bankaccount" name="bankaccount"
+							maxlength="255" class="layui-input" placeholder="请填写银行账号"
+							th:value="${bank.bankAccount}" />
+					</div>
+				</div>
+				<div class="layui-inline">
+					<label class="layui-form-label"></label>
+					<div class="layui-input-inline"></div>
+				</div>
+				<div class="layui-inline operate"
+					th:if="${status.index + 1 == status.size}">
+					<label class="layui-form-label"> <span class="add_btn"
+						id="add_bank" onClick="addBank()"> <i
+							class="layui-icon layui-icon-add-circle" title="添加银行信息"></i></span>
+						<div
+							th:if="${!#lists.isEmpty(bankInfos) && #lists.size(bankInfos) > 1}"
+							th:remove="tag">
+							&nbsp;&nbsp;<span class="add_btn" id="reduce_bank"
+								onclick="reducebank(this)"><i
+								class="layui-icon layui-icon-close-fill" title="删除银行信息"></i></span>
+						</div>
+					</label>
+				</div>
+			</div>
+
+		</form>
+		<div class="layui-form-item" id="isShowSubmit" style="text-align: center">
+			<button type="button" id="supplier_submit"
+				class="layui-btn layui-btn-sm">提交</button>
+			<button type="button" id="supplier_cancel"
+				class="layui-btn layui-btn-danger layui-btn-sm">取消</button>
+		</div>
+	</div>
+</body>
+	<script src="/common/js/jquery-1.8.0.min.js"></script>
+	<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+	<script src="/layuiadmin/layui/layui.js"></script>
+	<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+	<script type="text/javascript" th:src="@{/views/supplier/js/editSupplier.js (v=${t})}"></script>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="utf-8">
+    <title>消息中心</title>
+    <!-- <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" > -->
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/common/css/common.css" media="all">
+    <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+    <link rel="stylesheet" href="/views/messageInfo/css/messageInfo.css" media="all">
+	<style type="text/css">
+        #test_toolbar_unreadMessage {
+            margin-bottom: 1em;
+        }
+	</style>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-tab layui-tab-card">
+            <ul class="layui-tab-title">
+                <li class="layui-this">客户统计</li>
+                <li>未读消息<span id="unread" class="layui-badge">0</span></li>
+                <button id="return-workbench" type="button" class="layui-btn layui-btn-primary"
+                        style="float:right;height: 40px;line-height: 40px">
+                    <i class="layui-icon layui-icon-close"></i>
+                </button>
+            </ul>
+            <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show layui-form">
+                    <div class="LAY-app-message-btns" style="margin-bottom: 10px;">
+                        <div class="layui-inline" id="dateLine">
+                            <input type="radio" name="date" lay-filter="layui-date" value="1" title="本周" checked>
+                            <input type="radio" name="date" lay-filter="layui-date" value="2" title="本月">
+                            <input type="radio" name="date" lay-filter="layui-date" value="3" title="本季">
+                            <input type="radio" name="date" lay-filter="layui-date" value="4" title="今年">
+                            <input type="radio" name="date" lay-filter="layui-date" value="5" title="近三年">
+                        </div>
+                    </div>
+                    <div class="layui-card-body layadmin-backlog">
+                        <!-- 新增客户：
+                        <a id="ceshi" lay-href="/messageCenter/toMsgCenterDetail.action" layadmin-event="messageinfo">
+                          99
+                        </a> -->
+                        <ul class="layui-row layui-col-space10 layui-this countList">
+                            <li class="layui-col-xs6">
+                                <a id="customer" lay-href="/messageCenter/toMsgCenterDetail.action"
+                                   class="layadmin-backlog-body">
+                                    <h3>新增客户</h3>
+                                    <p><cite>0</cite></p>
+                                </a>
+                            </li>
+                            <li id="supplier" class="layui-col-xs6">
+                                <a lay-href="" class="layadmin-backlog-body">
+                                    <h3>新增供应商</h3>
+                                    <p><cite>0</cite></p>
+                                </a>
+                            </li>
+                            <li id="customerLog" class="layui-col-xs6">
+                                <a lay-href="" class="layadmin-backlog-body">
+                                    <h3>新增联系日志</h3>
+                                    <p><cite>0</cite></p>
+                                </a>
+                            </li>
+                            <!-- <li id="supplierLog" class="layui-col-xs6">
+                              <a href="javascript:;" class="layadmin-backlog-body">
+                                <h3>新增供应商联系日志</h3>
+                                <p><cite>0</cite></p>
+                              </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+				<div class="layui-tab-item">
+					<div id="test_toolbar_unreadMessage" class="layui-form">
+                        员工：
+                        <div class="layui-inline">
+                            <input type="text" id="userName" name="userName" class="layui-input" placeholder="请输入名称（自动补全）"/>
+                            <input type="hidden" id="userId" name="userId"/>
+                        </div>
+                        &nbsp;&nbsp;消息日期：
+                        <div class="layui-inline">
+                            <input type="text" id="startTime" name="startTime" class="layui-input" placeholder="请选择日期" readonly/>
+                        </div>
+                        &nbsp;&nbsp;消息类型：
+                        <div class="layui-inline" >
+                            <select class="layui-select" id="messageType" name="messageType" lay-verify="required" lay-search="">
+                            </select>
+                        </div>
+                        <button class="layui-btn" lay-event="search" >
+                            <i class="layui-icon layui-icon-search"></i>查询
+                        </button>
+                        <button class="layui-btn" lay-event="getCheckData">
+                            <i class="layui-icon layui-icon-ok-circle"></i>当前选中已阅
+                        </button>
+                    </div>
+					<div id="table-param">
+						<table id="unreadMessage" class="layui-table" lay-data="{id: 'unreadMessage'}"
+							   lay-filter="unreadMessage">
+						</table>
+						<script type="text/html" id="table-read">
+							{{# if(d.state==1){ }}
+							<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="read">未阅</a>
+							{{# } }}
+							{{# if(d.state==0){ }}
+							<a class="layui-btn layui-btn-xs" style="cursor:default">已阅</a>
+							{{# } }}
+						</script>
+					</div>
+				</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/common/js/jquery-1.8.0.min.js"></script>
+<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="text/javascript" src="/common/js/formSelects-v4.js"></script>
+<script type="text/javascript" th:src="@{/views/messageInfo/js/messageInfo.js (v=${t})}"></script>
+<script type="application/javascript">
+    layui.config({
+        base: '/common/js/'
+    }).extend({ // 设定模块别名
+        autocomplete: 'autocomplete'
+    });
+</script>
+</body>
+</html>

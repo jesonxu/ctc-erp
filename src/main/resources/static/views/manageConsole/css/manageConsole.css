@@ -1,0 +1,29 @@
+.table-detail-body {
+    padding-top: 5px;
+}
+
+li[data-group] {
+    min-height: 120px;
+    margin: 5px 15px;
+}
+
+.table-group-title {
+    font-size: 20px;
+    margin: 10px 0;
+    display: block;
+    border-bottom: solid 1px #009688;
+    box-shadow: 0 1px 1px 0 #c5fffa;
+    font-weight: bold;
+}
+
+.layui-btn-container button {
+    width: 161px;
+    height: 70px;
+    font-size: 14px;
+}
+
+.layui-btn-sm i {
+    font-size: 25px !important;
+    display: block;
+    text-align: center;
+}

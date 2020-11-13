@@ -1,0 +1,90 @@
+html, body {
+    background-color: #FFFFFF;
+}
+
+.scan-company-business-card {
+    font-size: 2em;
+    vertical-align: bottom;
+    display: inline-block;
+    width: 1.3em;
+}
+
+.add-company-info {
+    padding-top: 0.2em;
+    margin: 3em 1em 0 1em;
+}
+
+/*--重新写移动端的表单样式--*/
+.mobile-form-row {
+    margin-bottom: 0.5em;
+}
+
+.mobile-form-row > .layui-form-label {
+    display: block;
+    width: auto;
+    text-align: left;
+}
+
+.mobile-form-row > .layui-input-block {
+    clear: both;
+    margin: 0;
+    width: 100%;
+}
+
+.mobile-full-btn {
+    width: 100%;
+    margin: 0.3em 0;
+}
+
+
+/*-----------------银行 发票信息----------------------------------*/
+.invoice-title, .bank-title {
+    height: 1.5em;
+    background-color: #e6e6e6;
+    padding: 0.3em;
+}
+
+.invoice-item, .bank-item {
+    /*border: 0.1em solid #e9e9e9;*/
+    margin: 0.5em 0;
+    box-shadow: 0 0 0.1em 0 #cccccc;
+    padding: 0.5em;
+}
+
+.invoice-item-title, .bank-item-title {
+    text-align: center;
+    border-bottom: 0.1em dashed #e9e9e9;
+    height: 3em;
+    line-height: 3em;
+}
+
+.item-title-delete {
+    float: right;
+    display: inline-block;
+    width: 2em;
+    height: 100%;
+    font-size: 1.5em;
+    color: #FF5722;
+    font-weight: normal;
+}
+
+div[class*='layui-form-select'] > dl {
+    width: 100%;
+}
+
+/*-----------------重写下拉框的样式----------------------------------*/
+div[class*='layui-form-select'] > dl > dd {
+    white-space: normal;
+    overflow: auto;
+    text-overflow: clip;
+    word-break: break-all;
+    overflow-wrap: break-word;
+    padding: 0.3em 1em;
+    line-height: 1.5em;
+}
+
+label[ required="true"]:before {
+    content: "*";
+    color: #ff0000;
+}
+

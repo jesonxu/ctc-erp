@@ -1,0 +1,44 @@
+
+#empty {
+    font-size: 18px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+}
+
+.detail {
+    text-align: center;
+}
+
+.detail-table {
+    width: 100%;
+    text-align: center;
+}
+
+.detail-table-row {
+    width: 100%;
+    text-align: center;
+}
+
+.detail-table-row th{
+    /*width: 100%;*/
+    text-align: center;
+}
+
+.detail-img {
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: -1;
+    *zoom: 1;
+}
+
+/*
+#checkin-div .layui-table-hover {
+    background-color: #fff;
+}*/

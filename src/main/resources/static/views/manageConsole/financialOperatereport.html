@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>财务经营权责表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" th:href="@{/views/manageConsole/css/financialOperateReport.css (v=${t})}" />
+    <link rel="stylesheet" th:href="@{/views/manageConsole/css/financialOperateReport.css (v=${t})}" />
+    <link rel="stylesheet" th:href="@{/common/css/formSelects-v4.css (v=${t})}" />
+</head>
+
+<body>
+    <div class="report-main">
+        <div id="mainTable">
+            <!-- 主表 -->
+            <div class="table-container main-table-container">
+                <div>
+                    <input type="text" id="selectDate" readonly autocomplete="off" name="selectDate" class="layui-input" lay-key="1" />
+                    <select id="productType" lay-search="" xm-select-max="1000" xm-select-direction="down" xm-select="productType" xm-select-type="1">
+                    	<option th:each="productType : ${productTypeSelect}" th:value="${productType.value}" th:text="${productType.name}" th:selected="${productType.value == 0}"></option>
+                    </select>
+                    <span>收入与毛利占比</span>
+                    <div class="layui-inline report-table-export" title="导出">
+                        <i class="layui-icon layui-icon-export"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="report-table report-main-table">
+                <table id="mainTable" class="report-table">
+                    <thead>
+                        <tr>
+                            <td width="23%" align="center">毛利区间</td>
+                            <td width="15%" align="center">区间收入占比</td>
+                            <td width="17%" align="center">收入</td>
+                            <td width="17%" align="center">毛利</td>
+                            <td width="17%" align="center">区间毛利占比</td>
+                            <td width="8%" align="center">客户量</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="report-table-remark" id="mainTableMark"></div>
+            </div>
+        </div>
+        <div id="affiliatedTable">
+            <div>
+                <!-- 附表1-1 -->
+                <div class="table-container affiliated-table-container">
+                    <div>
+                        <span>附表1-1：<span id="smallCustCount">0</span>家零星客户；毛利为负，业绩靠前客户明细（总客户量
+                        </span><span class="report-table-cust-count">0</span><span>）</span>
+                        <div class="layui-inline report-table-export" title="导出">
+                            <i class="layui-icon layui-icon-export"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="report-table report-main-table">
+                    <table id="negativeTable" class="report-table">
+                        <thead>
+                            <tr>
+                                <td width="50%" align="center">客户</td>
+                                <td width="25%" align="center">收入</td>
+                                <td width="25%" align="center" style="border-right: 1px solid #adadadf7;">毛利润</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="report-table-remark" id="mainTableMark"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- 附表1-2及以后 -->
+<div style="display: none;" id="affiliatedTableTmp">
+    <div>
+        <div class="table-container affiliated-table-container">
+        </div>
+        <div class="report-table report-main-table">
+            <table class="report-table">
+                <thead>
+                    <tr>
+                        <td width="50%" align="center">客户</td>
+                        <td width="20%" align="center">收入</td>
+                        <td width="20%" align="center">毛利润</td>
+                        <td width="10%" align="center" style="color: red; border-right: 1px solid #adadadf7;">毛利率</td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="report-table-remark" id="mainTableMark"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" src="/common/js/formSelects-v4.js"></script>
+<script type="text/javascript" th:src="@{/views/manageConsole/js/financialOperatereport.js (v=${t})}"></script>
+<script type="text/javascript" src="/common/js/table2excel.js"></script>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>到款信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <link rel="stylesheet" th:href="@{/views/sheet/css/importExpenseIncomeSheet.css (v=${t})}"/>
+</head>
+
+<body>
+<div class="layui-card">
+    <div class="layui-card-body">
+        <div class="layui-form">
+            <input type="hidden" th:value="${isSale}" id="isSale"/>
+            <input type="hidden" th:value="${from}" id="from"/>
+            <div class="layui-form-item">
+                <label class="layui-form-label">银行名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="bankName" id="bankName" placeholder="请输入银行名称" autocomplete="off" class="layui-input"/>
+                </div>
+                <label class="layui-form-label">内容摘要</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="depict" id="depict" placeholder="请输入内容摘要" autocomplete="off" class="layui-input"/>
+               	</div>
+               	<div class="layui-input-inline" style = "width: 100px;">
+               		<select id="timeType" name="timeType" lay-filter = "timeType">
+	                	<option value="1" selected>到款时间</option>
+						<option value="2">导入时间</option>
+               		</select>
+               	</div>
+                <div class="layui-input-inline layui-input-time">
+                    <input type="text" name="startTime" id="startTime" placeholder="请选择开始时间" autocomplete="off" class="layui-input"/>
+                </div>
+	            <div class="layui-form-mid layui-word-aux">~</div>
+                <div class="layui-input-inline layui-input-time">
+                    <input type="text" name="endTime" id="endTime" placeholder="请选择结束时间" autocomplete="off" class="layui-input"/>
+                </div>
+                <label class="layui-form-label">销账状态</label>
+                <div class="layui-input-inline" style="padding: 0;margin-right: 0;">
+					<input type="checkbox" lay-skin="primary" id="writeoffstatus_0" name="writeoffstatus_0" value="2" title="未消账" checked>
+					<input type="checkbox" lay-skin="primary" id="writeoffstatus_2" name="writeoffstatus_2" value="4" title="已消账">
+				</div>
+				<label class="layui-form-label">关联状态</label>
+				<div class="layui-input-inline" style ="padding: 0;margin-right: 0;">
+					<input type="checkbox" lay-skin="primary" id="notLink" name="linkStatus" value="0" title="未关联" checked>
+					<input type="checkbox" lay-skin="primary" id="linked" name="linkStatus" value="1" title="已关联" checked>
+				</div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <button id="refresh" class="layui-btn layui-btn-sm layui-btn-info">
+                        <i class="layui-icon layui-icon-search"></i>查询
+                    </button>
+                    <button id="reset" class="layui-btn layui-btn-sm layui-btn-primary">
+                        <i class="layui-icon layui-icon-refresh"></i>重置
+                    </button>
+
+                    <button id="import" th:if="${#bools.isTrue(pagePermission['supplierImportIncome']) || #bools.isTrue(pagePermission['customerIncomeImport'])}" class="layui-btn layui-btn-sm layui-btn-normal">
+                        <i class="layui-icon layui-icon-upload-drag"></i>收支导入
+                    </button>
+
+					<!-- 到款表能查询什么就能导出什么 -->
+					<button id="export" class="layui-btn layui-btn-sm layui-btn-normal">
+                        <i class="layui-icon layui-icon-download-circle"></i>收支导出
+                    </button>
+                    
+                    <!-- <button id="associate" th:if="${#bools.isTrue(pagePermission['supplierIncomeAssociate']) || #bools.isTrue(pagePermission['customerIncomeAssociate'])}" class="layui-btn layui-btn-sm layui-btn-normal">
+                        <i class="layui-icon layui-icon-link"></i>账单关联
+                    </button> -->
+                    
+                    <button id="customerAssociate" th:if="${#bools.isTrue(pagePermission['customerAssociate'])|| #bools.isTrue(pagePermission['customerIncomeAssociate'])}" class="layui-btn layui-btn-sm">
+                        <i class="layui-icon layui-icon-link"></i>客户关联
+                    </button>
+                    <button id="showIncomeAndGoal" th:if="${#bools.isTrue(isSale)}" class="layui-btn layui-btn-sm">
+                        <i class="layui-icon layui-icon-up"></i><span>收起总览</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div th:if="${#bools.isTrue(isSale)}" id="incomeAndGoal">
+            <div id="incomeInfo" class="income-info">
+                <div class="layui-form-item">
+                    <label class="span-title">总到款：</label>
+                    <div class="span-value">
+                        <span id="totalIncome"></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="span-title">已销账：</label>
+                    <div class="span-value">
+                        <span id="totalWriteOff"></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="span-title">总余额：</label>
+                    <div class="span-value">
+                        <span id="totalBalance" title="最后一天所有客户余额之和"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="goalInfo" class="goal-info">
+                <div class="layui-form-item">
+                    <label class="span-title">月份：</label>
+                    <div class="span-value">
+                        <span id="goalMonth" class="time-quantum" title="月份"></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="span-title">到款目标：</label>
+                    <div class="span-value">
+                        <span id="totalActualReceivable" class="actual" title="实际到款"></span> / <span id="totalGoalReceivable" class="goal" title="到款目标"></span>（<span id="receivableRatio" class="ratio" title="完成率"></span>）
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="span-title">利润目标：</label>
+                    <div class="span-value">
+                        <span id="totalGrossProfit" class="actual" title="实际毛利润"></span> / <span id="totalGoalGrossProfit" class="goal" title="毛利润目标"></span>（<span id="grossProfitRatio" class="ratio" title="完成率"></span>）
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="income-table-div">
+            <table id="expense-income" lay-filter="expense-income" lay-size="sm"></table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/sheet/js/importExpenseIncomeSheet.js (v=${t})}"></script>
+</body>
+</html>

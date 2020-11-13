@@ -1,0 +1,103 @@
+<link rel="stylesheet" th:href="@{/views/supplier/css/supplierInfo.css (v=${t})}" />
+<div class="layui-card">
+    <div class="layui-card-header panel_title">
+        <b class="module_title" th:text="'供应商(' + ${#lists.size(suppliers)} + '家)'"></b>
+        <span th:if="${pagePermission['supplierSearch']}" class="add_btn" id="search_supplier">
+            <span class="layui-icon layui-icon-search" style="display: inline-block;position: static;" title="搜索供应商"></span>
+        </span>
+        <span class="add_btn" id="add_supplier_info" th:if="${pagePermission['supplierInfoEdit']}">
+            <i class="layui-icon layui-icon-add-circle" style="display: inline-block;position: static;" title="添加供应商"></i>
+        </span>
+    </div>
+
+    <div class="layui-card-body" style="padding: 2px 2px;">
+
+        <div id="muti_pannel">
+            <!-- 供应商分类 -->
+            <div class="layui-collapse" lay-accordion="" lay-filter="test">
+                <div class="layui-colla-item"
+                     th:if = "${not #lists.isEmpty(supplierTypes)}"
+                     th:each="supplierType : ${supplierTypes}">
+
+                    <div class="layui-colla-title"
+                         data-my-size='title-size-0'
+                         data-my-opts-type ="0"
+                         th:text="${supplierType.supplierTypeName} + ' ('+ ${supplierType.supplierCount} +'家)'" 
+                         th:attr="flow_ent_count=${supplierType.flowEntCount},supplier_type_id=${supplierType.supplierTypeId},supplier_type_name=${supplierType.supplierTypeName}"></div>
+
+                    <div class="layui-colla-content">
+                        <!-- 供应商 -->
+                        <div class="layui-collapse" lay-accordion style="padding-left: 5px">
+                            <div class="layui-colla-item"
+                                 th:if="${supplierType.supplierTypeId} == ${supplier.supplierTypeId}"
+                                 th:each="supplier: ${suppliers}">
+
+                                <div class="layui-colla-title"
+                                     data-my-title-tool="true"
+                                     th:attr="data-my-id = ${supplier.supplierId}, flow_ent_count=${supplier.flowEntCount},
+                                     data-my-right-tool = ${pagePermission['supplierInfoEdit'] ? 'true' : 'false'}"
+                                     data-my-opts-type ="1"
+                                     data-my-tool-right-icon = "layui-icon-edit"
+                                     data-my-size="title-size-1"
+                                     th:text="${supplier.companyName}"></div>
+
+                                <div class="layui-colla-content" style="padding-left: 2px">
+                                    <div class="layui-collapse" lay-accordion>
+
+                                        <div class="layui-colla-item">
+                                            <div class="layui-colla-title"
+                                                 th:attr="data-my-id = ${supplier.supplierId}"
+                                                 data-my-opts-type ="2"
+                                                 data-my-size = "title-size-2">
+                                                  基本信息
+                                            </div>
+                                            <div class="layui-colla-content" style="padding-left: 15px"
+                                                 th:attr="supplier-content-id=${supplier.supplierId}" ></div>
+                                        </div>
+
+                                        <div class="layui-colla-item"
+                                            th:if="${not pagePermission['supplierInfoOnly']}">
+                                            <div class="layui-colla-title"
+                                                 th:attr="data-my-id = ${supplier.supplierId},
+                                                 data-my-right-tool = ${pagePermission['supplierInfoEdit'] ? 'true' : 'false'}"
+                                                 data-my-opts-type ="3"
+                                                 data-my-size = "title-size-2"
+                                                 data-my-tool-right-icon = "layui-icon-edit">
+                                                部门信息
+                                            </div>
+                                            <div class="layui-colla-content"  th:attr="supplier-dept-id=${supplier.supplierId}"></div>
+                                        </div>
+
+                                        <div class="layui-colla-item"
+                                             th:if="${not pagePermission['supplierInfoOnly']}">
+                                            <div class="layui-colla-title"
+                                                 th:attr="data-my-id = ${supplier.supplierId},
+                                                 data-my-right-tool = ${pagePermission['supplierInfoEdit'] ? 'true' : 'false'}"
+                                                 data-my-opts-type ="4"
+                                                 data-my-size = "title-size-2"
+                                                 data-my-tool-right-icon = "layui-icon-add-circle">
+                                                联系日志
+                                            </div>
+                                            <div class="layui-colla-content"
+                                                 th:attr="id ='supplier-contact-log-content'+ ${supplier.supplierId}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form" id="search_input" style="display: none; padding: 20px;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">关键词：</label>
+        <div class="layui-input-inline">
+            <input type="text" id="keyWord" class="layui-input" style="text-align: left"></input>
+        </div>
+    </div>
+</div>
+<script  type="application/javascript" th:src="@{/views/supplier/js/supplierInfo.js (v=${t})}"></script>

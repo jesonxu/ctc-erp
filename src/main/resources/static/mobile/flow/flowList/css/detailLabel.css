@@ -1,0 +1,337 @@
+/* 必须标签 展示 必填 */
+label[required=true]:before {
+    content: "*";
+    color: #FF0000;
+}
+
+label[required]:before {
+    content: "*";
+    color: #FF0000;
+}
+
+/* 文件上传表头 */
+.file-label-head > thead > tr > th {
+    padding: 0.1em;
+    text-align: center;
+    min-height: 2em !important;
+    line-height: 2em;
+}
+
+/* 文件上传 内容展示 */
+.file-label-head > tbody > tr > td {
+    height: 2em;
+    padding: 0.1em !important;
+}
+
+/* 除了名称 其余的走居中展示 */
+.file-label-head > tbody > tr > td:not(:first-child) {
+    text-align: center;
+}
+
+/* 文件 边距 */
+.file-label-head {
+    margin: 0.2em 0;
+}
+
+.label-type-file .layui-upload-list {
+    margin: 0.2em 0;
+}
+
+/* 尽可能的让标签名展示更多 */
+.flow-detail .layui-form-label {
+    float: left;
+    display: block;
+    padding: 10px 0;
+    width: 105px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+}
+
+/* 梯度价格项 */
+.gradient-item {
+    margin-right: 3px;
+    padding-right: 3px;
+    border-right: solid #dfdfdf 0.15rem;
+}
+
+/* 价格梯度操作项 */
+.gradient-opts {
+    text-align: right;
+}
+
+/* 设置操作的按钮宽度 */
+.gradient-opts > button {
+    float: left;
+    width: 4rem;
+}
+
+/* 文件预览 */
+.file-preview {
+    text-decoration: underline;
+    color: #0008ff;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 1em;
+    margin-bottom: 0.3em;
+}
+
+/* 流程 公司数据表格 */
+.table-flow-company-data {
+    display: none;
+    margin-left: 1em;
+}
+
+/* 流程 公司数据表格 展示 */
+.table-flow-company-data-show {
+    display: inline-block;
+}
+
+/* 详情 一行展示 */
+.flow-detail-line:not(:last-child) {
+    margin-bottom: 0.3em;
+}
+
+/* 文件标签文件操作按钮  */
+.file-label-opts-btn {
+    height: 1.6em !important;
+    line-height: 1.6em !important;
+    padding: 0 0.7em !important;
+    font-size: 0.9em;
+}
+
+/* 文件标签 文件上传 */
+button[data-file-btn-id] {
+    width: 100%;
+    height: 3em;
+    border: solid #009688 0.1em;
+    color: #009688;
+}
+
+
+/**-----------------------------------------------------流程标签--------------------------------------------------*/
+/* 可编辑标签 */
+.flow-edit-labels {
+    border-top: dashed #999999 1px;
+    background-color: #ffffff;
+    margin-right: 0.5em;
+    padding-top: 0.5em;
+    padding-left: 1em;
+}
+
+/* 重新设置 间隔 */
+.flow-edit-labels .layui-form-item {
+    margin-bottom: 0.4em !important;
+}
+
+
+/* 流程标签名称 */
+.flow-label-name {
+    height: 1.5em;
+    line-height: 1.5em;
+    margin: 0.5em 0 0.2em 0;
+    display: inline-block;
+}
+
+/* 流程标签内容 */
+.flow-label-content {
+
+}
+
+/* 平台账号项 名称 */
+.platform-account-item .layui-form-label {
+    width: 4em;
+}
+
+/* 平台账号项 输入标签 */
+.platform-account-item .layui-input-block {
+    margin-left: 4em;
+}
+
+/* 平台账号项 操作按钮 */
+.platform-account-item .platform-opts {
+    float: right;
+}
+
+/*添加按钮 */
+.platform-account-item .platform-opts > .operation-add {
+    width: 7em;
+    color: #009688;
+    border-color: #009688;
+    height: 2em;
+    line-height: 2em;
+}
+
+/* 删除按钮 */
+.platform-account-item .platform-opts > .operation-delete {
+    height: 2em;
+    line-height: 2em;
+    width: 7em;
+    color: #FF0000;
+    border-color: #FF0000;
+}
+
+/* 流程详情 */
+.bill-record-detail {
+    cursor: pointer;
+    color: #1E9FFF;
+}
+
+/* 流程详情 2级内容 */
+.flow-record-2-content {
+    margin-left: 1em;
+}
+
+/* 设置下边距 */
+.flow-record-2-content:not(:last-child) {
+    padding-bottom: 0.3em;
+}
+
+/* 标识 必填项 */
+label[required='true']:before {
+    content: "*";
+    color: #FF0000;
+}
+
+/*--------------------------------审核--------------------------------------------------------------------------------*/
+
+/* 审核的上面分隔 */
+.flow-revoke, .flow-audit {
+    border-top: dashed #999999 0.1em;
+    background-color: #ffffff;
+    padding-left: 1em;
+    margin-right: 0.5em;
+}
+
+/* 审核操作按钮 */
+.audit-opts {
+    text-align: center;
+}
+
+/* 按钮的处理样式 */
+.audit-opts > button {
+    width: 40%;
+    height: 3em;
+    line-height: 3em;
+}
+
+/* 通过按钮 */
+.audit-opts > .audit-pass {
+
+}
+
+/* 拒绝 */
+.audit-opts > .audit-reject {
+    padding: 0;
+}
+
+/* 驳回的样式 */
+.audit-reject-role-list {
+    background: #ff5722;
+    z-index: 999999;
+    opacity: 1 !important;
+    clear: both;
+    position: absolute;
+    width: 37%;
+    color: white;
+    display: none;
+    margin-top: 0.1em;
+}
+
+/* 驳回的角色列表 */
+.audit-reject-role-list > dd {
+    height: 2.5em;
+    line-height: 2.5em;
+    text-align: left;
+    border-style: solid;
+    border-color: #FFFFFF;
+    padding-left: 1em;
+    border-width: 0.1em 0;
+}
+
+/* 驳回的角色展示 */
+.reject-display {
+    display: block !important;
+}
+
+/* 必须填写 */
+.must-wirte {
+    color: #FF0000;
+}
+
+/* 审核确认 */
+.confirm-pass {
+    color: #ce8905;
+}
+
+/* 审核备注 */
+.audit-remark {
+    width: 100%;
+    min-height: 3em;
+}
+
+/* 审核 */
+.audit-value {
+    /*margin-top: 5px;
+    margin-bottom: 5px;*/
+}
+
+/* 审核的样式 */
+.audit-value > label {
+    margin: 0.5em 0 0.2em 0;
+    display: inline-block;
+}
+
+/* 未对账 账单表格 */
+.un-write-off-table {
+    border: solid gray 0.1em;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+}
+
+/*表头 */
+.un-write-off-table th {
+    padding: 0.2em;
+    border: solid #cccccc 0.1em;
+    background-color: #f1f1f1;
+    height: 2em;
+    line-height: 2em;
+}
+
+/* 表数据行 */
+.un-write-off-table td {
+    padding: 0.5em 0;
+    border: solid #cccccc 0.1em;
+}
+
+/* 数字 */
+.un-write-off-table td[class*='number'] {
+    text-align: right;
+    padding-right: 0.2em;
+}
+
+/* 到款信息 */
+.un-write-off-table td[class*='company'] {
+    padding-left: 0.2em;
+}
+
+/* 时间 */
+.un-write-off-table th[class*='time'] {
+    text-align: center;
+    padding: 0 0.2em;
+}
+
+/* 总计 */
+.un-write-off-table td[class*='total-name'] {
+    text-align: right;
+    padding-right: 0.2em;
+}
+
+/* 不支持的流程 */
+.nonsupport-flow {
+    text-align: center;
+    height: 4em;
+    line-height: 4em;
+    color: #ff0000;
+    border-top: dashed #cccccc 0.1em;
+}

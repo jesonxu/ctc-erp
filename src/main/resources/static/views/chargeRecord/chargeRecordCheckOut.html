@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>充值记录核销</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <link rel="stylesheet" th:href="@{/views/chargeRecord/css/chargeRecordCheckOut.css (v=${t})}">
+</head>
+<body>
+<div class="layui-card" style="margin-bottom:30px;">
+    <input type="hidden" id="chargeRecordId" th:value="${dto.id}">
+    <div class="layui-card-body" style="background-color: #F2F2F2;">
+        <table class="show-table">
+            <tr>
+                <td class="table-title">充值时间：</td>
+                <td class="table-content" th:text="${dto.wtime}"></td>
+                <td class="table-title">充值金额：</td>
+                <td class="table-content" th:text="${dto.chargePrice}"></td>
+            </tr>
+            <tr>
+                <td class="table-title">公司名称：</td>
+                <td class="table-content" th:text="${dto.companyName}"></td>
+                <td class="table-title">备注：</td>
+                <td class="table-content" th:text="${dto.remark}"></td>
+            </tr>
+            <tr>
+                <td class="table-title">发起人：</td>
+                <td class="table-content" th:text="${dto.realName}"></td>
+                <td class="table-title">部门：</td>
+                <td class="table-content" th:text="${dto.deptName}"></td>
+            </tr>
+            <tr>
+                <td class="table-title">核销状态：</td>
+                <td class="table-content" th:if="${dto.checkOut == 0}">未核销</td>
+                <td class="table-content" th:if="${dto.checkOut == 1}">部分核销</td>
+                <td class="table-content" th:if="${dto.checkOut == 2}">已核销</td>
+                <td class="table-title">未核销金额：</td>
+                <td class="table-content" th:text="${dto.remainCheckOut}"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="layui-card-body">
+        <div id="upload_template">
+            <div class="layui-upload">
+                <div class="layui-form" >
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">公司名称</label>
+                        <div class="layui-input-inline input-div-xs">
+                            <input type="text" id="companyName" name="companyName" autocomplete="off" placeholder="请输入公司名称" class="layui-input input-xs">
+                        </div>
+                        <label class="layui-form-label">到款日期</label>
+                        <div class="layui-input-inline input-div-xs">
+                            <input type="text" name="startDate" id="startDate" placeholder="请选择开始时间" autocomplete="off" class="layui-input input-xs"/>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">~</div>
+                        <div class="layui-input-inline input-div-xs">
+                            <input type="text" name="endDate" id="endDate" placeholder="请选择结束时间" autocomplete="off" class="layui-input input-xs"/>
+                        </div>
+                        <div class="layui-input-inline">
+                            <button type="button" id="search" class="layui-btn layui-btn-normal layui-btn-sm">
+                                <i class="layui-icon layui-icon-search"></i>查询
+                            </button>
+                            <button type="button" id="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                                <i class="layui-icon layui-icon-refresh"></i>重置
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table id="income" th:attr="lay-filter='income'" lay-size="sm"></table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="layui-row layui-footer footer">
+    <button class="layui-btn btn-footer" id="ok_btn">
+        <i class="layui-icon layui-icon-ok"></i>确定
+    </button>
+    <button class="layui-btn layui-btn-danger btn-footer" id="cancel_btn">
+        <i class="layui-icon layui-icon-close"></i>取消
+    </button>
+</div>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/chargeRecord/js/chargeRecordCheckOut.js (v=${t})}"></script>
+</body>
+</html>

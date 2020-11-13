@@ -1,0 +1,155 @@
+package com.dahantc.erp.vo.##dd##.service.impl;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dahantc.erp.commom.PageResult;
+import com.dahantc.erp.commom.dao.SearchFilter;
+import com.dahantc.erp.commom.dao.ServiceException;
+import com.dahantc.erp.vo.##dd##.dao.I##WW##Dao;
+import com.dahantc.erp.vo.##dd##.entity.##WW##;
+import com.dahantc.erp.vo.##dd##.service.I##WW##Service;
+
+@Service("##ss##Service")
+public class ##WW##ServiceImpl implements I##WW##Service {
+	private static Logger logger = LogManager.getLogger(##WW##ServiceImpl.class);
+
+	@Autowired
+	private I##WW##Dao ##ss##Dao;
+
+	@Override
+	public ##WW## read(Serializable id) throws ServiceException {
+		try {
+			return ##ss##Dao.read(id);
+		} catch (Exception e) {
+			logger.error("读取##xx##失败", e);
+			throw new ServiceException("读取##xx##失败", e);
+		}
+	}
+
+	@Override
+	public boolean save(##WW## entity) throws ServiceException {
+		try {
+			return ##ss##Dao.save(entity);
+		} catch (Exception e) {
+			logger.error("保存##xx##失败", e);
+			throw new ServiceException("保存##xx##失败", e);
+		}
+	}
+	
+	@Override
+	public boolean delete(Serializable id) throws ServiceException {
+		try {
+			return ##ss##Dao.delete(id);
+		} catch (Exception e) {
+			logger.error("删除##xx##失败", e);
+			throw new ServiceException("删除##xx##失败", e);
+		}
+	}
+
+	@Override
+	public boolean update(##WW## enterprise) throws ServiceException {
+		try {
+			return ##ss##Dao.update(enterprise);
+		} catch (Exception e) {
+			logger.error("更新##xx##失败", e);
+			throw new ServiceException("更新##xx##失败", e);
+		}
+	}
+
+	@Override
+	public boolean updateByBatch(List<##WW##> objs) throws ServiceException {
+		try {
+			return ##ss##Dao.updateByBatch(objs);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			throw new ServiceException(e);
+		}
+	}
+
+	@Override
+	public boolean saveByBatch(List<##WW##> objs) throws ServiceException {
+		try {
+			return ##ss##Dao.saveByBatch(objs);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			throw new ServiceException(e);
+		}
+	}
+
+	@Override
+	public boolean deleteByBatch(List<##WW##> objs) throws ServiceException {
+		try {
+			return ##ss##Dao.deleteByBatch(objs);
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			throw new ServiceException(e);
+		}
+	}
+
+	@Override
+	public int getCount(SearchFilter filter) throws ServiceException {
+		try {
+			return ##ss##Dao.getCountByCriteria(filter);
+		} catch (Exception e) {
+			logger.error("查询##xx##数量失败", e);
+			throw new ServiceException("查询##xx##数量失败", e);
+		}
+	}
+
+	@Override
+	public PageResult<##WW##> queryByPages(int pageSize, int currentPage, SearchFilter filter) throws ServiceException {
+		try {
+			return ##ss##Dao.findByPages(pageSize, currentPage, filter);
+		} catch (Exception e) {
+			logger.error("查询##xx##分页信息失败", e);
+			throw new ServiceException("查询##xx##分页信息失败", e);
+		}
+	}
+	
+	@Override
+	public List<##WW##> findByFilter(int size, int start, SearchFilter filter) throws ServiceException {
+		try {
+			return ##ss##Dao.findByFilter(size, start, filter);
+		} catch (Exception e) {
+			logger.error("查询##xx##失败", e);
+			throw new ServiceException("查询##xx##失败", e);
+		}
+	}
+
+	@Override
+	public List<##WW##> queryAllBySearchFilter(SearchFilter filter) throws ServiceException {
+		try {
+			return ##ss##Dao.queryAllBySearchFilter(filter);
+		} catch (Exception e) {
+			logger.error("查询##xx##失败", e);
+			throw new ServiceException("查询##xx##失败", e);
+		}
+	}
+	
+	@Override
+	public List<##WW##> findByhql(String hql, Map<String, Object> params, int maxCount) throws ServiceException {
+		try {
+			return ##ss##Dao.findByhql(hql, params, maxCount);
+		} catch (Exception e) {
+			logger.error("查询##xx##失败", e);
+			throw new ServiceException("查询##xx##失败", e);
+		}
+	}
+
+    @Override
+	public ##WW## readOneByProperty(String property, Object value) throws ServiceException {
+		try {
+			return ##ss##Dao.readOneByProperty(property, value);
+		} catch (Exception e) {
+			logger.error("查询##xx##失败", e);
+			throw new ServiceException("查询##xx##失败", e);
+		}
+	}
+}

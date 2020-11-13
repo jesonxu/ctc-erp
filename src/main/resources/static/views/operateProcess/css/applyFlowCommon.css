@@ -1,0 +1,534 @@
+.applyFlowLabel .layui-input-inline, .layui-input {
+    border-width: 0 0 1px 0;
+    background-color: transparent;
+}
+
+.applyFlowLabel .layui-form-item .layui-input-inline {
+    width: auto;
+    padding: 0;
+}
+
+.applyFlowLabel .layui-form-label .layui-form-radio {
+    margin: 0;
+    padding: 0;
+}
+
+.applyFlowLabel .layui-input-inline input {
+    width: 140px;
+}
+
+.applyFlowLabel .layui-select-title {
+    width: auto;
+}
+
+.applyFlowLabel .layui-table {
+    background-color: transparent;
+}
+
+.applyFlowLabel .layui-textarea {
+    background-color: transparent;
+}
+
+.applyFlowLabel .layui-form-item .layui-inline {
+    line-height: 24px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+input.unit {
+    padding-right: 40px;
+}
+
+span.unit {
+    margin-left: -20px;
+}
+
+.applyFlowLabel .layui-form-label {
+    width: 100px;
+    padding: 9px 0;
+}
+
+#inline-condition {
+    margin-left: 18px;
+}
+
+.send {
+    width: 102px !important;
+}
+
+.condition {
+    width: 33px !important;
+}
+
+.invoice-line {
+    border: #e8e8e8 solid 1px;
+    padding-bottom: 5px;
+}
+
+.invoice-line .layui-form-label {
+    padding: 4px 0;
+}
+
+.invoice-line .layui-input-block {
+    min-height: 28px;
+}
+
+.invoice-line input {
+    height: 28px;
+}
+
+.invoice-line input[readonly] {
+    border: 0;
+}
+
+.remuneration input {
+    width: 110px;
+    height: 30px;
+    display: inline-block;
+    text-align: right;
+    border-width: 0 0 1px 0;
+    padding-left: 0;
+    padding-right: 25px;
+}
+
+i[class*="remuneration_unit"] {
+    padding-top: 8px;
+    margin-left: -15px;
+    color: #9c9c9c;
+}
+
+.pay_detail {
+    display: inline-block;
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    padding-left: 0;
+    padding-right: 16px;
+}
+
+.delete-paroduct-bill {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.delete-paroduct-bill:hover {
+    color: #FF0000;
+}
+
+.product-bill-line{
+    border: #e8e8e8 solid 1px;
+    padding-bottom: 5px;
+}
+
+.product-bill-title {
+    text-align: center;
+    margin-top: 5px;
+    color: #000000;
+    display: block;
+}
+
+.product-bill-line .layui-form-label {
+    padding: 4px 0;
+}
+
+.product-bill-line .layui-input-block {
+    min-height: 28px;
+}
+
+.product-bill-line input {
+    height: 28px;
+}
+
+.product-bill-line input[readonly] {
+    border-width: 0;
+}
+
+.product-bill-line .bill-money-unit {
+    margin-left: -16px;
+}
+
+.bill_count_tip {
+    font-size: 18px;
+    text-align: center;
+    color: red;
+}
+
+input[class*='bill-money'] {
+    display: inline-block;
+    width: 100px;
+    border-width: 0 0 1px 0;
+    text-align: center;
+    padding: 0 1px;
+}
+
+/*.applyFlowLabel input:read-only {
+    border-width: 0;
+}*/
+
+.applyFlowLabel .layui-tab-card {
+    box-shadow: none;
+}
+
+.invoice-info-line{
+    border: #e8e8e8 solid 1px;
+    padding-bottom: 5px;
+}
+
+.invoice-info-title {
+    text-align: center;
+    margin-top: 5px;
+    color: #000000;
+    display: block;
+}
+
+.invoice-info-line .layui-form-label {
+    padding: 4px 0;
+}
+
+.invoice-info-line .layui-input-block {
+    min-height: 28px;
+}
+
+.invoice-info-line input {
+    height: 28px;
+}
+
+.invoice-info-line input[readonly] {
+    border-width: 0;
+}
+
+.invoice-info-line .invoice-money-unit {
+    margin-left: -16px;
+}
+
+.gradient-line {
+    border: #e8e8e8 solid 1px;
+    padding-bottom: 5px;
+}
+
+.gradient-line .layui-form-label {
+    padding: 4px 0;
+}
+
+.gradient-line .layui-input-block {
+    min-height: 30px;
+}
+
+.gradient-line input {
+    height: 30px;
+}
+
+.gradient-line input[readonly] {
+    border-width: 0;
+}
+
+.gradient-line .gradient-unit {
+    margin-left: -16px;
+}
+
+.gradient-line .gradient-detail {
+    display: inline-block;
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    padding-right: 16px;
+}
+
+.applyFlowLabel .layui-small-table tr td, .layui-small-table tr td th{
+	padding: 0 !important;
+}
+/*table表格重影*/
+.order-line .layui-table-cell {
+    height: 28px;
+    line-height: 28px;
+    padding: 0 15px;
+    position: relative;
+    box-sizing: border-box;
+}
+.order-line .layui-table-edit:focus {
+    background-color: #ffffff;
+}
+.time-bill-money-item{
+    margin-top: 3px;
+}
+
+.time-account-bill{
+    margin-right: 20px;
+    border: solid 1px #e8e8e8;
+    padding: 3px;
+    border-radius: 3px;
+}
+
+.time-account-bill > .time-start, .time-end, .success, .price {
+    display: inline-block;
+    width: calc(50% - 25px);
+    padding-left: 10px;
+}
+
+.time-account-bill > .total-money {
+    padding-left: 10px !important;
+}
+
+.btn-opts {
+    position: absolute;
+    top: 30%;
+    right: -20px;
+}
+
+.btn-opts > .layui-icon-add-1 {
+    border: solid 1px #666666;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+.btn-opts > .layui-icon-close {
+    cursor: pointer;
+    border: solid 1px #FF0000 ;
+    color: #FF0000;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+.btn-opts > .layui-icon-add-1:hover, .layui-icon-close:hover {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    font-weight: bold;
+}
+
+.time-account-bill-index{
+    position: absolute;
+    top: 40%;
+    left: -20px;
+    font-weight: 900;
+    color: #cccccc;
+}
+
+.time-account-bill-total{
+    margin-right: 20px;
+    padding: 3px;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: #e8e8e8;
+    font-size: 12px;
+}
+
+.time-account-bill-total > table {
+    width: 100%;
+    text-align: center;
+}
+
+.time-account-bill-total .total-success {
+    color: #FF0000;
+}
+
+.time-account-bill-total .average-price {
+    color: #FF0000;
+}
+
+.time-account-bill-total .total-money {
+    color: #FF0000;
+}
+
+.platform-account-item {
+    border-left: solid #e8e7e7 1px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.platform-account-item .platform-opts {
+    position: absolute;
+    right: -20px;
+    top: 30%;
+    cursor: pointer;
+}
+
+.platform-account-item .account {
+    display: inline-block;
+    width: calc(50% - 2px);
+}
+
+.platform-account-item .password {
+    display: inline-block;
+    width: calc(50% - 2px);
+}
+
+.platform-opts > .layui-icon-add-1 {
+    cursor: pointer;
+    border: solid 1px #666666;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+.platform-opts > .layui-icon-close {
+    cursor: pointer;
+    border: solid 1px #FF0000;
+    border-radius: 3px;
+    font-size: 10px;
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.platform-opts > i:hover {
+    opacity: .8;
+    filter: alpha(opacity=80);
+}
+
+.platform-index {
+    position: absolute;
+    top: 35%;
+    left: -22px;
+    font-weight: 900;
+    color: #cccccc;
+}
+
+.billInvoiceAmount {
+    border: 1px solid red;
+    text-align: center;
+    line-height: 30px;
+    height: 28px;
+    color: red;
+    padding: 1px;
+}
+
+.billInvoiceAmount[disabled] {
+    border: 0;
+}
+
+.billInvoiceAmountTip {
+    position: absolute;
+    left: 10px;
+}
+
+.unchecked-bill-list {
+    border: 1px solid darkslategray;
+}
+
+.unchecked-bill-item {
+    padding-left: 10px;
+    border: 2px solid whitesmoke;
+}
+
+.unchecked-bill-item .bill-data {
+    padding-left: 28px;
+}
+
+.unchecked-bill-tools {
+    position: relative;
+    top: 6px;
+    cursor: pointer;
+    padding-right: 6px;
+}
+
+.unchecked-bill-total {
+    padding-left: 10px;
+    border: 2px solid whitesmoke;
+}
+
+.unchecked-bill-total-tip {
+    float: none !important;
+    width: fit-content !important;
+    padding: 4px;
+    /*font-size: 18px;*/
+    color: red;
+}
+
+.unchecked-bills input {
+    border-bottom: 1px solid red !important;
+}
+
+.unchecked-bills input:disabled {
+    border: none !important;
+}
+
+.unchecked-bill-file-tip {
+    position: relative;
+    top: 4px;
+}
+
+.unchecked-bill-file {
+    height: 32px;
+    padding-left: 10px;
+}
+
+.bill-analysis-file {
+    height: 32px;
+    padding-left: 10px;
+}
+
+.unchecked-bill-file label {
+    width: fit-content !important;
+    padding: 5px 0 !important;
+}
+
+.bill-analysis-file label {
+    width: fit-content !important;
+    padding: 5px 0 !important;
+}
+
+.bill-remark {
+    word-break: break-word;
+    white-space: normal;
+    width: inherit;
+    min-width: inherit;
+    padding: 0 10px;
+}
+
+.account-recharge {
+    border: #e8e8e8 solid 1px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.account-recharge .layui-form-label {
+    padding: 4px 0;
+}
+
+.account-recharge .layui-input-block {
+    min-height: 30px;
+}
+
+.account-recharge input {
+    height: 30px;
+}
+
+.account-recharge .layui-form-select {
+	border: #e8e8e8 solid 1px;
+}
+
+.account-recharge input[readonly] {
+    border-width: 0;
+}
+
+.account-recharge .gradient-unit {
+    margin-left: -16px;
+}
+
+.account-recharge .gradient-detail {
+    display: inline-block;
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    padding-right: 16px;
+}
+
+.layui-laydate-footer .laydate-btns-time {
+    padding: 2px 10px;
+    background-color: #1E9FFF;
+    color: white !important;
+    border-radius: 2px;
+}
+
+.time-duration-div {
+    padding: 5px 0;
+    display: block;
+}
+
+.time-duration {
+    color: red;
+}
+
+.leave-info {
+    color: red;
+}

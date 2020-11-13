@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+    <head>
+        <meta charset="utf-8">
+        <title th:text="${systemName}">ERP</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/login.css" media="all">
+        <link rel="stylesheet" th:href="@{/common/css/index.css (v=${t})}" media="all" />
+        <link rel="stylesheet" th:href="@{/common/css/console_move.css (v=${t})}" media="all" />
+        <link rel="stylesheet" th:href="@{/common/css/my_pannel.css (v=${t})}" media="all" />
+        <link rel="stylesheet" th:href="@{/common/css/rest_pannel.css (v=${t})}" media="all" />
+
+        <script type='text/javascript' src='/common/js/font_edit.js'></script>
+        <script type='text/javascript' src="/common/js/jquery-1.8.0.min.js"></script>
+        <script type='text/javascript' src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+        <script type='text/javascript' src="/common/js/jquery.nicescroll.min.js"></script>
+        <script type='text/javascript' src="/layuiadmin/layui/layui.js"></script>
+        <script type='text/javascript' th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/common/js/console_move.js (v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/common/js/module_open.js (v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/common/js/my_pannel.js (v=${t})}"></script>
+        <script type="text/javascript" src="/common/js/table_item.js"></script>
+        <script type='text/javascript' th:src="@{/views/console/js/resourceConsole.js (v=${t})}"></script>
+        <script type="text/javascript" th:src="@{/views/console/js/resourceConsoleCommon.js (v=${t})}"></script>
+    </head>
+    <style type="text/css">
+        b {
+            font-weight: normal;
+        }
+
+        .layui-row {
+            background-color: #ffffff;
+        }
+        .layui-layout-body{
+			overflow: hidden; 
+			width:100% !important;
+			height:100% !important;
+		}
+		#LAY_app>div{
+			height:100%;
+		}
+		#resource-console-module{
+			overflow: hidden; 
+			width:100%;
+			height:100%;
+		}
+		.move_outer{
+			height:100%;
+			overflow-x:hidden;
+			overflow-y:auto;
+		}
+		.move_outer {
+           scrollbar-width: none;
+        }
+		/*webkit内核*/
+		.move_outer::-webkit-scrollbar {
+		    width:0px;
+		    height:0px;
+		}
+		.move_outer::-webkit-scrollbar-button    {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-webkit-scrollbar-track     {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-webkit-scrollbar-track-piece {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-webkit-scrollbar-thumb{
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-webkit-scrollbar-corner {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-webkit-scrollbar-resizer  {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-webkit-scrollbar {
+		    width:10px;
+		    height:10px;
+		}
+		/*o内核*/
+		.move_outer .-o-scrollbar{
+		    -moz-appearance: none !important;   
+		    background: rgba(0,255,0,0) !important;  
+		}
+		.move_outer::-o-scrollbar-button    {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-o-scrollbar-track     {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-o-scrollbar-track-piece {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-o-scrollbar-thumb{
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-o-scrollbar-corner {
+		    background-color:rgba(0,0,0,0);
+		}
+		.move_outer::-o-scrollbar-resizer  {
+		    background-color:rgba(0,0,0,0);
+		}
+		/*IE10,IE11,IE12*/
+		.move_outer{
+		    -ms-scroll-chaining: chained;
+		    -ms-overflow-style: none;
+		    -ms-content-zooming: zoom;
+		    -ms-scroll-rails: none;
+		    -ms-content-zoom-limit-min: 100%;
+		    -ms-content-zoom-limit-max: 500%;
+		    -ms-scroll-snap-type: proximity;
+		    -ms-scroll-snap-points-x: snapList(100%, 200%, 300%, 400%, 500%);
+		    -ms-overflow-style: none;
+		    overflow: auto;
+		}
+    </style>
+
+    <body class="layui-layout-body">
+        <div id="LAY_app">
+            <div>
+                <div class="layui-row" id="resource-console-module">
+                    <!-- 供应商 -->
+                    <div class="layui-col-100-md16 move_outer">
+                        <div class="move_inner supplier_depart" th:include="/views/supplier/supplierInfo.html"></div>
+                    </div>
+                    <!-- 产品 -->
+                    <div class="layui-col-100-md16 move_outer">
+                        <div class="move_inner" th:include="/views/product/productInfo.html"></div>
+                    </div>
+                    <!-- 调价 -->
+                    <div id="operate" class="layui-col-100-md26 move_outer">
+                        <div class="move_inner" th:include="/views/operate/operate.html"></div>
+                    </div>
+                    <!-- 结算 -->
+                    <div id="settlement" class="layui-col-100-md26 move_outer">
+                        <div class="move_inner" th:include="/views/settlement/settlement.html"></div>
+                    </div>
+                    <!-- 统计 -->
+                    <div class="layui-col-100-md16 move_outer move_last">
+                        <div class="move_inner" th:include="/views/statistics/statistics.html"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 辅助元素，一般用于移动设备下遮罩 -->
+            <div class="layadmin-body-shade" layadmin-event="shade"></div>
+        </div>
+    </body>
+    <script type="application/javascript" src="/common/js/reset_pannel.js"></script>
+
+</html>

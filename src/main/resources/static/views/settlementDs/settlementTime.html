@@ -1,0 +1,48 @@
+<!--<div class="layui-card-header panel_title">
+    <b class="module_title">结算</b>
+</div>-->
+
+<div id="settlement_body" class="layui-card-body" style="padding: 0;margin-top: 2px" th:if="${not #maps.isEmpty(yearAndmonth)}">
+    <div class="layui-collapse" lay-accordion="" lay-filter="settlement_year_title">
+        <!-- 年 -->
+        <div class="layui-colla-item" th:each="year : ${yearAndmonth}">
+            <!-- title -->
+            <div class="layui-colla-title"
+                 data-my-opts-type="settlement_year"
+                 data-my-size="title-size-0"
+                 th:attr="data-my-id = ${productId} + '||' + ${year.key}, flow_ent_count=${#maps.isEmpty(yearFlowCount)?0:yearFlowCount[year.key]}"
+                 th:text="${year.key} + '年'"></div>
+
+            <!-- 内容 -->
+            <div class="layui-colla-content">
+
+                <!-- 月 -->
+                <div class="layui-collapse" lay-accordion="" lay-filter="settlement_month_title">
+                    <div class="layui-colla-item" th:if="${not #lists.isEmpty(year.value)}"
+                         th:each="month: ${year.value}">
+                        <!-- title -->
+                        <div class="layui-colla-title"
+                             data-my-size="title-size-1"
+                             data-my-opts-type="settlement_month"
+                             th:attr="data-my-id = ${productId} + '||' + ${year.key} + '||' + ${month.month}, flow_ent_count=${month.flowEntCount}"
+                             th:text="${month.monthStr}">
+                        </div>
+                        <!-- 内容 -->
+                        <div class="layui-colla-content"
+                             th:attr="settlement_month_detail = ${productId} + ${year.key} + ${month.month}" >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="settlement_body" class="layui-card-body" th:if="${#maps.isEmpty(yearAndmonth)}">
+    <div>
+        暂无数据
+    </div>
+</div>
+<div class="layui-card-body" th:if="${!#maps.isEmpty(pagePermission)} and ${pagePermission['dsSupplierApplyFlow']} and ${buttonBody}" style="padding: 0;margin-top: 2px">
+    <div class="layui-btn-container" id="buttonBody">
+    </div>
+</div>

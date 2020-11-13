@@ -1,0 +1,39 @@
+package com.dahantc.erp.vo.##dd##.service;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+
+import com.dahantc.erp.commom.PageResult;
+import com.dahantc.erp.commom.dao.SearchFilter;
+import com.dahantc.erp.commom.dao.ServiceException;
+import com.dahantc.erp.vo.##dd##.entity.##WW##;
+
+public interface I##WW##Service {
+	##WW## read(Serializable id) throws ServiceException;
+
+	boolean save(##WW## entity) throws ServiceException;
+
+	boolean delete(Serializable id) throws ServiceException;
+
+	boolean update(##WW## enterprise) throws ServiceException;
+
+	int getCount(SearchFilter filter) throws ServiceException;
+
+	PageResult<##WW##> queryByPages(int pageSize, int currentPage, SearchFilter filter) throws ServiceException;
+	
+	List<##WW##> findByFilter(int size, int start, SearchFilter filter) throws ServiceException;
+
+	List<##WW##> queryAllBySearchFilter(SearchFilter filter) throws ServiceException;
+	
+	List<##WW##> findByhql(final String hql, final Map<String, Object> params, int maxCount) throws ServiceException;
+	
+	boolean updateByBatch(List<##WW##> objs) throws ServiceException;
+
+	boolean saveByBatch(List<##WW##> objs) throws ServiceException;
+
+	boolean deleteByBatch(List<##WW##> objs) throws ServiceException;
+
+	##WW## readOneByProperty(String property, Object value) throws ServiceException;
+
+}

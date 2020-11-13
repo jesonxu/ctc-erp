@@ -1,0 +1,88 @@
+body {
+    margin: 0;
+    background-color: rgb(248, 248, 248);
+}
+
+html, body {
+    height: 100%;
+}
+
+/* 工作台 头部 */
+.console-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-left: 0.7em;
+    background-color: #FFFFFF;
+    box-shadow: 0.1em 0.1em 0.1em #e6e6e6;
+    z-index: 99999;
+    display: flex;
+    -webkit-box-direction: normal;
+    height: 2.2em;
+    line-height: 2.2em;
+}
+
+.console-group {
+    padding-top: 2.7em;
+}
+
+.console-group-item {
+    border-radius: 0.4em;
+    background-color: white;
+    width: calc(100% - 1em);
+    margin: 0 auto;
+}
+
+.console-group-item-title {
+    padding-left: 0.8em;
+    height: 2em;
+    line-height: 2em;
+    color: rgb(153, 153, 153);
+}
+
+.layui-row {
+    width: 100%;
+    border-top: 0.02em solid rgb(248, 248, 248);
+}
+
+.layui-col-md4 {
+    padding: 0.6em 0;
+    width: 32%;
+    display: inline-block;
+    text-align: center;
+    vertical-align: center;
+}
+
+.layui-col-md4 .icon-blank:before {
+    display: inline-block;
+    background-color: white;
+    width: 1.6em;
+    height: 1.6em;
+    line-height: 1.6em;
+    font-size: 2em;
+    text-align: center;
+    content: " ";
+}
+
+.layui-col-md4 i:before {
+    color: white;
+    display: inline-block;
+    background-color: rgb(83, 156, 250);
+    width: 1.6em;
+    height: 1.6em;
+    line-height: 1.6em;
+    font-size: 2em;
+    text-align: center;
+    vertical-align: center;
+    border-radius: 0.2em;
+}
+
+.layui-col-md4 i span {
+    height: 2.3em;
+    line-height: 2.3em;
+}
+
+.layui-row .layui-col-md4:nth-child(2), .layui-row .layui-col-md4:nth-child(3) {
+    width: calc(32.2% - 0.02em);
+    border-left: 0.02em solid rgb(248, 248, 248);
+}

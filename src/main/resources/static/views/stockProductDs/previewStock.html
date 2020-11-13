@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/views/stockProductDs/css/stockProduct.css" media="all">
+</head>
+
+<body style="background-color: white">
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div id="add-public-info" class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <!--采购商品信息-->
+            <input id="isEdit" th:value='${isEdit}' type="hidden">
+            <input id="homeId" th:value='${DsSaveDepotDto.id}' type="hidden">
+            <input id="dsDepotItems" th:value='${DsSaveDepotDto.DsDepotItems}' type="hidden">
+            <div class="layui-form-item">
+                <div class='stock-table'>
+                    <table class='layui-table stock-product-table' lay-filter='stock-product-table' id='stock-product-table'>
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'id', hide: true}"></th>
+                            <th lay-data="{field:'productId', hide: true}"></th>
+                            <th lay-data="{field:'supplierId', hide: true}"></th>
+                            <th lay-data="{field:'productName'}" >产品名称</th>
+                            <th lay-data="{field:'supplierName'}" >供应商名称</th>
+                            <th lay-data="{field:'format'}">规格 </th>
+                            <th lay-data="{field:'price'}">采购单价</th>
+                            <th lay-data="{field:'amount', width: 100}">采购数量</th>
+                            <th lay-data="{field:'total'}">金额</th>
+                            <th lay-data="{field:'depotType', width: 130, templet: '#selectDepottypeTpl'}">库存类别</th>
+                            <th lay-data="{field:'isSample', templet: '#switchSampleTpl'}">是否样品</th>
+                            <th lay-data="{field:'validTime', width: 150}">产品有效期</th>
+                            <th lay-data="{field:'remark'}">备注</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <script type="text/html" id="switchSampleTpl">
+                        <input type="checkbox" name="isSample" value="{{d.isSample}}" lay-skin="switch" lay-text="是|否" disabled lay-filter="stock-isSample" {{ d.isSample == '0' ? 'checked' : '' }}>
+                    </script>
+                    <script type="text/html" id="selectDepottypeTpl">
+                        <select name="depotType" id="depotType" disabled lay-filter="stock-depotType" data-value="{{d.depotType}}">
+                            <option value="我方外租仓" {{ d.depotType == '我方外租仓' ? 'selected' : '' }}>我方外租仓</option>
+                            <option value="供应商仓库" {{ d.depotType == '供应商仓库' ? 'selected' : '' }}>供应商仓库</option>
+                            <option value="公司仓库" {{ d.depotType == '公司仓库' ? 'selected' : '' }}>公司仓库</option>
+                        </select>
+                    </script>
+                </div>
+            </div>
+            <div class="layui-form-item" style="padding: 50px 0 20px 0;">
+                <div class="layui-inline">
+                    <label class="layui-form-label"><span style="color: red;">*</span>采购日期：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="配货单有效截止日期" data-type="0" id="stock-date"
+                               th:value="${DsSaveDepotDto.buyTime}" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" disabled>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="other-expenses">其他支出：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="other-expenses" id="other-expenses" th:value="${DsSaveDepotDto.otherCost}" PLACEHOLDER="请输入其他支出" autocomplete="off" class="layui-input" disabled/>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="total-payment">付款总额：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="total-payment" id="total-payment" th:value="${DsSaveDepotDto.depotCost}" disabled PLACEHOLDER="不需要输入" autocomplete="off" class="layui-input"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/common/js/jquery-1.8.0.min.js"></script>
+<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script th:src="@{/views/stockProductDs/js/previewStock.js (v=${t})}"></script>
+</html>

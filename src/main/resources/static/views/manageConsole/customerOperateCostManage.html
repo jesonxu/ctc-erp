@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>客户运营成本管理</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/common/css/common.css" media="all">
+    <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+    <link rel="stylesheet" href="/views/parameter/css/parameter.css">
+    <link rel="stylesheet" href="/views/manageConsole/css/customerOperateCostManage.css" media="all">
+</head>
+<style type="text/css">
+
+</style>
+<body>
+<div class="layui-card">
+    <div class="search-line">
+        <label class="layui-form-label" for="customerName">客户名称：</label>
+        <div class="layui-input-inline">
+            <input type="text" id="customerName" name="customerName" placeholder="输入客户名称查询" class="layui-input"/>
+        </div>
+        <div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-sm" id="btn-search">
+                <i class="layui-icon layui-icon-search"></i>查询
+            </button>
+            <button type="reset" class="layui-btn layui-btn-sm layui-btn-normal" id="btn-reset">
+                <i class="layui-icon layui-icon-refresh"></i>重置
+            </button>
+        </div>
+    </div>
+
+    <!-- 表格 -->
+    <div class="table-info">
+        <table id="productOperateCostList" lay-data="{id: 'entityid'}" lay-filter="productOperateCostList">
+        </table>
+        <script type="text/html" id="table-opts">
+            <div class="layui-btn-container">
+                <span class="title-show">统一运营成本(元/条):</span>
+                <span class="config-item" th:each="entry : ${productTypeMap}">
+                    <span class="title-show" th:text="${entry.value}+'：'"></span>
+                    <input class="layui-input table-header-input title-show unified-cost-input"
+                           th:value=${unifiedCostMap[entry.key]}
+                           type="text" name="productOperateFixedCost" placeholder="保留六位小数" autocomplete="off">
+                </span>
+                <button class="layui-btn layui-btn-xs" lay-event="save">
+					<i class="layui-icon layui-icon-ok-circle"></i>保存
+				</button>
+            </div>
+        </script>
+
+        <script type="text/html" id="table-row-opts">
+            <button class="layui-btn layui-btn-xs layui-btn-normal" lay-event="save">
+                <!--<i class="layui-icon layui-icon-ok-circle"></i>-->
+                保存
+            </button>
+        </script>
+    </div>
+
+</div>
+
+<script src="/common/js/jquery-1.8.0.min.js"></script>
+<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script src="/common/js/commonJs.js"></script>
+<script src="/common/js/toolbar_lib.js"></script>
+<script src="/common/js/formSelects-v4.js"></script>
+<script
+        th:src="@{/views/manageConsole/js/customerOperateCostManage.js (v=${t})}"></script>
+</body>
+</html>

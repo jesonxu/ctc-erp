@@ -1,0 +1,14 @@
+.layui-fluid {
+    padding: 0 !important;
+}
+
+.layui-form-item .layui-inline {
+    margin-bottom: 0;
+    margin-right: 0;
+}
+
+.layui-table-view .layui-table {
+     position: relative;
+     width: 100%;
+     margin: 0;
+ }

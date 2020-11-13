@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>修改出勤状态</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" th:href="@{/views/attendance/css/editAttendance.css (v=${t})}" />
+</head>
+<body>
+    <div class="layui-card" style="background-color: whitesmoke;">
+        <input type="hidden" id="id" th:value="${id}">
+        <div class="basic-info">
+            <div class="layui-row">
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                    <div class="bill-detail-title">日期：</div>
+                    <div id="date" class="bill-detail-content" title=""></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                    <div class="bill-detail-title">部门：</div>
+                    <div id="deptName" class="bill-detail-content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                    <div class="bill-detail-title">姓名：</div>
+                    <div id="realName" class="bill-detail-content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                    <div class="bill-detail-title">出勤状况：</div>
+                    <div id="workStatus" class="bill-detail-content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                    <div class="bill-detail-title">时间线：</div>
+                    <button id="timeLine" class="layui-btn layui-btn-primary layui-btn-xs">
+                        时间线
+                    </button>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 bill-detail">
+                    <div class="bill-detail-title">概况：</div>
+                    <div class="bill-detail-content">
+                        <span id="iconWork" data-type="work" class="status-icon">班</span>
+                        <span id="iconLeave" data-type="leave" class="status-icon">假</span>
+                        <span id="iconOvertime" data-type="overtime" class="status-icon">加</span>
+                        <span id="iconOutside" data-type="outside" class="status-icon">外</span>
+                        <span id="iconBusinessTravel" data-type="businessTravel" class="status-icon">差</span>
+                        <span id="iconLate" data-type="late" class="status-icon">迟</span>
+                        <span id="iconAbsenteeism" data-type="absenteeism" class="status-icon">缺</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="attendance-info">
+            <div class="attendance-info-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否工作：</label>
+                    <div class="layui-input-inline">
+                        <span id="work" title=""></span>
+                    </div>
+                    <label class="layui-form-label">工作时长：</label>
+                    <div class="layui-input-inline">
+                        <span id="workMins" title=""></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">工作详情：</label>
+                    <div class="layui-input-block">
+                        <textarea id="workInfo" placeholder="无" class="layui-textarea" rows="3" readonly></textarea>
+                    </div>
+                </div>
+                <div class="operate-area">
+                    <button name="clean" data-type="work" class="layui-btn layui-btn-danger layui-btn-xs">
+                        清空
+                    </button>
+                    <button name="add" data-type="work" class="layui-btn layui-btn-danger layui-btn-xs">
+                        增加
+                    </button>
+                </div>
+            </div>
+
+            <div class="attendance-info-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否请假：</label>
+                    <div class="layui-input-inline">
+                        <span id="leave" title=""></span>
+                    </div>
+                    <label class="layui-form-label">请假时长：</label>
+                    <div class="layui-input-inline">
+                        <span id="leaveMins" title=""></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">请假详情：</label>
+                    <div class="layui-input-block">
+                        <textarea id="leaveInfo" placeholder="无" class="layui-textarea" rows="3" readonly></textarea>
+                    </div>
+                </div>
+                <div class="operate-area">
+                    <button name="clean" data-type="leave"  class="layui-btn layui-btn-danger layui-btn-xs">
+                        清空
+                    </button>
+                    <button name="add" data-type="leave" class="layui-btn layui-btn-danger layui-btn-xs">
+                        增加
+                    </button>
+                </div>
+            </div>
+
+            <div class="attendance-info-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否加班：</label>
+                    <div class="layui-input-inline">
+                        <span id="overtime" title=""></span>
+                    </div>
+                    <label class="layui-form-label">加班时长：</label>
+                    <div class="layui-input-inline">
+                        <span id="overtimeMins" title=""></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">加班详情：</label>
+                    <div class="layui-input-block">
+                        <textarea id="overtimeInfo" placeholder="无" class="layui-textarea" rows="3" readonly></textarea>
+                    </div>
+                </div>
+                <div class="operate-area">
+                    <button name="clean" data-type="overtime" class="layui-btn layui-btn-danger layui-btn-xs">
+                        清空
+                    </button>
+                    <button name="add" data-type="overtime" class="layui-btn layui-btn-danger layui-btn-xs">
+                        增加
+                    </button>
+                </div>
+            </div>
+
+            <div class="attendance-info-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否外勤：</label>
+                    <div class="layui-input-inline">
+                        <span id="outside" title=""></span>
+                    </div>
+                    <label class="layui-form-label">外勤时长：</label>
+                    <div class="layui-input-inline">
+                        <span id="outsideMins" title=""></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">外勤详情：</label>
+                    <div class="layui-input-block">
+                        <textarea id="outsideInfo" placeholder="无" class="layui-textarea" rows="3" readonly></textarea>
+                    </div>
+                </div>
+                <div class="operate-area">
+                    <button name="clean" data-type="outside" class="layui-btn layui-btn-danger layui-btn-xs">
+                        清空
+                    </button>
+                    <button name="add" data-type="outside" class="layui-btn layui-btn-danger layui-btn-xs">
+                        增加
+                    </button>
+                </div>
+            </div>
+
+            <div class="attendance-info-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否出差：</label>
+                    <div class="layui-input-inline">
+                        <span id="businessTravel" title=""></span>
+                    </div>
+                    <label class="layui-form-label">出差时长：</label>
+                    <div class="layui-input-inline">
+                        <span id="businessTravelMins" title=""></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">出差详情：</label>
+                    <div class="layui-input-block">
+                        <textarea id="businessTravelInfo" placeholder="无" class="layui-textarea" rows="3" readonly></textarea>
+                    </div>
+                </div>
+                <div class="operate-area">
+                    <button name="clean" data-type="businessTravel" class="layui-btn layui-btn-danger layui-btn-xs">
+                        清空
+                    </button>
+                    <button name="add" data-type="businessTravel" class="layui-btn layui-btn-danger layui-btn-xs">
+                        增加
+                    </button>
+                </div>
+            </div>
+
+            <div class="attendance-info-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否迟到：</label>
+                    <div class="layui-input-inline">
+                        <span id="late" title=""></span>
+                    </div>
+                    <label class="layui-form-label">迟到时长：</label>
+                    <div class="layui-input-inline">
+                        <span id="lateMins" title=""></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">迟到详情：</label>
+                    <div class="layui-input-block">
+                        <textarea id="lateInfo" placeholder="无" class="layui-textarea" rows="3" readonly></textarea>
+                    </div>
+                </div>
+                <div class="operate-area">
+                    <button name="clean" data-type="late" class="layui-btn layui-btn-danger layui-btn-xs">
+                        清空
+                    </button>
+                    <button name="add" data-type="late" class="layui-btn layui-btn-danger layui-btn-xs">
+                        增加
+                    </button>
+                </div>
+            </div>
+
+            <div class="attendance-info-item">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否旷工：</label>
+                    <div class="layui-input-inline">
+                        <span id="absenteeism" title=""></span>
+                    </div>
+                    <label class="layui-form-label">旷工时长：</label>
+                    <div class="layui-input-inline">
+                        <span id="absenteeismMins" title=""></span>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">旷工时长：</label>
+                    <div class="layui-input-block">
+                        <textarea id="absenteeismInfo" placeholder="无" class="layui-textarea" rows="3" readonly></textarea>
+                    </div>
+                </div>
+                <div class="operate-area">
+                    <button name="clean" data-type="absenteeism" class="layui-btn layui-btn-danger layui-btn-xs">
+                        清空
+                    </button>
+                    <button name="add" data-type="absenteeism" class="layui-btn layui-btn-danger layui-btn-xs">
+                        增加
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 操作记录 -->
+        <div style="padding-top: 24px;">
+            <table id="operationLog" lay-filter="operationLog" style="display: none;">
+                <thead>
+                <tr>
+                    <th lay-data="{field:'wtime', width:'25%', align:'center'}">操作时间</th>
+                    <th lay-data="{field:'operator', width:'25%', align:'center'}">操作人</th>
+                    <th lay-data="{field:'operation', width:'50%', align:'left'}">操作内容和结果</th>
+                </tr>
+                </thead>
+                <tbody>
+            </table>
+        </div>
+    </div>
+    <div id="addPanel" style="display: none">
+        <div class="layui-form-item">
+            <label class="layui-form-label">持续时间：</label>
+            <div class="layui-input-block">
+                <input id="time" placeholder="点击选择时间段，只能选当天" class="layui-input" readonly style="border-bottom: 1px solid red;"/>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+<script type="text/javascript" src="/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/attendance/js/editAttendance.js (v=${t})}"></script>
+</body>
+</html>

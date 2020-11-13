@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>电商客户应收账款统计表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <style>
+        .year {
+            text-align: right;
+            border: none;
+        }
+
+        .layui-table-tool {
+            position: relative;
+            min-height: 35px;
+            line-height: 25px;
+            padding: 0px 0px;
+            border-width: 0 0 1px;
+            background-color: #CCE4FC !important;
+        }
+
+        .title-show {
+            color: #0C0C0C;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .time-change {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .table-title {
+            text-align: center;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        .layui-table-tool-self {
+            position: absolute;
+            right: 17px;
+            top: 5px;
+        }
+        @font-face {
+            font-family: "layui-tablePlug-icon";
+            src: url('iconfont.eot?t=1544435521530'); /* IE9*/
+            src: url('iconfont.eot?t=1544435521530#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAASgAAsAAAAAB3QAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8e0f3Y21hcAAAAYAAAABLAAABcOcttblnbHlmAAABzAAAANAAAADwQIr9eWhlYWQAAAKcAAAALwAAADYTh/R3aGhlYQAAAswAAAAcAAAAJAfeA4NobXR4AAAC6AAAAAgAAAAICAAAAGxvY2EAAALwAAAABgAAAAYAeAAAbWF4cAAAAvgAAAAgAAAAIAEQAFtuYW1lAAADGAAAAWUAAAL9ieAqlXBvc3QAAASAAAAAHwAAADDM7G18eJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGByesT5jZW7438AQw9zA0AAUZgTJAQDd7QvteJxjYGBgZWBgYAZiHSBmYWBgDGFgZAABP6AoI1icmYELLM7CoARWwwISf8b6/z+MBPJZwCQDIxvDKOABkzJQHjisIJiBEQA1JAl9AHicY2BhYPi/m/kQsy2DJoMZgxODHwMDoz2jHaMeo7KiEh+jmDijsIiYsaGRmTkzo5qZuaIcIzujsBwjSMSUWVyO0ZrRyMxETV2Zj5FVWYlNRAzCZ0diM0czMopwSujL/50gpy/JIcwoxSTIyyvAyPzvBr+oBFOBpIjAvwuMjII8vIKMIUDqC6+gIO8XHkFGQSCB4EJYTFMZGcUtLOTlzSzE/n35dxwozssYyCgtpMPIqCv878k/U5Byxo2xQEpSEGjqdEEpQSBaCaEYAN7HKiV4nGNgZGBgAGKbzDVX4vltvjJwszCAwA2TCEcE/X83CwOzLZDLwcAEEgUAEkMJKAB4nGNgZGBgbvjfwBDDwgACQJKRARUwAQBHCAJrBAAAAAQAAAAAAAAAAHgAAAABAAAAAgBPAAQAAAAAAAIAAAAKAAoAAAD/AAAAAAAAeJyNkr1uwjAUhY/5VUHq0JbOniraivAzInWighUxoK4hOAFkEmQcqqhv0z5DX6d9jm49BLMgBhL56rvnnnsdWwFwgx8IHJ4G14EF7pgduIAqHh0XqXccl8ivjsuo481xhXrguIZnvDuu4xafnCBKV8ye8O1YoIlfxwVci6rjIpqi4bhEfnFcxr1QjivUPxzXMBVfjut4EH+1gVG+VXM5y+QySOIwiW1N+1m6bFl/ptVYp1FrX5ioKNW+OVc6p02V2S6TWHa9zrnySMXKHPfd7qKetaEMTbKWQ36A0jqRG5OsVGC9hbWbfrsdOt0LkjWPMYCBgg/LOIfEDBnjkpeaIEaYR0ufpidDykqLuU+fZseYMUVE7dgxoRpR2/vNxV2X+qZUDbbM95lEFx5/kUu7R1TjfMLpebfY0dmjanlmyWXYsSYN3Q0oTtNkiU1eW1EJqHtY5F0b9NHmG574vXzv9T9MzpLMAAAAeJxjYGKAAC4G7ICJkYmRmYEtLTOnJLWIgQEAEIICogA=') format('woff'),
+            url('iconfont.ttf?t=1544435521530') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+            url('iconfont.svg?t=1544435521530#layui-tablePlug-icon') format('svg'); /* iOS 4.1- */
+        }
+        .layui-tablePlug-icon-filter:before {
+            content: "\e605";
+        }
+        .layui-tablePlug-icon {
+            font-family: "layui-tablePlug-icon" !important;
+            font-size: 18px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+
+<body>
+<!--<script>var isManager = [[${isManager}]]</script>-->
+<div class="layui-card">
+    <div class="layui-card-body" style="padding: 0">
+        <input type="hidden" th:value="${year}" id="year" /> <input
+            type="hidden" th:value="${params}" id="params" />
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container table-title">
+                <div class="title-show" th:if="${isManager}" onclick="open_filter_tab()" style="cursor: pointer;"><span class="customer-filter layui-tablePlug-icon layui-tablePlug-icon-filter" title="点击过滤客户"></span></div>
+                <div id="yearSelect" class="title-show time-change"></div>
+                <div class="title-show" style="width: 10px"></div>
+                <div class="title-show">
+                    电商客户应收账款统计表
+                </div>
+            </div>
+        </script>
+        <div style="padding-bottom: 5px;">
+            <table th:id="realRoyalty"
+                   th:attr="lay-filter=royalty" lay-size="sm"></table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+<script type="text/javascript"
+        th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript"
+        th:src="@{/views/manageConsole/js/dsCustomerReceivables.js (v=${t})}"></script>
+</body>
+</html>

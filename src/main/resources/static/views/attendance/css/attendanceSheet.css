@@ -1,0 +1,63 @@
+
+#empty {
+    font-size: 18px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+}
+
+.status-normal {
+    background-color: #5FB878;
+    margin: 1px;
+    padding: 1px;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.status-special {
+    background-color: #FFB800;
+    margin: 1px;
+    padding: 1px;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.status-absence {
+    background-color: #FF5722;
+    margin: 1px;
+    padding: 1px;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.status-unknown {
+    background-color: #C6C6C6;
+    margin: 1px;
+    padding: 1px;
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+
+.detail {
+    text-align: center;
+}
+
+.detail-table {
+    width: 100%;
+    text-align: center;
+}
+
+.detail-table-row {
+    width: 100%;
+    text-align: center;
+}
+
+.detail-table-row th{
+    /*width: 100%;*/
+    text-align: center;
+}

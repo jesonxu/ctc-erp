@@ -1,0 +1,8 @@
+span.unit {
+	position: absolute;
+	top: 8px;
+	right: 18px;
+}
+#productBody .layui-table .layui-btn-container .layui-btn {
+	margin-bottom: 0px;
+}

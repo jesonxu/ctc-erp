@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <title>移动端客户详细信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.mobile.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" th:href="@{/mobile/common/css/pageHeader.css (v=${t})}" media="all"/>
+
+    <script type='text/javascript' src="/common/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="/layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" src="/common/js/base64.js"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/banDefault.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/util.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/tool/pageBack.js}"></script>
+</head>
+<body>
+<!-- 固定在最上面 顶部栏 -->
+<div class="page-title">
+    <span class="layui-icon layui-icon-left page-title-back"></span>
+    <span class="page-title-name">客户详细信息</span>
+</div>
+<div class="customer-area" id="customerInfos"></div>
+<ul class="customer-info">
+    <li>
+        <div class="item-title">基本信息</div>
+        <div class="item-content">
+            <div class="content-line">
+                <span class="content-line-title">名称：</span>
+                <span class="content-line-value" id="companyName"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">法人：</span>
+                <span class="content-line-value" id="legalPerson"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">注册号：</span>
+                <span class="content-line-value" id="registrationNumber"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">注册地址：</span>
+                <span class="content-line-value" id="registrationAddress"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">通讯地址：</span>
+                <span class="content-line-value" id="postalAddress"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">电话号码：</span>
+                <span class="content-line-value" id="telePhoneNumber"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">电子邮件：</span>
+                <span class="content-line-value" id="email"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">公司网页：</span>
+                <span class="content-line-value" id="website"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">客户联系人：</span>
+                <span class="content-line-value" id="contactName"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">客户名片：</span>
+                <span id="show-business-card" class="content-line-value">
+                    点击展示名片
+                </span>
+                <div class="business-card-area business-hide" data-refer="show-business-card">
+                    <img class="business-card-img" id="contactBusinessCard"/>
+                </div>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">联系人部门：</span>
+                <span class="content-line-value" id="contactDept"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">联系人职位：</span>
+                <span class="content-line-value" id="contactPosition"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">联系人座机：</span>
+                <span class="content-line-value" id="contactTelephone"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">联系人手机：</span>
+                <span class="content-line-value" id="contactPhone"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">公司创立日期：</span>
+                <span class="content-line-value" id="creationDate"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">注册资本(万元)：</span>
+                <span class="content-line-value" id="registeredCapital"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">公司性质：</span>
+                <span class="content-line-value" id="corporateNature"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">税务号：</span>
+                <span class="content-line-value" id="taxation"></span>
+            </div>
+            <div class="content-line">
+                <span class="content-line-title">销售员：</span>
+                <span class="content-line-value" id="creatUser"></span>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="item-title">联系人信息</div>
+        <div class="item-content" id="contact-area">
+            <div class="empty-line">暂无数据</div>
+        </div>
+    </li>
+    <li>
+        <div class="item-title">开票信息</div>
+        <div class="item-content" id="invoice-area">
+            <div class="empty-line">暂无数据</div>
+        </div>
+    </li>
+    <li>
+        <div class="item-title">银行信息</div>
+        <div class="item-content" id="bank-info-area">
+            <div class="empty-line">暂无数据</div>
+        </div>
+    </li>
+    <li>
+        <div class="item-title">联系日志</div>
+        <div class="item-content" id="contact-log-area">
+            <div class="empty-line">暂无数据</div>
+        </div>
+    </li>
+</ul>
+</body>
+
+<link rel="stylesheet" th:href="@{/mobile/customer/css/customerDetail.css (v=${t})}" media="all"/>
+<script type="text/javascript" th:src="@{/mobile/customer/js/customerDetail.js (v=${t})}"></script>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html  style="background-color: white;" lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+        <style type="text/css">
+            #content-main {
+                height: calc(100% - 60px) !important;
+                overflow: hidden;
+            }
+            .layui-bg-molv {
+                height: 60px;
+            }
+            #changeRole .layui-this a:hover {
+                cursor: pointer;
+            }
+            form .supplier-contacats .layui-form-item:last-child {
+                padding-bottom: 15px;
+                border-bottom: 1px #eee dashed;
+            }
+            form .supplier-contacats:last-child .layui-form-item:last-child {
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
+            .layui-elem-field legend{
+                /*width: 260px;*/
+                clear: both;
+            }
+            legend .supplier_add_contacts {
+                float: right;
+            }
+
+            .input-dept-name {
+                height: 28px;
+                border-style: solid;
+                border-color: #e6e6e6;
+                border-width: 0 0 1px 0;
+                margin-right: 5px;
+                padding-left: 10px;
+                width: 200px;
+            }
+        </style>
+
+        <script src="/common/js/jquery-1.8.0.min.js"></script>
+        <script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+        <script src="/layuiadmin/layui/layui.js"></script>
+        <script src="/common/js/commonJs.js"></script>
+        <script src="/views/supplier/js/addOrSaveSupplierDept.js"></script>
+
+    </head>
+
+    <body style="background-color: white;height: 100%width: 100%;">
+        <input id="supplierId" type="hidden" th:value="${supplierId}"/>
+        <div id="deptDiv" class="layui-inline" style="width: 100%; margin-top: 20px; text-align: center;">
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" placeholder="请填写部门名称" id="deptName" maxlength="255" />
+            </div>
+            <button type="button" id="supplier_add_dept" style="margin-left: 20px;" class="layui-inline layui-btn layui-btn-sm">
+                添加部门
+            </button>
+        </div>
+
+        <div th:if="${#maps.isEmpty(supplierDepts)}" id="supplier-dept-line" style="width: 100%; margin-top: 20px; border-bottom: 1px solid #eee;"></div>
+        <div class="layui-tab-content site-demo layui-container site-demo-body" style="max-width: 680px;">
+            <form class="layui-form" action="">
+                <div th:each="dept : ${supplierDepts}" class="dept-line">
+                    <fieldset class="layui-elem-field layui-field-title">
+                        <legend>
+                            <input type="text" class="input-dept-name" name="input-dept-name" th:value="${dept.key}"/>
+                            <!--<div th:text="${dept.key}" th:remove="tag"></div>-->
+                            <button type="button" th:attr="deptName=${dept.key}" class="supplier_add_contacts layui-inline layui-btn layui-btn-sm">
+                                添加联系人
+                            </button>
+                        </legend>
+                    </fieldset>
+                    <div th:each="c : ${dept.value}" class="supplier-contacats">
+                        <input type="hidden" th:value="${dept.key}" name="deptName"/>
+                        <input type="hidden" th:value="${c.supplierContactsId}" name="supplierContactsId"/>
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">
+                                    <span style="color: red;">*</span>姓名
+                                </label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" th:value ="${c.contactsName}" placeholder="请填写姓名" name="contactsName" maxlength="255"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">
+                                    <span style="color: red;">*</span>职务
+                                </label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" th:value ="${c.post}" placeholder="请填写姓名" name="post" maxlength="255"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">号码1</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" th:value ="${c.firstPhone}" placeholder="请填写号码" name="firstPhone"  maxlength="20"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">号码2</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" th:value ="${c.secondPhone}" placeholder="请填写号码" name="secondPhone"  maxlength="20"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">座机</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" th:value ="${c.telephone}" placeholder="请填写号码" name="telephone"  maxlength="30"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">邮箱</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" th:value ="${c.email}" placeholder="请填写邮箱" name="email"  maxlength="255"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">微信</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" th:value ="${c.wx}" placeholder="请填写微信" name="wx"  maxlength="30"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">QQ号</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" class="layui-input" th:value ="${c.qq}" placeholder="请填写QQ号" name="qq"  maxlength="255"/>
+                                </div>
+                            </div>
+                            <div class="layui-inline" style="width: 100%;">
+                                <label class="layui-form-label">备注</label>
+                                <div class="layui-input-inline">
+                                    <textarea placeholder="请填写备注" class="layui-textarea" name="remark" style="width: 498px;" maxlength="255"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="buttons" th:style="@{(${#maps.isEmpty(supplierDepts)} ? 'display: none;text-align: center;' : 'text-align: center;')} + ''" class="layui-form-item">
+                <button type="button" id="supplier_submit" class="layui-btn layui-btn-sm">
+                    提交
+                </button>
+                <button type="button" id="supplier_cancel" class="layui-btn layui-btn-danger layui-btn-sm">
+                    取消
+                </button>
+            </div>
+        </div>
+
+        <div th:if="${#maps.isEmpty(supplierDepts)}" id="supplier-dept-tips" style="position: absolute; top:50%; left:50%; transform: translate(-50%,-50%);">
+            请添加部门信息
+        </div>
+
+        <div id="supplier-contacts-template" style="display: none;" class="dept-line">
+            <fieldset class="layui-elem-field layui-field-title">
+                <legend></legend>
+            </fieldset>
+            <div id="supplier-dept-contacts-content" style="display: none;" class="supplier-contacats">
+                <input type="hidden" class="layui-input" name="deptName"/>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>姓名</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="请填写姓名" name="contactsName"  maxlength="255"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label"><span style="color: red;">*</span>职务</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="请填写姓名" name="post"  maxlength="255"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">号码1</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="请填写号码" name="firstPhone"  maxlength="20"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">号码2</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="请填写号码" name="secondPhone"  maxlength="20"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">座机</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="请填写号码" name="telephone"  maxlength="30"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">邮箱</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="请填写邮箱" name="email"  maxlength="255"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">微信</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="请填写微信" name="wx"  maxlength="30"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">QQ号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" class="layui-input" placeholder="请填写QQ号" name="qq"  maxlength="255"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="width: 100%;">
+                        <label class="layui-form-label">备注</label>
+                        <div class="layui-input-inline">
+                            <textarea placeholder="请填写备注" name="remark" class="layui-textarea" style="width: 498px;" maxlength="255"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

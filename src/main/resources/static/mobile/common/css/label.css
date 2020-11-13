@@ -1,0 +1,701 @@
+/*******************标签总体样式*************************************/
+div[required="true"]:before {
+    content: "*";
+    color: #FF0000;
+}
+
+label[required='true']:before {
+    content: "*";
+    color: #FF0000;
+}
+
+.flow-label-content {
+    /*margin-left: 0.5em;*/
+}
+
+/* 所有的删除按钮样式 */
+button[data-delete-id] {
+    color: #FF0000;
+    border-color: #FF0000;
+    border-radius: 0.2em;
+}
+
+button[data-delete-id]:hover {
+    color: #FF0000;
+    border-color: #ff4400;
+    opacity: 0.8;
+}
+
+/*******************酬金内容*************************************/
+.remuneration-content {
+    /*margin-left: 0.5em;*/
+    border-left: solid 0.1em #e6e6e6;
+}
+
+.remuneration-row {
+    margin-bottom: 0.5em;
+}
+
+.remuneration-row > span {
+    display: inline-block;
+    width: 6em;
+    text-align: right;
+}
+
+.remuneration-row > input {
+    width: calc(100% - 6.5em);
+    display: inline-block;
+    border-width: 0 0 0.1em 0;
+}
+
+/* 公式 */
+.remuneration-content > .formula {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/*************************** 布尔标签 ****************************************/
+.label-type-bool .flow-label-content {
+    padding-left: 1em;
+    border-left: solid 0.1em #e6e6e6;
+}
+
+/*************************** 账单标签 ****************************************/
+.label-type-account-info button {
+    width: 100%;
+}
+
+/**---------------------自定义皮肤样式----------------------------------*/
+.account-class {
+    z-index: 99999999;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+body .account-class .layui-layer-btn {
+    border-top: 0.1em solid #e9e7e7;
+    text-align: center;
+    padding: 0;
+}
+
+body .account-class .layui-layer-btn a {
+    width: calc(50% - 4em);
+    text-align: center;
+}
+
+body .account-class .layui-layer-btn {
+    border-top: none;
+}
+
+/**-----------------------自定义皮肤样式结束---------------------------*/
+
+.account-bill-detail {
+    border-left: solid 0.1em #e6e6e6;
+    margin-top: 0.5em;
+    padding-left: 1em;
+}
+
+.account-bill-detail .account-bill-item:not(:last-child) {
+    margin-bottom: 1.5em;
+}
+
+/*标题 */
+.account-bill-detail .account-bill-item .product-bill-title {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    color: #000000;
+    padding: 0.2em 0;
+}
+
+.account-bill-detail .account-bill-item .bill-item-line {
+    display: block;
+    margin-bottom: 0.2em;
+}
+
+.account-bill-detail .account-bill-item .bill-item-line span {
+    display: inline-block;
+    width: 5em;
+}
+
+.account-bill-detail .account-bill-item .bill-item-line input {
+    display: inline-block;
+    width: calc(100% - 5.3em);
+    border-width: 0 0 0.1em 0;
+}
+
+.account-bill-detail .bill-count-tip {
+    /*color: #FF0000;*/
+    font-size: 1.3em;
+}
+
+/*************************** 账单金额标签 ****************************************/
+.label-type-account-bill .flow-label-content {
+    border-left: solid 0.1em #e6e6e6;
+    padding-left: 1em;
+}
+
+.label-type-account-bill span {
+    display: inline-block;
+}
+
+.label-type-account-bill .account-bill-success {
+    display: inline-block;
+    width: calc(50% - 4.6em);
+    border-width: 0 0 0.1em 0;
+    padding-left: 0.5em;
+}
+
+.label-type-account-bill .account-bill-multiple {
+    width: 2em;
+    text-align: center;
+}
+
+.label-type-account-bill .account-bill-price {
+    width: calc(50% - 4.6em);
+    display: inline-block;
+    border-width: 0 0 0.1em 0;
+    padding-left: 0.5em;
+}
+
+.label-type-account-bill .account-bill-equal {
+    text-align: center;
+}
+
+.label-type-account-bill .account-bill-total-title {
+    text-align: right;
+    width: 3em;
+}
+
+.label-type-account-bill .account-bill-total-money {
+    display: inline-block;
+    width: calc(100% - 3.3em);
+    border-width: 0 0 0.1em 0;
+    padding-left: 0.5em;
+}
+
+/*************************** 开关标签 ****************************************/
+.label-type-switch .flow-label-content {
+    vertical-align: bottom;
+    display: inline-block;
+    margin-left: 1.5em;
+}
+
+/*************************** 我司开票信息 ****************************************/
+.label-type-self-invoice button {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*************************** 对方标签 ****************************************/
+.label-type-other-invoice button {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*************************** 我司银行标签 ****************************************/
+.label-type-self-bank button {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*************************** 对方银行标签 ****************************************/
+.label-type-other-bank button {
+    width: 100%;
+    white-space: nowrap; /* 不换行*/
+    overflow: hidden; /* 超出部分 隐藏 */
+    text-overflow: ellipsis; /* 超出文本 用什么代替 */
+}
+
+/*************************** 发票信息标签 ****************************************/
+.label-type-invoice-info button {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.invoice-detail {
+    border-left: solid 0.1em #e6e6e6;
+    margin-top: 0.5em;
+    padding-left: 1em;
+}
+
+.invoice-detail .invoice-item:not(:last-child) {
+    margin-bottom: 1.5em;
+}
+
+/*标题 */
+.invoice-detail .invoice-item .product-bill-title {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    color: #000000;
+    padding: 0.2em 0;
+}
+
+.invoice-detail .invoice-item .invoice-item-line {
+    display: block;
+    margin-bottom: 0.2em;
+}
+
+.invoice-detail .invoice-item .invoice-item-line span {
+    display: inline-block;
+    width: 5em;
+}
+
+.invoice-detail .invoice-item .invoice-item-line input {
+    display: inline-block;
+    width: calc(100% - 5.3em);
+    border-width: 0 0 0.1em 0;
+}
+
+.invoice-detail .invoice-count-tip {
+    /*color: #FF0000;*/
+    font-size: 1.3em;
+}
+
+/*************************** 账单开票信息标签 ****************************************/
+.label-type-bill-invoice {
+}
+
+.label-type-bill-invoice button {
+    width: 100%;
+}
+
+.label-type-bill-invoice .bill-invoice-items {
+    border-left: solid 0.1em #e6e6e6;
+    padding-left: 1em;
+    margin-top: 0.5em;
+}
+
+.label-type-bill-invoice .bill-invoice-title {
+    text-align: center;
+    width: 100%;
+    display: block;
+    line-height: 2em;
+    min-height: 2em;
+    color: #000000;
+}
+
+.label-type-bill-invoice .bill-invoice-item-line:last-child {
+    margin-bottom: 1em;
+}
+
+.label-type-bill-invoice .bill-invoice-item-line:nth-last-child(2) {
+    margin-bottom: 0.5em;
+}
+
+.label-type-bill-invoice .bill-invoice-item-line span {
+    width: 7em;
+    display: inline-block;
+    text-align: right;
+}
+
+.label-type-bill-invoice .bill-invoice-item-line input {
+    border-width: 0 0 0.1em 0;
+    width: calc(100% - 7.5em);
+    display: inline-block;
+    height: 2em;
+}
+
+.label-type-bill-invoice .bill-invoice-item-line button {
+    min-height: 2em;
+    line-height: 2em;
+    border-radius: 0.2em;
+}
+
+.label-type-bill-invoice .bill-invoice-item-line button:hover {
+    opacity: 0.8;
+}
+
+.label-type-bill-invoice .bill-invoice-count-tip {
+    color: #000000;
+    font-size: 1.3em;
+}
+
+/*--------------------------------- 客户开票抬头标签 ---------------------------------*/
+.label-type-customer-invoice button {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.label-type-customer-invoice .customer-invoice-item-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.label-type-customer-invoice .customer-invoice-items {
+    border-left: solid 0.1em #e6e6e6;
+    padding-left: 1em;
+    margin-top: 0.5em;
+}
+
+.label-type-customer-invoice .customer-invoice-item {
+    margin-top: 1em;
+}
+
+.label-type-customer-invoice .customer-invoice-opts {
+    margin-top: 0.5em;
+}
+
+.label-type-customer-invoice .customer-invoice-line-title {
+    width: 6em;
+    display: inline-block;
+}
+
+.label-type-customer-invoice .customer-invoice-line-value {
+    width: calc(100% - 6.3em);
+    display: inline-block;
+}
+
+.label-type-customer-invoice .customer-invoice-line-value input {
+    border-width: 0 0 0.1em 0;
+}
+
+.label-type-customer-invoice .customer-invoice-count-tip {
+    font-size: 1.3em;
+    color: #000000;
+    margin-top: 0.5em;
+    display: block;
+}
+
+/*--------------------------------- 时间账单金额标签 ---------------------------------*/
+.label-type-time-account-bill .flow-label-content {
+    border-left: solid 0.1em #e6e6e6;
+    padding-left: 1em;
+}
+
+.label-type-time-account-bill .time-account-bill-item {
+    border-bottom: dashed 0.1em #e6e6e6;
+    padding-bottom: 0.5em;
+}
+
+.label-type-time-account-bill .time-account-bill-line > label {
+    display: inline-block;
+    width: 6em;
+    text-align: right;
+}
+
+.label-type-time-account-bill .time-account-bill-line > .line-value {
+    display: inline-block;
+    width: calc(100% - 6.3em);
+}
+
+.label-type-time-account-bill .time-account-bill-line > .line-value input {
+    border-width: 0 0 0.1em 0;
+}
+
+.label-type-time-account-bill .operate-line {
+    text-align: right;
+}
+
+.label-type-time-account-bill .operate-line button {
+    width: calc(50% - 1em);
+    margin: 0.5em;
+}
+
+/* 总计 */
+.label-type-time-account-bill > .flow-label-content > i {
+    padding-bottom: 1em;
+    display: block;
+    padding-top: 1em;
+}
+
+/* 行 */
+.label-type-time-account-bill .total-depart {
+    width: calc(50% - 0.2em);
+    display: inline-block;
+}
+
+/* 总数 数字 */
+.label-type-time-account-bill .total-depart span {
+    font-size: 1.3em;
+}
+
+/*--------------------------------- 平台账号信息标签 ---------------------------------*/
+.label-type-platform-account .flow-label-content {
+    border-left: solid 0.1em #e6e6e6;
+    padding-left: 1em;
+}
+
+/* 账号行 */
+.label-type-platform-account .platform-account-item:not(:last-child) {
+    border-bottom: dashed 0.1em #e6e6e6;
+    padding-bottom: 0.5em;
+}
+
+/* 账号标签 */
+.platform-account-line label {
+    display: inline-block;
+    width: 6em;
+    text-align: right;
+}
+
+/* 标签对应的值 */
+.platform-account-line .platform-account-value {
+    display: inline-block;
+    width: calc(100% - 6.3em);
+}
+
+.platform-account-line .platform-account-value input {
+    border-width: 0 0 0.1em 0;
+}
+
+/* 按钮行 */
+.platform-account-item > .platform-opts {
+    text-align: right;
+}
+
+/* 所有按钮 */
+.platform-account-item > .platform-opts > button {
+    width: calc(50% - 1em);
+    margin: 0.5em;
+}
+
+/* 添加按钮 */
+.platform-account-item > .platform-opts > .operation-add {
+
+}
+
+/* 删除按钮 */
+.platform-account-item > .platform-opts > .operation-delete {
+    width: calc(50% - 1em);
+    margin: 0.5em;
+    color: #ff0000;
+    border: solid 0.1em #ff0000;
+}
+
+/*--------------------------------- 未对账账单标签 ---------------------------------*/
+.label-type-unchecked-bill .choose-bill-btn {
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+/* 未对账账单信息 */
+.label-type-unchecked-bill .unchecked-bill-list {
+    border-left: solid 0.1em #e6e6e6;
+}
+
+/* 未对账账单项 */
+.label-type-unchecked-bill .unchecked-bill-item {
+    padding-bottom: 2em;
+    margin-left: 0.5em;
+    border-bottom: dashed 0.1em #e6e6e6;
+}
+
+/* 未对账账单每项标题 */
+.label-type-unchecked-bill .unchecked-bill-item > .bill-data > .bill-data-title {
+    background-color: #f3f3f3;
+    padding: 0.5em;
+}
+
+/* 账单项 按钮 */
+.label-type-unchecked-bill .unchecked-bill-tools {
+    float: right;
+    padding: 0.1em 0;
+    width: 2em;
+    text-align: center;
+    border: solid 0.1em #ccc;
+    margin: 0 0.2em;
+    border-radius: 0.2em;
+    vertical-align: middle;
+}
+
+.label-type-unchecked-bill .bill-data-total .bill-data-line span {
+    display: inline-block;
+    width: 5em;
+    text-align: right;
+}
+
+.label-type-unchecked-bill .bill-data-total .bill-data-line input {
+    display: inline-block;
+    width: calc(100% - 6em);
+    border-width: 0 0 0.1em 0;
+}
+
+.label-type-unchecked-bill .bill-data-total .bill-data-line input:disabled {
+    border-width: 0;
+}
+
+
+.label-type-unchecked-bill .bill-data .bill-data-line span {
+    text-align: right;
+    display: inline-block;
+    width: 5em;
+}
+
+.label-type-unchecked-bill .bill-data .bill-data-line input {
+    display: inline-block;
+    width: calc(100% - 6em);
+    border-width: 0 0 0.1em 0;
+}
+
+.label-type-unchecked-bill .bill-data .bill-data-line input:disabled {
+    border-width: 0;
+}
+
+/*重新生成账单 提示 */
+.label-type-unchecked-bill .bill-tip-line {
+    border-left: solid 0.1em #e6e6e6;
+    height: 1.5em;
+    padding: 1em 0.5em;
+    border-bottom: dashed 0.1em #e6e6e6;
+}
+
+/* 总计 */
+.label-type-unchecked-bill .bill-total {
+    border-left: solid 0.1em #e6e6e6;
+}
+
+/* 总计标题 */
+.label-type-unchecked-bill .bill-total > .unchecked-bill-total-tip {
+    display: block;
+    font-size: 1.2em;
+    padding: 0.5em;
+}
+
+/* 总计 行标题 */
+.label-type-unchecked-bill .bill-total .bill-total-line-title {
+    margin-left: 0.5em;
+    background-color: #f3f3f3;
+    padding: 0.5em;
+}
+
+/* 账单文件 */
+.label-type-unchecked-bill .unchecked-bill-file {
+    border-left: solid 0.1em #e6e6e6;
+    padding: 0.5em 0.5em 0.5em 1em;
+    border-bottom: dashed 0.1em #e6e6e6;
+}
+
+.label-type-unchecked-bill .unchecked-bill-file > button {
+    float: right;
+    margin-top: 0.2em;
+    height: 2em;
+    line-height: 2em;
+    width: 5em;
+}
+
+/* 分析详情文件 */
+.label-type-unchecked-bill .bill-analysis-file {
+    border-left: solid 0.1em #e6e6e6;
+    height: 3em;
+    padding: 0.5em 0.5em 0.5em 1em;
+}
+
+.label-type-unchecked-bill .bill-analysis-file > button {
+    float: right;
+    margin-top: 0.5em;
+    height: 2em;
+    line-height: 2em;
+    width: 5em;
+}
+
+.label-type-unchecked-bill .bill-item-detail {
+    /*margin-left: 2em;*/
+    display: block;
+}
+
+.label-type-unchecked-bill .bill-item-detail div {
+    display: block;
+}
+
+.label-type-unchecked-bill .bill-item-detail label {
+    display: inline-block;
+}
+
+.label-type-unchecked-bill .bill-item-detail span {
+    display: inline-block;
+    margin-right: 0.2em;
+    padding: 0 !important;
+}
+
+.label-type-unchecked-bill .unchecked-bill-item i {
+    top: 30%;
+}
+
+.label-type-unchecked-bill .unchecked-bill-item .layui-form-checkbox {
+    width: 100%;
+}
+
+.label-type-unchecked-bill .unchecked-bill-item .layui-form-checkbox > span {
+    width: 100%;
+    display: block;
+}
+
+.label-type-unchecked-bill .eidt-bill btn {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+}
+
+/*--------------------------------- 账单信息标签（未管理到标签里面的标签） ---------------------------------*/
+.label-type-not-write-off-bill button {
+    width: 100%;
+}
+
+.label-type-not-write-off-bill .unwirte-off-detail {
+    border-left: solid 0.1em #e6e6e6;
+    padding-left: 1em;
+    margin-top: 0.5em;
+}
+
+.label-type-not-write-off-bill .unwirte-off-detail > li {
+    border-bottom: dashed 0.1em #e6e6e6;
+    padding: 0.5em 0;
+}
+
+.label-type-not-write-off-bill .unwrite-off-total {
+    font-size: 1.3em;
+    color: #ff0000;
+    display: block;
+    width: 100%;
+    padding: 0.5em 0;
+}
+
+/*--------------------------------- 收款标签（未管理到标签里面的标签） ---------------------------------*/
+.label-type-not-write-off-receipt button {
+    width: 100%;
+}
+
+.label-type-not-write-off-receipt .not-write-off-receipt-detail {
+    padding-left: 1em;
+    border-left: solid 0.1em #e6e6e6;
+    margin-top: 0.5em;
+}
+
+.label-type-not-write-off-receipt .not-write-off-receipt-detail > li {
+    padding: 0.5em 0;
+    border-bottom: dashed 0.1em #e6e6e6;
+}
+
+.label-type-not-write-off-receipt .not-write-off-receipt-detail > i {
+    font-size: 1.3em;
+    color: #ff0000;
+    display: block;
+    width: 100%;
+    padding: 0.5em 0;
+}
+
+/*--------------------------------- 价格梯度 ---------------------------------*/
+.label-type-gradient .gradient-item {
+    border: dashed 0.1em #cccccc;
+    margin-bottom: 0.3em;
+    padding: 0px 0.3em;
+}
+
+/*--------------------------------- 时间段 ---------------------------------*/
+.layui-laydate-range {
+    width: 272px !important;
+}

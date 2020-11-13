@@ -1,0 +1,119 @@
+html, body {
+	background-color: white !important;
+}
+
+.apply-flow-menu-item {
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	cursor: pointer;
+	display: inline-block;
+	border: 1px solid rgb(201, 201, 201);
+	width: 130px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	text-align: center;
+	margin-left: 15px;
+	margin-bottom: 12px;
+}
+
+#applyFlowMenu {
+	padding: 12px 30px;
+	padding-bottom: 0;
+}
+
+#applyFlowOuter {
+	border-top: 4px solid rgb(242, 242, 242);
+}
+
+#applyFlowMain, #flowEntHistoryMain {
+	margin: 0 45px;
+}
+
+#flowEntHistoryOuter {
+	position: relative;
+}
+
+.flow-ent-history-title {
+	padding: 0 45px;
+	border-bottom: 1px solid rgb(242, 242, 242);
+}
+
+.apply-flow-menu-no-data {
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+	text-align: center;
+}
+
+.apply-flow-menu-item-actived {
+	background-color: rgb(215, 215, 215);
+}
+
+.flow-ent-history-title {
+	-webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+	font-size: 20px;
+	font-weight: bold;
+	height: 50px;
+	line-height: 50px;
+}
+
+#flowLogs > div {
+	margin-left: 0;
+	
+}
+
+.recordTitle {
+	height: 34px;
+	line-height: 34px;
+}
+
+.record {
+	margin: 8px 0;
+	border: 1px solid rgb(242, 242, 242);
+	border-radius: 10px;
+	padding: 8px 30px;
+	background-color: rgb(242, 242, 242);
+}
+
+#flowEntHistoryMain {
+	margin-top: 10px;
+}
+
+.flow-ent-title-time, .flow-ent-title-name, .flow-ent-title-user, .flow-ent-status {
+	display: inline-block;
+}
+
+.flow-ent-title-name {
+	margin-left: 38px;
+	width: 120px;
+}
+
+.flow-ent-title-user {
+	margin-left: 38px;
+	width: 150px;
+}
+
+.flow-ent-status {
+	margin-left: 38px;
+	margin-right: 38px;
+	width: 120px;
+}
+
+.time-duration-div {
+	padding: 5px 0;
+	display: block;
+}
+
+.time-duration {
+	color: red;
+}
+
+.leave-info {
+	color: red;
+}

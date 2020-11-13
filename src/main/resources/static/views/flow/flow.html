@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>流程管理</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<script type="text/javascript" src="/common/js/base_lib.js"></script>
+	<style type="text/css">
+		. {
+			height: auto;
+			white-space: normal;
+			word-wrap: break-word;
+			word-beak: break-all;
+		}
+	</style>
+
+<body>
+	<div class="layui-fluid">
+		<div class="layui-card">
+			<div id="param-search" class="layui-form layui-card-header layuiadmin-card-header-auto">
+				<div class="layui-form-item">
+					<div class="layui-inline" style="width: 100px">
+						<label class="layui-form-label">流程名称</label>
+					</div>
+					<div class="layui-inline">
+						<div class="layui-input-inline">
+							<input id="flowName" type="text" name="flowName" autocomplete="off" class="layui-input">
+						</div>
+					</div>
+					<div class="layui-inline" style="width: 100px">
+						<label class="layui-form-label">创建人</label>
+					</div>
+					<div class="layui-inline">
+						<div class="layui-input-inline">
+							<input id="creator" type="text" name="creator" autocomplete="off" class="layui-input">
+							<input type="hidden" id="creatorid">
+						</div>
+					</div>
+					<div class="layui-inline" style="width: 100px">
+						<label class="layui-form-label">创建日期</label>
+					</div>
+					<div class="layui-inline" style="width: 100px">
+						<input type="text" class="layui-input layui-date-pointer" id="date" readonly
+							onfocus="this.blur();">
+					</div>
+					<div class="layui-inline">~</div>
+					<div class="layui-inline" style="width: 100px">
+						<input type="text" class="layui-input layui-date-pointer" id="endDate" readonly
+							onfocus="this.blur();" />
+					</div>
+					<div class="layui-inline">
+						<label class="layui-form-label" th:text="状态" style="padding: 9px 5px;">状态</label>
+						<div class="layui-input-inline">
+							<input type="checkbox" name="stateActive" id="stateActive" value="1" th:title="激活"
+								lay-skin="primary" checked>
+							<input type="checkbox" name="stateForbidden" id="stateForbidden" value="0" th:title="禁用"
+								lay-skin="primary">
+						</div>
+					</div>
+					<div class="layui-inline">
+						<button type="button" class="layui-btn" id="btn-search">查询</button>
+						<button type="reset" class="layui-btn layui-btn-primary" id="btn-reset">重置</button>
+					</div>
+				</div>
+			</div>
+			<div class="layui-card-body">
+				<div id="button_toolbar"></div>
+				<table id="flows" lay-filter="flows"></table>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="/common/js/commonJs.js"></script>
+	<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+	<script src="/views/flow/js/flow.js"></script>
+</body>
+
+</html>

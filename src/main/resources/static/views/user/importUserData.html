@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>员工数据导入</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <style type="text/css" >
+        .footer{
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            background-color: #f8f8f8;
+            width: 100%;
+            height: 45px;
+        }
+        .btn-footer{
+            margin-top: 5px;
+        }
+        .layui-table td, .layui-table th {
+            position: relative;
+            padding: 4px 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="layui-card" style="margin-bottom:30px">
+        <input type="hidden" name="md5s" id="md5s"/>
+        <div class="layui-card-body">
+            <div id="upload_template">
+                <div class="layui-upload">
+                    <div>
+                        <button type="button" class="layui-btn layui-btn-primary" id="testList">
+                            <i class="layui-icon layui-icon-upload"></i>上传文件
+                        </button>
+                        <a onclick="downloadTemplate()" style="text-decoration: underline;cursor: pointer;">导入模板下载</a>
+                    </div>
+                    <div class="layui-upload-list">
+                        <table class="layui-table">
+                            <thead>
+                            <tr>
+                                <th>文件名</th>
+                                <th>大小</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="demoList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row layui-footer footer">
+        <button class="layui-btn btn-footer" id="ok_btn">
+            <i class="layui-icon layui-icon-ok"></i>确定
+        </button>
+        <button class="layui-btn layui-btn-danger btn-footer" id="cancel_btn">
+            <i class="layui-icon layui-icon-close"></i>取消
+        </button>
+    </div>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/user/js/importUserData.js (v=${t})}"></script>
+</body>
+</html>

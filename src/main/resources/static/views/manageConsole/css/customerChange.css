@@ -1,0 +1,75 @@
+.layui-card-body {
+    padding: 0 15px !important;
+}
+
+.table-title {
+    text-align: center;
+    height: 45px;
+    line-height: 45px;
+}
+
+.title-show {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.time-change {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.dept-filter {
+    cursor: pointer;
+}
+
+.change-count {
+    font-size: 14px !important;
+    width: 30px;
+    display: inline-block;
+    float: left;
+    height: 29px;
+    line-height: 29px;
+}
+
+.change-count:not(:last-child) {
+    margin-right: 10px;
+}
+
+.change-count:before {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/*升到此*/
+.icon-up-right {
+    color: #FF9900;
+}
+
+/*从此升*/
+.icon-right-up {
+    color: #00d000;
+}
+
+/*降到此*/
+.icon-down-right {
+    color: #FF9900;
+}
+
+/*从此降*/
+.icon-right-down {
+    color: #FF0000;
+}
+
+/* 图例 */
+.title-legend {
+    float: right;
+    height: 30px;
+    margin: 5px 15px 5px 0;
+    line-height: 30px;
+    padding: 2px 20px;
+    border: solid 1px #e6e6e6;
+    font-weight: bold;
+    position: fixed;
+    right: 0;
+    top: 0;
+}

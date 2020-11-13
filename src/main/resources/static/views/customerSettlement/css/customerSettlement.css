@@ -1,0 +1,5 @@
+.layui-tab-brief > .layui-tab-title .layui-this:after {
+    border: none;
+    border-radius: 0;
+    border-top: 2px solid #5FB878;
+}

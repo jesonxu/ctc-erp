@@ -1,0 +1,171 @@
+<link rel="stylesheet" href="/common/css/common.css" media="all">
+<link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+<link rel="stylesheet" href="/views/matchOrderDs/css/matchOrderDs.css">
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header panel_title">
+            <b class="module_title">订单</b>
+        </div>
+        <div id="param-search" class="layui-fluid layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-row">
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">订单编号：</div>
+                    <div id="orderNumber" class="order_details_content" title=""></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">销售人员：</div>
+                    <div id="ossUserName" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">项目名称：</div>
+                    <div id="projectName" class="order_details_content" title=""></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">客户名称：</div>
+                    <div id="customerName" class="order_details_content" title=""></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">采购金额(￥)：</div>
+                    <div id="salesMoney" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">交付日期：</div>
+                    <div id="deliverDate" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">付款形式：</div>
+                    <div id="payType" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">付款周期(天)：</div>
+                    <div id="payCycle" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">包装设计费(￥)：</div>
+                    <div id="packageDesignMoney" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">发票种类：</div>
+                    <div id="invoiceType" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">发票税点(%)：</div>
+                    <div id="invoicePoint" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">发货形式：</div>
+                    <div id="deliveryType" class="order_details_content"></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">配送地址：</div>
+                    <div id="deliveryAddress" class="order_details_content" title=""></div>
+                </div>
+                <div class="layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                    <div class="order_details_title">配送地址附件：</div>
+                    <div id="deliveryAddressFile" class="order_details_content"></div>
+                </div>
+            </div>
+            <div name="flowMsg" id>
+                <xmp hidden name="flowData"></xmp>
+                <div class="layui-form" id="orderSubmit">
+                    <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                        <label class="layui-form-label order_details_title" for="logisticsCosts">采购物流费：</label>
+                        <div class="layui-input-inline order_details_content">
+                            <input type="text" name="采购物流费" data-type="0" disabled="true" id="logisticsCosts" PLACEHOLDER="自动计算不需输入"
+                                   autocomplete="off" class="layui-input border"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                        <label class="layui-form-label order_details_title" for="purchaseCost">成本总额：</label>
+                        <div class="layui-input-inline order_details_content">
+                            <input type="text" name="采购成本总额" data-type="0" disabled="true" id="purchaseCost"
+                                   PLACEHOLDER="自动计算不需输入"
+                                   autocomplete="off" class="layui-input border"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                        <label class="layui-form-label order_details_title"><span style="color: red;">*</span>配货单有效截止日期：</label>
+                        <div class="layui-input-inline order_details_content">
+                            <input type="text" name="配货单有效截止日期" data-type="0" id="date" lay-verify="date"
+                                   input-required='true' placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline layui-col-md6 layui-col-sm6 layui-col-xs6 order_details">
+                        <label class="layui-form-label order_details_title"><span
+                                style="color: red;">*</span>处理意见：</label>
+                        <div class="layui-input-block order_details_content" style="margin-top: 5px;">
+                            <textarea id="audit-opinion" name="audit-opinion" placeholder="请输入处理意见"
+                                      input-required='true' class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <!--审核按钮-->
+                    <div class="layui-form-item" id="matchOrderAudit" style="text-align: center;padding-top: 5px;">
+                    </div>
+                    <!--提单信息-->
+                    <div class="layui-form-item">
+                        <div class='order-table'>
+                            <label class='layui-form-label show-lable' style='float: none' data-label-name='提单信息'><span>提单信息：</span></label>
+                            <table class='layui-table apply-order-table' lay-filter='order-table' id='order-table'>
+                                <thead>
+                                <tr>
+                                    <th lay-data="{templet: '#applyOrderTools', width: 150}">操作</th>
+                                    <th lay-data="{field:'id', 'hide': true}"></th>
+                                    <th lay-data="{field:'productname'}">产品名称</th>
+                                    <th lay-data="{field:'format'}">规格型号</th>
+                                    <th lay-data="{field:'price'}">销售单价</th>
+                                    <th lay-data="{field:'amount', width: 100}">数量</th>
+                                    <th lay-data="{field:'total'}">销售总额</th>
+                                    <th lay-data="{field:'remark'}">备注</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--配单信息-->
+                    <div class="layui-form-item">
+                        <div class='match-order-table'>
+                            <label class='layui-form-label show-lable' style='float: none' data-label-name='配单信息'><span>配单信息：</span></label>
+                            <table class='layui-table match-order-table' lay-filter='match-order-table' id='match-order-table'>
+                                <thead>
+                                <tr>
+                                    <th lay-data="{templet: '#matchOrderTools', width: 100}">操作</th>
+                                    <th lay-data="{field:'id', hide: true}"></th>
+                                    <th lay-data="{field:'dsproductid', hide: true}"></th>
+                                    <th lay-data="{field:'productname'}">产品名称</th>
+                                    <th lay-data="{field:'format'}">规格型号</th>
+                                    <th lay-data="{field:'price'}">采购单价</th>
+                                    <th lay-data="{field:'amount', width: 100, edit:'text'}">数量</th>
+                                    <th lay-data="{field:'total'}">采购总额</th>
+                                    <th lay-data="{field:'logisticsCost', edit:'text'}">物流费</th>
+                                    <th lay-data="{field:'suppliername'}">供应商</th>
+                                    <th lay-data="{field:'depotType'}">库存类别</th>
+                                    <th lay-data="{field:'depotNumber'}">库存数量</th>
+                                    <th lay-data="{field:'supplierid', hide: true}"></th>
+                                    <th lay-data="{field:'remark', edit:'text'}">备注</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--查按钮-->
+                    <script type="text/html" id="applyOrderTools">
+                        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="query">查产品</a>
+                        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="queryStock">查库存</a>
+                    </script>
+                    <!--删按钮-->
+                    <script type="text/html" id="matchOrderTools">
+                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删</a>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/common/js/toolbar_lib.js"></script>
+<script src="/common/js/formSelects-v4.js"></script>
+<script th:src="@{/views/matchOrderDs/js/matchOrderDs.js (v=${t})}"></script>

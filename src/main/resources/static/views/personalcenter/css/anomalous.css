@@ -1,0 +1,96 @@
+html {
+	height: 100%;
+	overflow: auto;
+}
+
+.layui-fluid {
+	padding: 0 !important;
+}
+
+#outerDiv {
+	overflow: auto;
+	height: 100%;
+}
+
+#deptAndUser .layui-collapse .layui-collapse {
+	padding-left: 10px !important;
+}
+
+#deptAndUser {
+	height: 80%;
+	width: 18%;
+	float: left;
+	overflow: auto;
+}
+
+#deptAndUser [data-my-opts-type="1"] i {
+	display: none !important;
+}
+
+#deptAndUser::-webkit-scrollbar {
+	width: 0 !important
+}
+
+#deptAndUser {
+	-ms-overflow-style: none;
+}
+
+#deptAndUser {
+	overflow: -moz-scrollbars-none;
+}
+
+#yearAndMonth {
+	height: 100%;
+	width: 81%;
+	float: right;
+	overflow: auto;
+}
+
+#yearAndMonth::-webkit-scrollbar {
+	width: 0 !important
+}
+
+#yearAndMonth {
+	-ms-overflow-style: none;
+}
+
+.over-flow-div::scrollbar {
+	visibility: collapse !important;
+}
+
+.over-flow-div::-webkit-scrollbar {
+	width:0px;
+	height:0px;
+}
+
+.over-flow-div {
+	scrollbar-width: none;
+}
+
+.over-flow-div::-webkit-scrollbar {
+	width:10px;
+	height:10px;
+}
+
+.over-flow-div{
+	overflow: auto;
+}
+
+#yearAndMonth {
+	overflow: -moz-scrollbars-none;
+}
+
+#showReportMain .clear-both {
+	clear: both;
+}
+
+#deptAndUser [data-my-opts-type="1"] .layui-icon {
+
+}
+
+.div-right {
+	padding-left: 20px;
+	float: left;
+	width: 80%;
+	height: 80%;
+}

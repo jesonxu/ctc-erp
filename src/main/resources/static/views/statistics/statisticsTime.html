@@ -1,0 +1,32 @@
+<div class="layui-card-header panel_title">
+    <b class="module_title" >统计</b>
+</div>
+<div id="statistics_body" class="layui-card-body" style="padding: 0;margin-top: 2px" th:if="${not #lists.isEmpty(years)}">
+    <div class="layui-collapse" lay-accordion="">
+        <div class="layui-colla-item" th:each="year : ${years}">
+            <div class="layui-colla-title"
+            data-my-opts-type ="statistics_year"
+            data-my-size = "title-size-0"
+            th:attr="data-my-id=${year}" th:text="${year} + '年'"></div>
+            <div class="layui-colla-content" style="padding: 3px;">
+                <!-- 供应商统计 -->
+                <div th:if="${pagePermission['supplierStatistics']}">
+                    <span class="year-title statistics-year-title" title="统计表" style="cursor: pointer">统计表</span>
+                </div>
+                <!-- 现金流统计 -->
+                <div th:if="${pagePermission['supplierCashFlow']}">
+                    <span class="year-title cashflow-year-title" title="现金流表" style="cursor: pointer">现金流表</span>
+                </div>
+                <!-- 收款管理 -->
+                <div th:if="${pagePermission['supplierIncomeManage']}">
+                    <span class="year-title income-manage-year-title" title="收入导入" style="cursor: pointer">收款管理</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="statistics_body" class="layui-card-body" th:if="${#lists.isEmpty(years)}">
+    <div>
+        暂无数据
+    </div>
+</div>

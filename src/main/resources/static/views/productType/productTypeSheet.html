@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="utf-8">
+    <title>产品类型管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<body>
+<div class="layui-card">
+    <div class="layui-form">
+        <div class="layui-form-item" style="padding: 5px">
+            <div class="layui-inline">
+                <label class="layui-form-label">类型名称：</label>
+            </div>
+            <div class="layui-inline">
+                <div class="layui-input-inline">
+                    <input id="productTypeName" type="text" name="productTypeName" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">创建时间：</label>
+            </div>
+            <div class="layui-inline">
+                <input type="text" class="layui-input layui-date-pointer" id="date" readonly
+                       onfocus="this.blur();">
+            </div>
+            <div class="layui-inline">~</div>
+            <div class="layui-inline">
+                <input type="text" class="layui-input layui-date-pointer" id="endDate" readonly
+                       onfocus="this.blur();" />
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">可见状态：</label>
+                <div class="layui-input-inline">
+                    <input type="checkbox" name="visible" value="0" th:title="隐藏"
+                           lay-skin="primary" checked>
+                    <input type="checkbox" name="visible" value="1" th:title="展示"
+                           lay-skin="primary">
+
+                </div>
+            </div>
+            <div class="layui-inline">
+                <button type="button" class="layui-btn" id="btn-search">查询</button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-card-body">
+        <table id="productType" lay-filter="productType"></table>
+        <script type="text/html" id="headerToolbar">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>
+            </div>
+        </script>
+        <script type="text/html" id="rowToolbar">
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            {{# if(d.visible == 0){ }}
+            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="show">展示</a>
+            {{# } }}
+            {{# if(d.visible == 1){ }}
+            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="hide">隐藏</a>
+            {{# } }}
+        </script>
+    </div>
+</div>
+<script type="text/javascript" src="/common/js/base_lib.js"></script>
+<script type="text/javascript" src="/common/js/commonJs.js"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="text/javascript" th:src="@{/views/productType/js/productTypeSheet.js (v=${t})}"></script>
+</body>
+
+</html>

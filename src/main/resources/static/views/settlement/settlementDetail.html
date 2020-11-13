@@ -1,0 +1,12 @@
+<div class="layui-row settlement-detail-item" th:if="${not #lists.isEmpty(flowEnts)}" th:each="flowEnt: ${flowEnts}">
+    <b><a th:attr="settlement-entity-id = ${flowEnt.id},settlement-entity-month = ${flowEnt.ownMonth},product-id = ${flowEnt.productId}" >
+        <span th:text="${flowEnt.flowTitle}"></span>
+        <span th:if="${not #strings.isEmpty(flowEnt.nodeName)}" th:text="',当前节点：'+ ${flowEnt.nodeName}"></span>
+        <span style="color: #FF0000" th:if="${flowEnt.canOperat}" th:text="'(待处理)'"></span>
+    </a></b>
+    <hr style='height: 3px; background-color: #1E9FFF'/>
+</div>
+
+<div class="layui-row" th:if="${#lists.isEmpty(flowEnts)}">
+    暂无数据
+</div>

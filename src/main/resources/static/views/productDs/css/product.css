@@ -1,0 +1,22 @@
+span.unit {
+	position: absolute;
+	top: 8px;
+	right: 18px;
+}
+.layui-form-item .layui-inline {
+    margin-bottom: 0px;
+    margin-right: 0px;
+}
+
+#productBody .layui-table-view .layui-table {
+     position: relative;
+     width: 100%;
+     margin: 0;
+}
+#productBody .layui-table-cell {
+    height: 100%;
+    max-width: 100%;
+}
+#productBody .layui-table .layui-btn-container .layui-btn {
+    margin-bottom: 0px;
+}

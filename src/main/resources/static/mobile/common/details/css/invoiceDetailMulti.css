@@ -1,0 +1,62 @@
+html, body {
+    background-color: #ffffff;
+}
+
+.invoice-body {
+    position: relative;
+    padding: 1em 0.5em;
+    line-height: 2em;
+}
+
+.invoice-detail {
+    margin-left: 2.5em;
+    border-left: solid 0.1em #c9c9c9;
+    padding-left: 1em;
+    font-size: 0.9em;
+}
+
+.layui-anim.layui-icon {
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.5em;
+}
+
+.layui-form-checkbox div {
+    width: calc(100% - 3em);
+}
+
+.invoice-choose-list li {
+    border-bottom: dashed 0.1em #cccccc;
+    padding: 0.5em 0;
+}
+
+.layui-form-checkbox {
+    line-height: unset;
+    padding-right: 0;
+    cursor: pointer;
+    font-size: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.layui-form-checkbox i {
+    top: 40%
+}
+
+.layui-form-checkbox > span {
+    line-height: 1.5em !important;
+}
+
+/* 页面最下面的提交按钮 */
+.page-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 3em;
+}
+
+.page-bottom > button {
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+}

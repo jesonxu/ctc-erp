@@ -1,0 +1,10 @@
+.layui-form-item .layui-inline {
+    margin-bottom: 0px;
+    margin-right: 0px;
+}
+
+.layui-table-view .layui-table {
+     position: relative;
+     width: 100%;
+     margin: 0;
+ }

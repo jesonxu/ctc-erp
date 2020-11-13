@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+    <head>
+        <meta charset="UTF-8">
+        <title>客户过滤</title>
+        <link rel="stylesheet" href="/common/plugin/zTree_v3-master/css/zTreeStyle.css" media="all">
+        <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+        <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+        <style type="text/css">
+            a {
+                height: auto !important;
+            }
+            .keyword-filter {
+                text-align: center;
+                width: 100%;
+            }
+            .dept-filter {
+                width: 100%;
+            }
+            .tool-bar {
+                text-align: center;
+                width: 100%;
+                padding: 5px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div th:if="${pagePermission['customerSearch']}" class="layui-form keyword-filter">
+            <div class="layui-form-item" style="margin: 10px">
+                <label class="layui-form-label">关键词：</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="keyWord" class="layui-input"/>
+                </div>
+            </div>
+        </div>
+        <div th:if="${pagePermission['customerFilter']}" class="dept-filter">
+            <input id="checkedDeptIds" type="hidden" th:value="${deptIds}"/>
+            <input id="checkedUserIds" type="hidden" th:value="${userIds}"/>
+            <div class="tool-bar">
+                <button type="button" id="check-all" class="layui-btn layui-btn-primary layui-btn-xs">
+                    <i class="xm-iconfont icon-quanxuan"></i>
+                    <span>全选</span>
+                </button>
+                <button type="button" id="check-opposite" class="layui-btn layui-btn-xs">
+                    <i class="xm-iconfont icon-fanxuan"></i>
+                    <span>反选</span>
+                </button>
+                <button type="button" id="clear-all" class="layui-btn layui-btn-danger layui-btn-xs">
+                    <i class="xm-iconfont icon-qingkong"></i>
+                    <span>清空</span>
+                </button>
+            </div>
+            <div id="tree" class="content_wrap" style="margin-left: 30px;padding-top: 10px;">
+                <div class="zTreeDemoBackground left">
+                    <ul id="treeDemo" class="ztree departMent"></ul>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+    <script type="text/javascript" src="/common/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+    <script type="text/javascript" src="/layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" src="/common/js/commonJs.js"></script>
+    <script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+    <script type="text/javascript" src="/common/plugin/zTree_v3-master/js/jquery.ztree.core.js"></script>
+    <script type="text/javascript" src="/common/plugin/zTree_v3-master/js/jquery.ztree.excheck.js"></script>
+    <script type="text/javascript" th:src="@{/views/customer/js/customerFilter.js (v=${t})}"></script>
+    <script th:inline="javascript">
+        window.deptIds = [[${deptIds}]];
+        window.userIds = [[${userIds}]];
+        window.perm = [[${pagePermission}]];
+    </script>
+</html>

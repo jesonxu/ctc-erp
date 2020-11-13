@@ -1,0 +1,40 @@
+<div th:if="${not #maps.isEmpty(supplierDepts)}">
+    <div class="layui-row" th:attr="supplier-id=${supplierId}" style="padding-left: 15px">
+        <div th:each="dept : ${supplierDepts}"  style="border-top: 1px solid #f2f2f2;">
+            <div class="layui-row" style="padding-top: 7px;" th:text="'部门：' + ${dept.key}"></div>
+            <div class="layui-row" th:each="c : ${dept.value}" style="padding-top: 4px">
+                <div class="layui-row">
+                    <label>姓名：</label>
+                    <span th:text="${c.contactsName}"></span>
+                </div>
+                <div class="layui-row">
+                    <label>职务：</label>
+                    <span th:text="${c.post}"></span>
+                </div>
+                <div th:if="${not #strings.isEmpty(c.firstPhone)}" class="layui-row">
+                    <label>号码1：</label>
+                    <span th:text="${c.firstPhone}"></span>
+                </div>
+                <div th:if="${not #strings.isEmpty(c.secondPhone)}" class="layui-row">
+                    <label>号码2：</label>
+                    <span  th:text="${c.secondPhone}"></span>
+                </div>
+                <div th:if="${not #strings.isEmpty(c.telephone)}" class="layui-row">
+                    <label>座机：</label>
+                    <span  th:text="${c.telephone}"></span>
+                </div>
+                <div th:if="${not #strings.isEmpty(c.email)}" class="layui-row">
+                    <label>邮箱：</label>
+                    <span  th:text="${c.email}"></span>
+                </div>
+                <div th:if="${not #strings.isEmpty(c.remark)}" class="layui-row">
+                    <label>备注：</label>
+                    <span  th:text="${c.remark}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:if="${#maps.isEmpty(supplierDepts)}" style="padding-left: 20px">
+    暂无数据
+</div>

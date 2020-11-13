@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>核销记录</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="/common/js/base_lib.js"></script>
+</head>
+
+<body>
+    <input type="hidden" id="id" th:value="${id}">
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <table id="checkOutDetail" lay-filter="checkOutDetail" lay-size="sm"></table>
+        </div>
+    </div>
+    <script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/views/chargeRecord/js/checkOutDetail.js (v=${t})}"></script>
+</body>
+</html>

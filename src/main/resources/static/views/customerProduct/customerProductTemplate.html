@@ -1,0 +1,84 @@
+<div class="layui-card-header panel_title">
+    <b class="module_title" th:text="#{section.product} + ${dtos==null ? '' : '(' + #lists.size(dtos) + '个)'}"></b>
+    <span th:unless="${onlyShowBasic}" id="addProductBtn" class="add_btn" th:if="${pagePermission['customerProductEdit']} and ${dtos!=null}">
+        <i class="layui-icon layui-icon-add-circle" style="display: inline-block;position: static;" title="添加产品"></i>
+    </span>
+</div>
+<div class="layui-card-body" id="product_panel" th:style="${#lists.isEmpty(dtos)} ? '' : 'padding: 0; margin: 2px;'">
+    <div th:if="${#lists.isEmpty(dtos)}">
+        暂无数据
+    </div>
+    <div class="layui-collapse" lay-filter="product_title" lay-accordion>
+        <div th:each="dto,stat : ${dtos}" class="layui-colla-item">
+            <div class="layui-colla-title"
+                 data-my-title-tool="true"
+                 data-my-open-left="true"
+                 th:attr="data-my-id = ${dto.productId}, flow_ent_count = ${dto.flowEntCount},
+                    data-my-right-tool=${pagePermission['customerProductEdit'] ? 'true' : 'false'}"
+                 data-my-opts-type="1"
+                 data-my-tool-right-icon="layui-icon-edit"
+                 data-my-size="title-size-0"
+                 th:text="${dto.productName}">
+            </div>
+
+            <div class="layui-colla-content" style="padding: 3px; border-bottom: 1px solid #e6e6e6;">
+                <div class="layui-colla-item">
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'productType')}">
+                        <label th:text="#{product.productType}+ ':'">产品类型：</label>
+                        <input type="hidden" id="productTypeH" th:value="${dto.productType}"/>
+                        <span th:text="${dto.productTypeName}"> </span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'yysType')}">
+                        <label th:text="#{product.yysType}+ ':'">支持运营商类型：</label>
+                        <input type="hidden" id="yysTypeH" th:value="${dto.yysType}"/>
+                        <span th:text="${dto.yysTypeName}"> </span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'directConnect')}">
+                        <label>是否直连运营商:</label>
+                        <span th:text="${#bools.isFalse(dto.directConnect) ? '否' : '是'}"> </span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'voiceUnit')  and (dto.productType==6)}">
+                        <label th:text="#{product.voiceUnit}+ ':'">计费单位：</label>
+                        <span th:text="'每' + ${dto.voiceUnit} + '秒'"></span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'price')}">
+                        <label>单价:</label>
+                        <span th:text="${dto.price}"> </span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'priceTimeQuantum')}">
+                        <label>单价有效期:</label>
+                        <span th:text="${dto.priceTimeQuantum}"> </span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'account')}">
+                        <label th:text="#{product.account}+ ':'">账号：</label>
+                        <span th:utext="${dto.account}" style="word-break: break-all;"></span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'billType')}">
+                        <label th:text="#{product.billType}+ ':'">账单类型：</label>
+                        <span th:text="${dto.billType == 0 ? '自动' : dto.billType == 1 ? '手动' : ''}"></span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'billTaskDay')}">
+                        <label th:text="#{product.billTaskDay}+ ':'">账单日：</label>
+                        <span th:text="'每月' + ${dto.billTaskDay} + '号'"></span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'billCycle')}">
+                        <label th:text="#{product.billCycle}+ ':'">计费周期：</label>
+                        <span th:text="${dto.billCycle == 0 ? '月' : dto.billCycle == 1 ? '季' : dto.billCycle == 2 ? '半年' : dto.billCycle == 3 ? '年' : ''}"></span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'billPeriod')}">
+                        <label>账期：</label>
+                        <span th:text="${dto.billPeriod +'个月'}"></span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'settleType')}">
+                        <label th:text="#{product.settleType} + ':'">结算方式：</label>
+                        <span th:text="${dto.settleType == 0 ? '预购' : dto.settleType == 1 ? '预付' : dto.settleType == 2 ? '后付' : ''}"></span>
+                    </div>
+                    <div class="layui-row" th:if="${#lists.contains(product_items, 'sendDemo')}">
+                        <label th:text="#{product.sendDemo}">发送示例：</label>
+                        <span th:utext="${dto.sendDemo}" style="word-break: break-all;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>添加汇报</title>
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="device" content="width=device-width">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!-- 文件加载有先后顺序-->
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../common/css/mobileCommon.css">
+    <link rel="stylesheet" href="../common/css/dropdown.css">
+
+    <script type='text/javascript' src="/common/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../layuiadmin/layui/layui.js"></script>
+</head>
+<body>
+	<div class="page-title">
+	    <span class="layui-icon layui-icon-left page-title-back"></span>
+	    <span class="page-title-name">选择流程</span>
+	</div>
+	<input type="hidden" id="reportType" th:value="${reportType}" />
+	<input type="hidden" id="reportId" th:value="${reportId}" />
+	<textarea id="reportContent" style="display: none;"></textarea>
+	
+	<div class="report-enclosure"></div>
+	
+	<div class="save-report-row">
+	    <button id="submitReport" class="layui-btn btn-submit">提交</button>
+	</div>
+</body>
+<!-- 页面 专属 文件 最后加载 -->
+<link rel="stylesheet" th:href="@{/common/font/font-one.css (v=${t})}">
+<link rel="stylesheet" th:href="@{/mobile/common/css/pageHeader.css (v=${t})}">
+<link rel="stylesheet" th:href="@{/mobile/report/css/addReport.css (v=${t})}">
+<script type="text/javascript" th:src="@{/mobile/common/date.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/mobile/common/tool/pageBack.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/mobile/common/util.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/mobile/common/labels/FileLabel.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/mobile/report/js/addReport.js (v=${t})}"></script>
+</html>

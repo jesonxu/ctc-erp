@@ -1,0 +1,109 @@
+/* 必须标签 展示 必填 */
+label[required=true]:before {
+    content: "*";
+    color: #FF0000;
+}
+
+label[required]:before {
+    content: "*";
+    color: #FF0000;
+}
+
+/* 文件上传表头 */
+.file-label-head > thead > tr > th {
+    padding: 0.1em;
+    text-align: center;
+    min-height: 2em !important;
+    line-height: 2em;
+}
+
+/* 文件上传 内容展示 */
+.file-label-head > tbody > tr > td {
+    height: 2em;
+    padding: 0.1em !important;
+}
+
+/* 除了名称 其余的走居中展示 */
+.file-label-head > tbody > tr > td:not(:first-child) {
+    text-align: center;
+}
+
+/* 文件 边距 */
+.file-label-head {
+    margin: 0.2em 0;
+}
+
+.label-type-file .layui-upload-list {
+    margin: 0.2em 0;
+}
+/* 申请流程内容 */
+.apply-flow-content {
+    padding-top: 0.2em;
+    margin: 3em 1em 3em 1em;
+}
+
+/* 流程标签名 */
+.flow-label-name {
+    height: 1.5em;
+    line-height: 1.5em;
+    margin: 0.5em 0 0.2em 0;
+    display: inline-block;
+}
+
+/* 标签对应的内容 */
+.flow-label-content {
+    /*margin-left: 1em;*/
+}
+
+/* 行 （重写的layui样式） */
+.layui-form-item {
+    margin-bottom: 0.5em;
+}
+
+/* 特殊的选择按钮 */
+.entity-choose, .product-choose {
+    width: 100%;
+    /*height: 3em;*/
+    /*line-height: 3em;*/
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/* 按钮里面的单独名称 */
+.btn-name {
+    margin-left: 1em;
+}
+
+/* 申请按钮行 */
+.apply-row {
+    border-top: solid 0.1em #cccccc;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    height: 2.5em;
+    line-height: 2.5em;
+}
+
+/* 提交流程按钮 */
+.btn-submit{
+    width: 100%;
+    text-align: center;
+}
+
+/* 文件标签文件操作按钮  */
+.file-label-opts-btn {
+    height: 1.6em !important;
+    line-height: 1.6em !important;
+    padding: 0 0.7em !important;
+    font-size: 0.9em;
+}
+
+/* 文件标签 文件上传 */
+button[data-file-btn-id] {
+    width: 100%;
+    height: 3em;
+    border: solid #009688 0.1em;
+    color: #009688;
+}

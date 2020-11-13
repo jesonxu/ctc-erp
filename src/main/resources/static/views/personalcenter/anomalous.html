@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="utf-8">
+    <title>异常统计</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" th:href="@{/common/css/my_pannel.css (v=${t})}" />
+    <link rel="stylesheet" th:href="@{/views/personalcenter/css/anomalous.css (v=${t})}" />
+</head>
+
+<body>
+    <div class="layui-tab-item layui-show layui-form">
+        <div class="layui-card-body layadmin-backlog report-tab">
+            <div id="outerDiv">
+                <div class="layui-form-item" style="padding: 5px">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">生成时间：</label>
+                    </div>
+                    <div class="layui-inline">
+                        <input type="text" class="layui-input layui-date-pointer" id="startDate" readonly
+                               onfocus="this.blur();">
+                    </div>
+                    <div class="layui-inline">~</div>
+                    <div class="layui-inline">
+                        <input type="text" class="layui-input layui-date-pointer" id="endDate" readonly
+                               onfocus="this.blur();" />
+                    </div>
+                </div>
+                <div id="deptAndUser" data-alias="dept-and-user" class="layui-collapse over-flow-div" lay-accordion></div>
+                <div class="div-right">
+                    <table id="messageTable" lay-filter="messageTable" class="message-table"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" th:src="@{/common/js/jquery-1.8.0.min.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/common/js/jquery.i18n.properties-1.0.9.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/layuiadmin/layui/layui.js (v=${t})}"></script>
+<script type="application/javascript" th:src="@{/common/js/md5.min.js(v=${t})}"></script>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="text/javascript" th:src="@{/common/js/my_pannel.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/personalcenter/js/anomalous.js (v=${t})}"></script>
+
+</html>

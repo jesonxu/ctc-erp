@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/views/stockOutProductDs/css/stockOutProduct.css" media="all">
+</head>
+
+<body style="background-color: white">
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div id="add-public-info" class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <!--采购商品信息-->
+            <input id="isEdit" th:value='${isEdit}' type="hidden">
+            <input id="homeOutId" th:value='${dsOutDepotDto.id}' type="hidden">
+            <input id="dsOutDepotDetials" th:value='${dsOutDepotDto.DsOutDepotDetials}' type="hidden">
+            <input id="dsOutDepotDto" th:value='${dsOutDepotDto}' type="hidden">
+            <div class="layui-form-item">
+                <div class='stock-table'>
+                    <table class='layui-table stock-product-table' lay-data="" lay-filter='stockOut-product-table' id='stockOut-product-table'>
+                        <thead>
+                        <tr>
+                            <th lay-data="{field:'depotItemId', hide: true}"></th>
+                            <th lay-data="{field:'productId', hide: true}"></th>
+                            <th lay-data="{field:'supplierId', hide: true}"></th>
+                            <th lay-data="{field:'depotHeadId', hide: true}"></th>
+                            <th lay-data="{field:'productName'}" >产品名称</th>
+                            <th lay-data="{field:'supplierName'}" >供应商名称</th>
+                            <th lay-data="{field:'depotType'}" >仓库类别</th>
+                            <th lay-data="{field:'depotNumber'}" >库存数量</th>
+                            <th lay-data="{field:'format'}">规格 </th>
+                            <th lay-data="{field:'price'}">销售单价</th>
+                            <th lay-data="{field:'amount', width: 100}">销售数量</th>
+                            <th lay-data="{field:'total'}">销售金额</th>
+                            <th lay-data="{field:'validTime', width: 150}">产品有效期</th>
+                            <th lay-data="{field:'remark'}">备注</th>
+                            <!--<th lay-data="{templet: '#stockOutInfoTools', width: 100}">操作</th>-->
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <script type="text/html" id="addStockOutInfo">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layui-btn-sm " lay-event="addStockOutInfo">
+                                添加
+                            </button>
+                        </div>
+                    </script>
+                    <script type="text/html" id="stockOutInfoTools">
+                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="deleteStockOutInfo">删除</a>
+                    </script>
+                </div>
+            </div>
+            <div class="layui-form-item preivew-stock-out" style="padding: 50px 0 20px 0;">
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="customerStockOut"><span style="color: red;">*</span>客户名称：</label>
+                    <div class="layui-input-inline">
+                        <input type="hidden" th:value="${dsOutDepotDto.customerId}" id="customerTypeId">
+                        <select name="customerStockOut" id="customerStockOut" lay-filter="customerStockOut" disabled></select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="saleStockOut">销售人员：</label>
+                    <div class="layui-input-inline">
+                        <input type="hidden" th:value="${dsOutDepotDto.userId}" id="userId">
+                        <select name="saleStockOut" id="saleStockOut" lay-filter="saleStockOut" disabled></select>
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label"><span style="color: red;">*</span>出库日期：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="配货单有效截止日期" data-type="0" id="stockOutTime"
+                               th:value="${dsOutDepotDto.outTime}" disabled placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="stockOutOtherCost">其他支出：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="stockOutOtherCost" id="stockOutOtherCost" th:value="${dsOutDepotDto.otherCost}" disabled PLACEHOLDER="请输入其他支出" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <label class="layui-form-label" for="stockOutTotal">出库总金额：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="stockOutTotal" id="stockOutTotal" th:value="${dsOutDepotDto.outDepotTotal}" disabled PLACEHOLDER="不需要输入" autocomplete="off" class="layui-input" />
+                    </div>
+                </div>
+            </div>
+            <!--<div class="layui-form-item" style="text-align: center;padding: 50px 0 20px 0;">
+                <div type="button" id="submit-stockOut" class="layui-btn layui-btn layui-btn-sm" lay-submit>
+                    提交
+                </div>
+                <button type="button" id="cancel-stockOut" class="layui-btn layui-btn-danger layui-btn-sm">
+                    取消
+                </button>
+            </div>-->
+        </div>
+    </div>
+</div>
+</body>
+<script src="/common/js/jquery-1.8.0.min.js"></script>
+<script src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script th:src="@{/views/stockOutProductDs/js/previewStockOut.js (v=${t})}"></script>
+</html>

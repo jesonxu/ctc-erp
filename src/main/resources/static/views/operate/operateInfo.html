@@ -1,0 +1,42 @@
+<div class="layui-card-header panel_title">
+	<b class="module_title">运营</b>
+</div>
+<div class="layui-card-body" id="operate_panel" style="padding: 0px;margin-top: 2px" th:if="${not empty}">
+	<div class="layui-collapse" lay-accordion="" th:each="time,iterStat:${timeMap}" lay-filter="operate_year_title">
+		<div class="layui-colla-item">
+			<div class="layui-colla-title"
+				 th:attr="data-my-id = ${time.key},flow_ent_count=${#maps.isEmpty(yearFlowCount)?0: yearFlowCount[time.key]}"
+				 th:text="${time.key}+'年'"
+				 th:id="${time.key}"
+				 data-my-opts-type="year"
+				 data-my-size="title-size-0">
+			</div>
+
+			<div class="layui-colla-content operate-year-content" th:attr="operate-title-id=${time.key}">
+				<div class="layui-collapse" lay-accordion="" lay-filter="operate_month_title">
+					<div th:each='entry,stat:${time.value}' class="layui-colla-item">
+						<div class="layui-colla-title second_title operate_base_info"
+							 th:id="${time.key+'-'+(entry.month)}"
+							 th:attr="data-my-id = ${time.key+'-'+(entry.month)}, flow_ent_count=${entry.flowEntCount}"
+							 th:text="${entry.monthStr}"
+							 data-my-size="title-size-1"
+							 data-my-opts-type="month">
+						</div>
+						<div class="layui-colla-content" th:attr="operate-name-id=${time.key+'-'+(entry.month)}" >
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="layui-card-body" th:if="${!#maps.isEmpty(pagePermission)} and ${pagePermission['supplierApplyFlow']} and ${buttonBody}" style="padding: 0;margin-top: 2px">
+	<div class="layui-btn-container" id="buttonBody">
+	</div>
+</div>
+<div class="layui-card-body" id="operate_panel" th:if="${empty}">
+	<div style="padding-left: 15px;">
+		暂无数据
+	</div>
+</div>

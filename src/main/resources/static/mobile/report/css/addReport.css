@@ -1,0 +1,48 @@
+html, boy {
+	padding-top: 3.5em;
+	width: 100%;
+	height: 90%;
+}
+
+.layui-layedit-tool {
+	display: none;
+}
+
+.layui-layedit {
+	width: calc(100% - 2em);
+	margin: 0 auto;
+}
+
+.report-enclosure .flow-label-name {
+	margin-left: 1em;
+}
+
+.report-enclosure {
+	margin-top: 1em;
+}
+
+.report-enclosure button {
+	width: 100%;
+	line-height: 3em;
+	height: 3em;
+}
+
+.label-type-file .layui-upload-list {
+    margin: 0.2em 0;
+}
+
+/* 申请按钮行 */
+.save-report-row {
+    border-top: solid 0.1em #cccccc;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    height: 2.5em;
+    line-height: 2.5em;
+}
+
+.save-report-row button {
+	width: 100%;
+}

@@ -1,0 +1,117 @@
+html, body {
+	background-color: white !important;
+}
+
+.report-main {
+	width: 69.5%;
+	margin: 0 auto;
+}
+
+#selectDate {
+	width: 106px;
+	display: inline-block;
+	border: 1px solid rgb(61, 61, 61);
+	border-radius: 5px;
+	cursor: pointer;
+	height: 29px;
+	line-height: 29px;
+}
+
+.table-container {
+	margin-top: 60px;
+	font-size: 16px;
+	padding: 5px;
+	height: 30px; 
+	border : 1px solid #adadadf7;
+	position: relative;
+	border: 1px solid #adadadf7;
+	border-bottom: 0;
+}
+
+.table-container > div {
+	display: inline-block;
+	position: absolute;
+	left: 50%;
+}
+
+.main-table-container {
+	text-align: center;
+}
+
+.main-table-container > div {
+	display: inline-block;
+	position: static;
+	margin: 0 auto;
+}
+
+.affiliated-table-container > div {
+	margin-left: -265px;
+}
+
+.report-table table {
+	font-size: 15px;
+	border-right: 1px solid #adadadf7;
+	border-bottom: 1px solid #adadadf7
+}
+
+.report-table table thead td {
+	background-color: #f2f2f2;
+	color: #303030;
+}
+
+.report-table table td {
+	line-height: 27px;
+	padding: 0 5px;
+	border-left: 1px solid #adadadf7;
+	border-top: 1px solid #adadadf7;
+}
+
+.report-table table{
+	width: 100%;
+}
+
+.report-table-export {
+	line-height: 30px;
+	cursor: pointer;
+}
+
+.report-table-export i {
+	font-size: 20px !important;
+}
+
+.report-table-remark {
+	margin-top: 10px;
+	line-height: 27px;
+	font-size: 15px;
+}
+
+.xm-select-parent {
+	min-width: 230px;
+	border: 1px solid rgb(61, 61, 61);
+	border-radius: 5px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.xm-select-title, .xm-select, .xm-form-select div, .xm-form-select, .xm-form-select input {
+	min-height: 28px !important;
+	padding: 0 !important;
+	line-height: 28px !important;
+	height: 28px !important;
+}
+
+.xm-select {
+	border: 0 !important;
+}
+
+.xm-select-title {
+	margin: 0 5px !important;
+}
+
+.icon-caidan {
+	display: none;
+}
+
+.xm-select-tips {
+	display: none;
+}

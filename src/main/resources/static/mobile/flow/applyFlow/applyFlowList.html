@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" th:with="t=${#dates.createNow().time}">
+<head>
+    <meta charset="UTF-8">
+    <title>可发起流程列表</title>
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+    <meta http-equiv="Cache" content="no-cache">
+    <meta name="device" content="width=device-width">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!-- 文件加载有先后顺序-->
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="/common/css/mobileCommon.css">
+    <link rel="stylesheet" href="/common/css/dropdown.css">
+    <link rel="stylesheet" th:href="@{/mobile/common/css/pageHeader.css (v=${t})}" media="all"/>
+
+    <script type='text/javascript' src="/common/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../layuiadmin/layui/layui.js"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/constant.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/banDefault.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/util.js (v=${t})}"></script>
+    <script type="text/javascript" th:src="@{/mobile/common/tool/pageBack.js}"></script>
+</head>
+<body>
+<!-- 固定在最上面 顶部栏 -->
+<div class="page-title">
+    <span class="layui-icon layui-icon-left page-title-back"></span>
+    <span class="page-title-name">选择流程</span>
+</div>
+
+<!-- 内容 -->
+<div id="apply-flow-list" class="apply-flow-list">
+
+</div>
+</body>
+<!-- 自定义的加载 放在最后加载 -->
+<link rel="stylesheet" th:href="@{/mobile/flow/applyFlow/css/applyFlowList.css (v=${t})}" media="all"/>
+<script type="text/javascript" th:src="@{/mobile/flow/applyFlow/js/applyFlowList.js}"></script>
+</html>

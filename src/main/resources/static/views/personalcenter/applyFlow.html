@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:with="t=${#dates.createNow().time}">
+<head>
+<meta charset="utf-8">
+<title>申请流程</title>
+<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css"
+	media="all">
+<link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+<link rel="stylesheet" href="/common/css/common.css" media="all">
+<link rel="stylesheet" th:href="@{/views/personalcenter/css/applyFlow.css (v=${t})}"
+	media="all">
+</head>
+<body>
+	<div id="applyFlowMenu">
+	</div>
+	<div id="applyFlowOuter" style="display: none;">
+		<div id="applyFlowMain"></div>
+	</div>
+	<div id="flowEntHistoryOuter">
+		<div id="flowEntHistoryMain">
+			<div class="flow-ent-history-title">历史流程</div>
+			<div class="flow-ent-history-content"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/common/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="text/javascript" src="/common/js/md5.min.js"></script>
+<script type="text/javascript" th:src="@{/views/personalcenter/js/applyFlow.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/operateProcess/js/applyFlowCommon.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/operateProcess/js/flowCommon.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/personalcenter/js/operateInfo.js (v=${t})}"></script>
+</html>

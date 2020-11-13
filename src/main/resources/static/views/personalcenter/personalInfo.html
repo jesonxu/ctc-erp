@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  th:with="t=${#dates.createNow().time}">
+<head>
+	<meta charset="utf-8">
+	<title>个人信息</title>
+	<link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+	<link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+	<link rel="stylesheet" href="/common/css/common.css" media="all">
+	<link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+	<link rel="stylesheet" href="/views/personalcenter/css/personalInfo.css" media="all">
+	<style>
+		.layui-input-block span {
+			line-height: 28px;
+			font-size: 18px;
+			color: #666;
+		}
+		.layui-input-inline span {
+			line-height: 28px;
+			font-size: 18px;
+			color: #666;
+		}
+	</style>
+</head>
+<body>
+<div class="layui-card-header">
+	<span>我的信息</span>
+		<button class="layui-btn layui-btn-normal" onclick="editPwd()">
+			<span>修改密码</span>
+		</button>
+	</div>
+	<div class="layui-card-body">
+		<div class="layui-row">
+			<div class="layui-col-md4">
+				<div class="layui-form">
+					<div class="layui-form-item">
+						<label class="layui-form-label">姓名</label>
+						<div class="layui-input-block">
+							<span th:text="${personalInfo.userName}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">性别</label>
+						<div class="layui-input-block">
+							<span th:text="${personalInfo.sex == 0?'男':'女'}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">部门</label>
+						<div class="layui-input-block">
+							<span th:text="${personalInfo.deptName}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">职务</label>
+						<div class="layui-input-inline">
+							<span th:text="${personalInfo.job}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">上级</label>
+						<div class="layui-input-inline">
+							<span th:text="${personalInfo.superior}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">办公地址</label>
+						<div class="layui-input-inline">
+							<span th:text="${personalInfo.officeAddress}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">身份</label>
+						<div class="layui-input-block">
+							<span th:text="${personalInfo.identityType == 1?'领导':'员工'}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">邮箱</label>
+						<div class="layui-input-inline">
+							<span th:text="${personalInfo.mail}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">座机</label>
+						<div class="layui-input-inline">
+							<span th:text="${personalInfo.telephone}"></span>
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">手机</label>
+						<div class="layui-input-inline">
+							<span th:text="${personalInfo.mobilePhone}"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="layui-col-md8">
+				<div class="layui-tab-item layui-show layui-form">
+						<div class="LAY-app-message-btns" style="margin-bottom: 10px;">
+							<div class="layui-inline" id="dateLine">
+								<input type="radio" name="date" lay-filter="layui-date" value="1" title="本周" checked>
+								<input type="radio" name="date" lay-filter="layui-date" value="2" title="本月">
+								<input type="radio" name="date" lay-filter="layui-date" value="3" title="本季">
+								<input type="radio" name="date" lay-filter="layui-date" value="4" title="今年">
+								<input type="radio" name="date" lay-filter="layui-date" value="5" title="近三年">
+							</div>
+						</div>
+						<div class="layui-card-body layadmin-backlog">
+							<ul class="layui-row layui-col-space10 layui-this countList">
+								<li class="layui-col-xs12">
+									<a id="customer" lay-href="/messageCenter/toMsgCenterDetail.action"
+									   class="layadmin-backlog-body">
+										<h3>新增客户</h3>
+										<p><cite>0</cite></p>
+									</a>
+								</li>
+								<li id="supplier" class="layui-col-xs12">
+									<a lay-href="" class="layadmin-backlog-body">
+										<h3>新增供应商</h3>
+										<p><cite>0</cite></p>
+									</a>
+								</li>
+								<li id="customerLog" class="layui-col-xs12">
+									<a lay-href="" class="layadmin-backlog-body">
+										<h3>新增联系日志</h3>
+										<p><cite>0</cite></p>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/common/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="/common/js/jquery.i18n.properties-1.0.9.js"></script>
+<script type="text/javascript" src="/common/js/md5.min.js"></script>
+<script type="text/javascript" src="/layuiadmin/layui/layui.js"></script>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="text/javascript" src="/common/js/formSelects-v4.js"></script>
+<script type="text/javascript" th:src="@{/views/personalcenter/js/personalInfo.js (v=${t})}"></script>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:with="t=${#dates.createNow().time}">
+
+<head>
+    <meta charset="utf-8">
+    <title>员工管理</title>
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/common/css/common.css" media="all">
+    <link rel="stylesheet" href="/common/css/formSelects-v4.css" media="all">
+    <link rel="stylesheet" th:href="@{/common/css/my_pannel.css (v=${t})}" />
+    <link rel="stylesheet" th:href="@{/views/user/css/user.css (v=${t})}" />
+</head>
+
+<body>
+<div class="layui-tab-item layui-show layui-form">
+    <div class="layui-card-body user-management">
+        <div id="outerDiv">
+            <div class="div-top">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">关键词：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="keyword" id="keyword" autocomplete="off" class="layui-input" placeholder="姓名/手机号/登录名"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">部门：</label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="deptName" name="deptName" autocomplete="off" class="layui-input" readonly="readonly" placeholder="点击选择"/>
+                            <i id='empty' title="清空" class="layui-icon layui-icon-close"></i>
+                            <input type="hidden" id="deptId" name="deptId"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">角色：</label>
+                        <div class="layui-input-inline">
+                            <select id="role" lay-filter="role"></select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">状态：</label>
+                        <div class="layui-input-inline">
+                            <input type="checkbox" lay-skin="primary" name="userStatus" value="1" title="激活" checked>
+                            <input type="checkbox" lay-skin="primary" name="userStatus" value="0" title="已禁用">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                            <button type="button" class="layui-btn" id="btn-search">查询</button>
+                            <button type="reset" class="layui-btn layui-btn-primary" id="btn-reset">重置</button>
+                            <button type="button" class="layui-btn layui-btn-normal" id="btn-import">
+                                <i class="layui-icon layui-icon-upload-drag"></i>导入数据
+                            </button>
+                            <button type="button" class="layui-btn layui-btn-normal" id="btn-leave" th:if="${pagePermission != null and pagePermission['userLeave'] != null and pagePermission['userLeave']}">
+                                <i class="layui-icon layui-icon-tree"></i>员工假期
+                            </button>
+                    </div>
+                </div>
+            </div>
+            <div id="deptAndUser" class="layui-collapse div-left" lay-accordion></div>
+            <div id="operations" class="div-float">
+                <button type="button" class="layui-btn layui-btn-warm " id="btn-update">保存所有修改</button>
+            </div>
+            <div id="userInfo" class="div-right">
+                <div class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">姓名：</label>
+                        <div class="layui-input-block">
+                            <span id="uRealName"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">性别：</label>
+                        <div class="layui-input-inline">
+                            <input type="hidden" id="uSex"/>
+                            <select id="uSexSelect" lay-filter="uSexSelect" th:attr="disabled=${pagePermission != null and pagePermission['userInfoEdit'] != null and pagePermission['userInfoEdit']} ? 'false' : 'disabled'" >
+                                <option value="0">男</option>
+                                <option value="1">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">部门：</label>
+                        <div class="layui-input-block">
+                            <span id="uDeptName"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">角色：</label>
+                        <div class="layui-input-inline">
+                            <input type="hidden" id="uRoleIds">
+                            <select id="uRoleSelect" th:attr="disabled=${pagePermission != null and pagePermission['userInfoEdit'] != null and pagePermission['userInfoEdit']} ? 'false' : 'disabled'" lay-search="" xm-select-direction="down" xm-select="uRoleSelect" xm-select-type="1"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">职务：</label>
+                        <div class="layui-input-inline">
+                            <input type="hidden" id="uJobTypes">
+                            <select id="uJobSelect" th:attr="disabled=${pagePermission != null and pagePermission['userInfoEdit'] != null and pagePermission['userInfoEdit']} ? 'false' : 'disabled'" lay-search="" xm-select-direction="down" xm-select="uJobSelect" xm-select-type="1"></select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">上级：</label>
+                        <div class="layui-input-block">
+                            <span id="uLeader"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">办公地址：</label>
+                        <div class="layui-input-block">
+                            <span id="uOfficeAddress"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">身份：</label>
+                        <div class="layui-input-block">
+                            <span id="uIdentity"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮箱：</label>
+                        <div class="layui-input-block">
+                            <span id="uEmail"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">座机：</label>
+                        <div class="layui-input-block">
+                            <span id="uTelephone"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机：</label>
+                        <div class="layui-input-block">
+                            <span id="uMobilePhone"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">入职时间：</label>
+                        <div class="layui-input-block">
+                            <span id="uEntryTime"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">毕业日期：</label>
+                        <div class="layui-input-block">
+                            <span id="uGraduationDate"></span>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">婚姻状况：</label>
+                        <div class="layui-input-inline">
+                            <input type="hidden" id="uMaritalStatus">
+                            <select id="uMaritalSelect" lay-filter="uMaritalSelect" th:attr="disabled=${pagePermission != null and pagePermission['userInfoEdit'] != null and pagePermission['userInfoEdit']} ? 'false' : 'disabled'"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript" th:src="@{/common/js/jquery-1.8.0.min.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/common/js/jquery.i18n.properties-1.0.9.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/layuiadmin/layui/layui.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/common/js/md5.min.js(v=${t})}"></script>
+<script type="text/javascript" th:src="@{/common/js/commonJs.js (v=${t})}"></script>
+<script type="text/javascript" src="/common/js/toolbar_lib.js"></script>
+<script type="text/javascript" src="/common/js/formSelects-v4.js"></script>
+<script type="text/javascript" th:src="@{/common/js/my_pannel.js (v=${t})}"></script>
+<script type="text/javascript" th:src="@{/views/user/js/user.js (v=${t})}"></script>
+
+</html>

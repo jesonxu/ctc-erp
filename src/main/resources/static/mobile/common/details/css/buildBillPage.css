@@ -1,0 +1,60 @@
+html, body {
+    background-color: #ffffff;
+}
+
+label[required="true"]:before {
+    content: "*";
+    color: #ff0000;
+}
+
+.page-bottom {
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 3em;
+    line-height: 3em;
+    background: #ffffff;
+    padding-bottom: 0.5em;
+    border-top: solid 0.1em #e6e6e6;
+}
+
+.form-content {
+    margin-bottom: 3em;
+    padding: 0.5em 1em;
+}
+
+.form-line {
+    min-height: 3em;
+    margin-bottom: 1em;
+}
+
+.form-line-label {
+    padding-bottom: 0.3em;
+    display: block;
+}
+
+.form-line-content {
+    /*margin-left: 0.5em;*/
+}
+
+#productChoose {
+    width: 100%;
+}
+
+.product-choose-list {
+    padding-left: 1em;
+    border-left: solid 0.1em #e6e6e6;
+}
+
+.product-choose-list li {
+    min-height: 1.5em;
+    line-height: 2em;
+    padding: 0.5em 0;
+    border-bottom: dashed 0.1em #e6e6e6;
+}
+
+.layui-form-checkbox {
+    display: block;
+}
